@@ -1,0 +1,56 @@
+body
+{
+	background-image: url(../IMG/background-img2.jpg);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+
+.tableContainer
+{
+	width: 1300px;
+	margin: 20px auto;
+	padding-bottom: 20px;
+	border-radius: 10px;
+	background-color: #FFFFFF;
+}
+
+.tableContainer .header
+{
+	font-size: 40px;
+	text-align: center;
+	background-color: #14B6A1;
+	color: #FFFFFF;
+	border-radius: 10px 10px 0px 0px;
+	line-height: 60px;
+}
+
+table
+{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+th
+{
+	font-size: 16px;
+	background-color: #0080C0;
+	color: #FFFFFF;
+	height: 30px;
+}
+
+table,tr,th,td
+{
+	border: 1px solid grey;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+table,tr
+{
+	width: 1290px;
+}
+
+td
+{
+	font-size: 15px;
+}

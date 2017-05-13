@@ -1,0 +1,40 @@
+body
+{
+	background-image: url(../IMG/background-img1.jpg);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+
+#mainContainer
+{
+	width: 1100px;
+	height: atuo;
+	min-height: 1000px;
+	margin: 0px auto;
+	padding-bottom: 20px;
+	background-color: #FFFFFF;
+	border-radius: 15px;
+}
+
+#header
+{
+	height: 100px;
+	text-align: center;
+	background-color: #14B6A1;
+	border-radius: 15px 15px 0px 0px;
+}
+
+#header h1
+{
+	line-height: 100px;
+	color: #FFFFFF;
+	border-radius: 15px 15px 0px 0px;
+}
+
+.chartDiv
+{
+	width: 100%;
+	height: 500px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
