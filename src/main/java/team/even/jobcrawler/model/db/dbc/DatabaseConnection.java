@@ -11,7 +11,7 @@ public class DatabaseConnection
 	private static final String DBURL = 
 			"jdbc:mysql://localhost:3306/jobdb?autoReconnection=true&useSSL=false";
 	private static final String DBUSER = "root";
-	private static final String DBPWD = "abc123";
+	private static final String DBPWD = "";
 	
 	public DatabaseConnection() throws Exception
 	{
