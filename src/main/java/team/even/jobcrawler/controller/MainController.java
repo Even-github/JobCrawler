@@ -37,27 +37,27 @@ public class MainController
 	}
 
 	@RequestMapping("/savedContent")
-	public @ResponseBody List<JobTypes> appearJobTypes()
+	public @ResponseBody List<JobTypes> appearJobTypes() throws Exception
 	{
-		List<JobTypes> list = (new JobTypesDAOFactory())
+		List<JobTypes> list = JobTypesDAOFactory
 				.getJobTypesDAOInstance()
 				.findAll();
 		return list;
 	}
 	
 	@RequestMapping("/getKind")
-	public @ResponseBody List<JobKind> getKind()
+	public @ResponseBody List<JobKind> getKind() throws Exception
 	{
-		List<JobKind> kindList = (new JobKindDAOFactory())
+		List<JobKind> kindList = JobKindDAOFactory
 									.getJobKindDAOInstance()
 									.findAll();
 		return kindList;
 	}
 	
 	@RequestMapping("/getDistrict")
-	public @ResponseBody List<District> getDistrict()
+	public @ResponseBody List<District> getDistrict() throws Exception
 	{
-		List<District>  districtList = (new DistrictDAOFactory())
+		List<District>  districtList = DistrictDAOFactory
 										.getDistrictDAOInstance()
 										.findAll();
 		return districtList;
@@ -65,10 +65,9 @@ public class MainController
 
 	@RequestMapping("/startCrawler")
 	public @ResponseBody String startCrawler(@RequestParam(value = "kind")String kind,
-			@RequestParam(value = "distinct")String distinct)
+			@RequestParam(value = "distinct")String distinct) throws Exception
 	{
-		JobTypesDAOFactory factory = new JobTypesDAOFactory();
-		List<JobTypes> list = factory.getJobTypesDAOInstance()
+		List<JobTypes> list = JobTypesDAOFactory.getJobTypesDAOInstance()
 				.findByKindandWorkPlace(kind, distinct);
 		if(list.isEmpty())
 		{
@@ -99,7 +98,8 @@ public class MainController
 	{
 		Service service = Service.getInstance();
 		service.stop();
-		return "正在停止运行爬虫程序,请稍等...\n";
+		String operation = "正在停止运行爬虫程序,请稍等...\n";
+		return operation;
 	}
 	
 	@RequestMapping("/displayData")
@@ -110,28 +110,25 @@ public class MainController
 	
 	@RequestMapping("/displayData/getData")
 	public @ResponseBody List<JobData> display(@RequestParam("kind") String kind,
-			@RequestParam("workPlace") String workPlace)
+			@RequestParam("workPlace") String workPlace) throws Exception
 	{
-		JobDataDAOFactory factory = new JobDataDAOFactory();
-		List<JobData> list = factory.getJobDataDAOInstance()
+		List<JobData> list = JobDataDAOFactory.getJobDataDAOInstance()
 				.findByKindandWorkPlace(kind, workPlace);
 		return list;
 	}
 	
 	@RequestMapping("/removeData")
 	public @ResponseBody String removeData(@RequestParam(value="kind")String kind,
-			@RequestParam(value="workPlace")String workPlace)
+			@RequestParam(value="workPlace")String workPlace) throws Exception
 	{
 		boolean flag = true;
-		JobDataDAOFactory dataFactory = new JobDataDAOFactory();
-		flag = dataFactory
+		boolean flag1 = JobDataDAOFactory
 				.getJobDataDAOInstance()
 				.doDeleteByKindandWorkPlace(kind, workPlace);
-		JobTypesDAOFactory typesFactory = new JobTypesDAOFactory();
-		flag = typesFactory
+		boolean flag2 = JobTypesDAOFactory
 				.getJobTypesDAOInstance()
 				.doDelete(kind, workPlace);
-		if(flag == true)
+		if(flag1 == true && flag2 == true)
 		{
 			return String.valueOf(true);
 		}
@@ -150,7 +147,7 @@ public class MainController
 	@RequestMapping("/report/getSalaryData")
 	public @ResponseBody Map<String, String> getSalaryData(
 			@RequestParam(value = "kind")String kind,
-			@RequestParam(value="district")String district)
+			@RequestParam(value="district")String district) throws Exception
 	{
 		Map<String, String> dataMap = new HashMap<String, String>();
 		DataAnalyzer analyzer = new DataAnalyzer();
@@ -162,7 +159,7 @@ public class MainController
 	@RequestMapping("/report/getExpData")
 	public @ResponseBody Map<String, String> getExpData(
 			@RequestParam(value = "kind")String kind,
-			@RequestParam(value="district")String district)
+			@RequestParam(value="district")String district) throws Exception
 	{
 		Map<String, String> dataMap = new HashMap<String, String>();
 		DataAnalyzer analyzer = new DataAnalyzer();
@@ -173,7 +170,7 @@ public class MainController
 	@RequestMapping("/report/getAcadeData")
 	public @ResponseBody Map<String, String> getAcadeData(
 			@RequestParam(value = "kind")String kind,
-			@RequestParam(value="district")String district)
+			@RequestParam(value="district")String district) throws Exception
 	{
 		Map<String, String> dataMap = new HashMap<String, String>();
 		DataAnalyzer analyzer = new DataAnalyzer();

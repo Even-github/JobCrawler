@@ -45,6 +45,26 @@ public class HtmlLoader implements IPageLoader
 			post.setConfig(reqConfig);
 			//随机切换http请求报头中的“User-Agent”
 			post.setHeader("User-Agent", (new UserAgentLib()).getRandomUserAgent());
+			post.setHeader("Referer", "https://www.lagou.com/jobs/");
+			post.setHeader("Host", "www.lagou.com");
+			post.setHeader("Connection", "keep-alive");
+			post.setHeader("Origin", "https://www.lagou.com");
+			post.setHeader("Content-Type", 
+					"application/x-www-form-urlencoded; charset=UTF-8");
+			post.setHeader("Cookie", 
+					"user_trace_token=20170322164744-3bc0f3c99827474abf66f801560ab979; "
+					+ "LGUID=20170322164744-37a1bb81-0edc-11e7-954d-5254005c3644; "
+					+ "td_cookie=18446744071585481892; "
+					+ "index_location_city=%E5%B9%BF%E5%B7%9E; "
+					+ "isCloseNotice=0; "
+					+ "JSESSIONID=5911D91387A82EDD19C2E2680A6D97E4; "
+					+ "_gat=1; SEARCH_ID=742979fc5f274246a3356cb8229e4c9e; "
+					+ "_ga=GA1.2.1413671222.1490172465; "
+					+ "LGSID=20170326231432-ea59c030-1236-11e7-956e-5254005c3644; "
+					+ "LGRID=20170327000307-b38a023e-123d-11e7-9570-5254005c3644; "
+					+ "Hm_lvt_4233e74dff0ae5bd0a3d81c6ccf756e6="
+					+ "1490529683,1490530280,1490532040,1490542460; "
+					+ "Hm_lpvt_4233e74dff0ae5bd0a3d81c6ccf756e6=1490544188; TG-TRACK-CODE=search_code");
 			try
 			{
 				CloseableHttpResponse response = httpClient.execute(post);

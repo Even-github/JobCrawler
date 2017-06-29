@@ -15,12 +15,14 @@ public interface IJobKindDAO
 	 * 向jobkind表插入一条数据
 	 * @param jobKind 被插入的数据
 	 * @return 是否插入成功
+	 * @throws Exception 
 	 */
-	boolean doCreate(JobKind jobKind);
+	boolean doCreate(JobKind jobKind) throws Exception;
 	
 	/**
 	 * 查找jobkind表中的所有数据
 	 * @return 返回所有数据
+	 * @throws Exception 
 	 */
-	List<JobKind> findAll();
+	List<JobKind> findAll() throws Exception;
 }

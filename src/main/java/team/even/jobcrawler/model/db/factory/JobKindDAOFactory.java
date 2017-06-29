@@ -8,17 +8,8 @@ import team.even.jobcrawler.model.db.dbc.DatabaseConnection;
 
 public class JobKindDAOFactory
 {
-	public IJobKindDAO getJobKindDAOInstance()
+	public static IJobKindDAO getJobKindDAOInstance()
 	{
-		Connection conn = null;
-		try
-		{
-			conn = new DatabaseConnection().getConnection();
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-
-		return new JobKindDAOimpl(conn);
+		return new JobKindDAOimpl();
 	}
 }

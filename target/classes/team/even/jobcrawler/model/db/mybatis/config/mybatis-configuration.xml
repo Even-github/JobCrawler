@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <properties resource="team/even/jobcrawler/model/db/mybatis/properties/db.properties"></properties>
+  
+  <typeAliases>
+	<package name="team.even.jobcrawler.model.db.vo" />  		
+  </typeAliases>
+  
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <mappers>
+    <mapper resource="team/even/jobcrawler/model/db/mybatis/mapper/DistrictMapper.xml"/>
+    <mapper resource="team/even/jobcrawler/model/db/mybatis/mapper/JobDataMapper.xml"/>
+    <mapper resource="team/even/jobcrawler/model/db/mybatis/mapper/JobKindMapper.xml"/>
+    <mapper resource="team/even/jobcrawler/model/db/mybatis/mapper/JobTypesMapper.xml"/>
+  </mappers>
+</configuration>

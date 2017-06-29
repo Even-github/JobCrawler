@@ -12,12 +12,11 @@ import team.even.jobcrawler.model.db.vo.JobTypes;
 
 public class TEST
 {
-	public static void main(String[] args)
+	public static void main(String[] args) throws Exception
 	{
-		JobTypesDAOFactory factory = new JobTypesDAOFactory();
 		JobDataDAOFactory dataFac = new JobDataDAOFactory();
 		List<JobTypes> list = new ArrayList<JobTypes>();
-		list = factory.getJobTypesDAOInstance().findAll();
+		list = JobTypesDAOFactory.getJobTypesDAOInstance().findAll();
 		DatabaseConnection dbc;
 		try
 		{

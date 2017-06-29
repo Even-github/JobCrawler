@@ -8,17 +8,8 @@ import team.even.jobcrawler.model.db.dbc.DatabaseConnection;
 
 public class DistrictDAOFactory
 {
-	public IDistrictDAO getDistrictDAOInstance()
+	public static IDistrictDAO getDistrictDAOInstance()
 	{
-		Connection conn = null;
-		try
-		{
-			conn = new DatabaseConnection().getConnection();
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-
-		return new DistrictDAOimpl(conn);
+		return new DistrictDAOimpl();
 	}
 }

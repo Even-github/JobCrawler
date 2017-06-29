@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.even.jobcrawler.model.db.mybatis.mapper.JobDataMapper">
+	<insert id="insertJobData" parameterType="JobData">
+		insert into jobdata (kind,job,recruitingUnit,salary,workPlace,experience,academic,workType,url)
+		values (#{kind},#{job},#{recruitingUnit},#{salary},#{workPlace},#{experience},#{academic},#{workType},#{url}) 
+	</insert>
+	
+	<delete id="deleteJobData">
+		delete from jobdata where
+		<choose>
+			<when test="column=='kind'">
+				kind = #{value}
+			</when>
+			<when test="column=='job'">
+				job = #{value}
+			</when>
+			<when test="column=='recruitingUnit'">
+				recruitingUnit = #{value}
+			</when>
+			<when test="column=='salary'">
+				salary = #{value}
+			</when>
+			<when test="column=='workPlace'">
+				workPlace = #{value}
+			</when>
+			<when test="column=='experience'">
+				experience = #{value}
+			</when>
+			<when test="column=='academic'">
+				academic = #{value}
+			</when>
+			<when test="column=='workType'">
+				workType = #{value}
+			</when>
+			<otherwise>
+				url = #{url}
+			</otherwise>
+		</choose>
+	</delete>
+	
+	<select id="selectAll" resultType="JobData">
+		select * from jobdata
+	</select>
+	
+	<select id="selectJobData" resultType="JobData">
+		select * from jobdata where
+		<choose>
+			<when test="column=='kind'">
+				kind = #{value}
+			</when>
+			<when test="column=='job'">
+				job = #{value}
+			</when>
+			<when test="column=='recruitingUnit'">
+				recruitingUnit = #{value}
+			</when>
+			<when test="column=='salary'">
+				salary = #{value}
+			</when>
+			<when test="column=='workPlace'">
+				workPlace = #{value}
+			</when>
+			<when test="column=='experience'">
+				experience = #{value}
+			</when>
+			<when test="column=='academic'">
+				academic = #{value}
+			</when>
+			<when test="column=='workType'">
+				workType = #{value}
+			</when>
+			<otherwise>
+				url = #{url}
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="selectByKindandWorkPlace" resultType="JobData">
+		select * from jobdata where kind = #{kind} and workPlace = #{workPlace}
+	</select>
+	
+	<delete id="deleteByKindandWorkPlace">
+		delete from jobdata where kind = #{kind} and workPlace = #{workPlace}	
+	</delete>
+</mapper>

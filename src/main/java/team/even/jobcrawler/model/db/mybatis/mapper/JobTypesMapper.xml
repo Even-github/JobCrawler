@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.even.jobcrawler.model.db.mybatis.mapper.JobTypesMapper">
+	<insert id="insertJobTypes" parameterType="JobTypes">
+		insert into jobtypes values (#{kind}, #{workPlace}, #{amount})
+	</insert>
+	
+	<delete id="deleteJobTypes">
+		delete from jobtypes where kind = #{kind} and workPlace = #{workPlace}
+	</delete>
+	
+	<select id="selectAll" resultType="JobTypes">
+		select * from jobtypes
+	</select>
+	
+	<select id="selectByKindandPlace" resultType="JobTypes">
+		select * from jobtypes where kind = #{kind} and workPlace = #{workPlace}
+	</select>
+</mapper>

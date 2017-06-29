@@ -7,127 +7,51 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
 import team.even.jobcrawler.model.db.dao.IDistrictDAO;
+import team.even.jobcrawler.model.db.mybatis.mapper.DistrictMapper;
+import team.even.jobcrawler.model.db.mybatis.sqlsessionfactory.SqlSessionFactoryUtil;
 import team.even.jobcrawler.model.db.vo.District;
 import team.even.jobcrawler.model.db.vo.JobKind;
 
 public class DistrictDAOimpl implements IDistrictDAO
-{
-	private Connection conn = null;
-	private PreparedStatement pstmt = null;
-	private ResultSet rs = null;
-	
-	public DistrictDAOimpl(Connection conn)
-	{
-		this.conn = conn;
-	}
-	
+{	
 	@Override
-	public boolean doCreate(District district)
+	public boolean doCreate(District district) throws Exception
 	{
 		boolean flag = false;
-		String sql = "insert into district values (?)";
+		SqlSession sqlSession = SqlSessionFactoryUtil.newSqlSession(true);
 		try
 		{
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, district.getDistrict());
-			if(pstmt.executeUpdate() > 0)
+			DistrictMapper mapper = sqlSession.getMapper(DistrictMapper.class);
+			if(mapper.insertDistrict(district) > 0);
 			{
 				flag = true;
 			}
-		} catch (SQLException e)
-		{
-			e.printStackTrace();
 		}
 		finally
 		{
-			if(pstmt != null)
-			{
-				try
-				{
-					pstmt.close();
-				} catch (SQLException e)
-				{
-					e.printStackTrace();
-				}
-				finally
-				{
-					if(conn != null)
-					{
-						try
-						{
-							conn.close();
-						} catch (SQLException e)
-						{
-							e.printStackTrace();
-						}
-					}
-				}
-			}
+			sqlSession.close();
 		}
-		
 		return flag;
 	}
 
 	@Override
-	public List<District> findAll()
+	public List<District> findAll() throws Exception
 	{
 		List<District> dataList = new ArrayList<District>();
-		String sql = "select * from district";
+		SqlSession sqlSession = SqlSessionFactoryUtil.newSqlSession(true);
 		try
 		{
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while(rs.next())
-			{
-				District data = new District();
-				data.setDistrict(rs.getString("district"));
-				dataList.add(data);
-			}
-		} catch (SQLException e)
-		{
-			e.printStackTrace();
+			DistrictMapper mapper = sqlSession.getMapper(DistrictMapper.class);
+			dataList = mapper.selectAll();
 		}
 		finally
 		{
-			if(rs != null)
-			{
-				try
-				{
-					rs.close();
-				} catch (SQLException e)
-				{
-					e.printStackTrace();
-				}
-				finally
-				{
-					if(pstmt != null)
-					{
-						try
-						{
-							pstmt.close();
-						} catch (SQLException e)
-						{
-							e.printStackTrace();
-						}
-						finally
-						{
-							if(conn != null)
-							{
-								try
-								{
-									conn.close();
-								} catch (SQLException e)
-								{
-									e.printStackTrace();
-								}
-							}
-						}
-					}
-				}
-			}
+			sqlSession.close();
 		}
-		
 		return dataList;
 	}
 	

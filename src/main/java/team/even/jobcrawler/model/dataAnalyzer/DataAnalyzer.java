@@ -21,8 +21,9 @@ public class DataAnalyzer
 	 * @param kind 职业种类条件
 	 * @param district 地区条件
 	 * @return 以范围/月薪的形式输出在各个范围内的数量统计
+	 * @throws Exception 
 	 */
-	public Map<String, String> analyzeSalary(String kind, String district)
+	public Map<String, String> analyzeSalary(String kind, String district) throws Exception
 	{
 		Map<String, String> dataMap = new HashMap<String, String>();
 		String[] scope = new String[10];
@@ -38,8 +39,7 @@ public class DataAnalyzer
 		scope[8] = "30k-40k";
 		scope[9] = "40k以上";
 
-		JobDataDAOFactory factory = new JobDataDAOFactory();
-		List<JobData> dataList = factory
+		List<JobData> dataList = JobDataDAOFactory
 				.getJobDataDAOInstance()
 				.findByKindandWorkPlace(kind, district);
 		for(JobData data: dataList)
@@ -110,8 +110,9 @@ public class DataAnalyzer
 	 * @param kind 职业种类条件
 	 * @param district 地区条件
 	 * @return 以要求种类/数量的形式输出在各个范围内的数量统计
+	 * @throws Exception 
 	 */
-	public Map<String, String> analyzeExp(String kind, String district)
+	public Map<String, String> analyzeExp(String kind, String district) throws Exception
 	{
 		Map<String, String> dataMap = new HashMap<String, String>();
 		String[] type = new String[5];
@@ -121,8 +122,7 @@ public class DataAnalyzer
 		type[2] = "经验3-5年";
 		type[3] = "经验5-10年";
 		type[4] = "经验不限";
-		JobDataDAOFactory factory = new JobDataDAOFactory();
-		List<JobData> dataList = factory
+		List<JobData> dataList = JobDataDAOFactory
 				.getJobDataDAOInstance()
 				.findByKindandWorkPlace(kind, district);
 		for(JobData data: dataList)
@@ -150,8 +150,9 @@ public class DataAnalyzer
 	 * @param kind 职业种类条件
 	 * @param district 地区条件
 	 * @return 以学历/数量的形式输出在各个范围内的数量统计
+	 * @throws Exception 
 	 */
-	public Map<String, String> analyzeAcade(String kind, String district)
+	public Map<String, String> analyzeAcade(String kind, String district) throws Exception
 	{
 		Map<String, String> dataMap = new HashMap<String, String>();
 		String[] type = new String[5];
@@ -161,8 +162,7 @@ public class DataAnalyzer
 		type[2] = "硕士及以上";
 		type[3] = "博士及以上";
 		type[4] = "学历不限";
-		JobDataDAOFactory factory = new JobDataDAOFactory();
-		List<JobData> dataList = factory
+		List<JobData> dataList = JobDataDAOFactory
 				.getJobDataDAOInstance()
 				.findByKindandWorkPlace(kind, district);
 		for(JobData data: dataList)

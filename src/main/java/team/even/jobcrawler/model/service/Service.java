@@ -33,7 +33,6 @@ public class Service
 {
 	private IPageLoader htmlLoader = null;
 	private IContentResolver contentResolver = null;
-	private JobDataDAOFactory factory = null;
 	private JsonLoader jsonLoader = null;
 	private JsonResolver jsonResolver = null;
 	private RunStatusCtrl ctrl = null;
@@ -46,7 +45,6 @@ public class Service
 	{
 		htmlLoader = new HtmlLoader();
 		contentResolver = new ContentResolver();
-		factory = new JobDataDAOFactory();
 		jsonLoader = new JsonLoader();
 		jsonResolver = new JsonResolver();
 		ctrl = RunStatusCtrl.getInstance();
@@ -107,38 +105,36 @@ public class Service
 		return ctrl;
 	}
 	
-	public boolean getKinds()
+	public boolean getKinds() throws Exception
 	{
 		boolean flag = false;
 		kindResolver = new KindResolver();
 		List<String> kindList = kindResolver.getKind();
-		JobKindDAOFactory factory = new JobKindDAOFactory();
 		if(!kindList.isEmpty())
 		{
 			for(String data: kindList)
 			{
 				JobKind jobKind = new JobKind();
 				jobKind.setKind(data);
-				factory.getJobKindDAOInstance().doCreate(jobKind);
+				JobKindDAOFactory.getJobKindDAOInstance().doCreate(jobKind);
 			}
 			flag = true;
 		}
 		return flag;
 	}
 	
-	public boolean getDistricts()
+	public boolean getDistricts() throws Exception
 	{
 		boolean flag = false;
 		districtResolver = new DistrictResolver();
 		List<String> districtList = districtResolver.getDistrict();
-		DistrictDAOFactory factory = new DistrictDAOFactory();
 		if(!districtList.isEmpty())
 		{
 			for(String data: districtList)
 			{
 				District district = new District();
 				district.setDistrict(data);
-				factory.getDistrictDAOInstance().doCreate(district);
+				DistrictDAOFactory.getDistrictDAOInstance().doCreate(district);
 			}
 			flag = true;
 		}

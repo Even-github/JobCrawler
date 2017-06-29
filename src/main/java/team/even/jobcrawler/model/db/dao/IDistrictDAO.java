@@ -15,12 +15,14 @@ public interface IDistrictDAO
 	 * 向district表插入一条数据
 	 * @param district 被插入的数据
 	 * @return 是否插入成功
+	 * @throws Exception 
 	 */
-	boolean doCreate(District district);
+	boolean doCreate(District district) throws Exception;
 	
 	/**
 	 * 查询district中的所有数据
 	 * @return 被插入的数据
+	 * @throws Exception 
 	 */
-	List<District> findAll();
+	List<District> findAll() throws Exception;
 }

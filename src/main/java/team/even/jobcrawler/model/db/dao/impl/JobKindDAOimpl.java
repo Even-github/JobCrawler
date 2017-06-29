@@ -7,127 +7,49 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 import team.even.jobcrawler.model.db.dao.IJobKindDAO;
+import team.even.jobcrawler.model.db.mybatis.mapper.JobKindMapper;
+import team.even.jobcrawler.model.db.mybatis.sqlsessionfactory.SqlSessionFactoryUtil;
 import team.even.jobcrawler.model.db.vo.JobKind;
 
 public class JobKindDAOimpl implements IJobKindDAO
 {
-	private Connection conn = null;
-	private PreparedStatement pstmt = null;
-	private ResultSet rs = null;
-	
-	public JobKindDAOimpl(Connection conn)
-	{
-		this.conn = conn;
-	}
-	
 	@Override
-	public boolean doCreate(JobKind jobKind)
+	public boolean doCreate(JobKind jobKind) throws Exception
 	{
 		boolean flag = false;
-		String sql = "insert into jobkind values (?)";
+		SqlSession sqlSession = SqlSessionFactoryUtil.newSqlSession(true);
 		try
 		{
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, jobKind.getKind());
-			if(pstmt.executeUpdate() > 0)
+			JobKindMapper mapper = sqlSession.getMapper(JobKindMapper.class);
+			if(mapper.insertJobKind(jobKind) > 0)
 			{
 				flag = true;
 			}
-		} catch (SQLException e)
-		{
-			e.printStackTrace();
 		}
 		finally
 		{
-			if(pstmt != null)
-			{
-				try
-				{
-					pstmt.close();
-				} catch (SQLException e)
-				{
-					e.printStackTrace();
-				}
-				finally
-				{
-					if(conn != null)
-					{
-						try
-						{
-							conn.close();
-						} catch (SQLException e)
-						{
-							e.printStackTrace();
-						}
-					}
-				}
-			}
+			sqlSession.close();
 		}
-		
 		return flag;
 	}
 
 	@Override
-	public List<JobKind> findAll()
+	public List<JobKind> findAll() throws Exception
 	{
-		List<JobKind> dataList = new ArrayList<JobKind>();
-		String sql = "select * from jobkind";
+		List<JobKind> dataList = null;
+		SqlSession sqlSession = SqlSessionFactoryUtil.newSqlSession(true);
 		try
 		{
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while(rs.next())
-			{
-				JobKind data = new JobKind();
-				data.setKind(rs.getString("kind"));
-				dataList.add(data);
-			}
-		} catch (SQLException e)
-		{
-			e.printStackTrace();
+			JobKindMapper mapper = sqlSession.getMapper(JobKindMapper.class);
+			dataList = mapper.selectAll();
 		}
 		finally
 		{
-			if(rs != null)
-			{
-				try
-				{
-					rs.close();
-				} catch (SQLException e)
-				{
-					e.printStackTrace();
-				}
-				finally
-				{
-					if(pstmt != null)
-					{
-						try
-						{
-							pstmt.close();
-						} catch (SQLException e)
-						{
-							e.printStackTrace();
-						}
-						finally
-						{
-							if(conn != null)
-							{
-								try
-								{
-									conn.close();
-								} catch (SQLException e)
-								{
-									e.printStackTrace();
-								}
-							}
-						}
-					}
-				}
-			}
+			sqlSession.close();
 		}
-		
 		return dataList;
 	}
-
 }

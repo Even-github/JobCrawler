@@ -16,13 +16,11 @@ public class ResolveRunnable implements Runnable
 {
 	private FileNameDistributor distributor = null;
 	private IContentResolver resolver = null;
-	private JobDataDAOFactory factory = null;
 	
 	public ResolveRunnable(FileNameDistributor distributor)
 	{
 		this.distributor = distributor;
 		resolver = new ContentResolver();
-		factory = new JobDataDAOFactory();
 	}
 	
 	@Override
@@ -40,7 +38,14 @@ public class ResolveRunnable implements Runnable
 			jobData.setExperience(infoMap.get("experience"));
 			jobData.setAcademic(infoMap.get("academic"));
 			jobData.setWorkType(infoMap.get("workType"));
-			factory.getJobDataDAOInstance().doCreate(jobData);
+			try
+			{
+				JobDataDAOFactory.getJobDataDAOInstance().doCreate(jobData);
+			} catch (Exception e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

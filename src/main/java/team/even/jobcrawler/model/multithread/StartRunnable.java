@@ -23,7 +23,6 @@ public class StartRunnable implements Runnable
 {
 	private String distinct;
 	private String kind;
-	private JobDataDAOFactory factory = null;
 	private JsonLoader jsonLoader = null;
 	private JsonResolver jsonResolver = null; 
 	private IPageLoader htmlLoader = null;
@@ -35,7 +34,6 @@ public class StartRunnable implements Runnable
 		this.distinct = distinct;
 		this.kind = kind;
 		this.ctrl = ctrl;
-		factory = new JobDataDAOFactory();
 		jsonLoader = new JsonLoader();
 		jsonResolver = new JsonResolver();
 		htmlLoader = new HtmlLoader();
@@ -77,7 +75,14 @@ public class StartRunnable implements Runnable
 					jobData.setAcademic(dataMap.get("academic"));
 					jobData.setWorkType(dataMap.get("workType"));
 					jobData.setUrl(url);
-					factory.getJobDataDAOInstance().doCreate(jobData);
+					try
+					{
+						JobDataDAOFactory.getJobDataDAOInstance().doCreate(jobData);
+					} catch (Exception e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					ctrl.countAdd();
 				}
 				if(ctrl.getIsContinue() == false)
@@ -91,17 +96,23 @@ public class StartRunnable implements Runnable
 		ctrl.setStatus("爬虫程序已停止运行。");
 		if(ctrl.getCount() > 0)
 		{
-			doCreateJobTypes(kind, distinct, ctrl.getCount());
+			try
+			{
+				doCreateJobTypes(kind, distinct, ctrl.getCount());
+			} catch (Exception e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
-	public void doCreateJobTypes(String kind, String distinct, int amount)
+	public void doCreateJobTypes(String kind, String distinct, int amount) throws Exception
 	{
-		JobTypesDAOFactory typeFactory = new JobTypesDAOFactory();
 		JobTypes jobTypes = new JobTypes();
 		jobTypes.setKind(kind);
 		jobTypes.setWorkPlace(distinct);
 		jobTypes.setAmount(amount);
-		typeFactory.getJobTypesDAOInstance().doCreate(jobTypes);
+		JobTypesDAOFactory.getJobTypesDAOInstance().doCreate(jobTypes);
 	}
 }

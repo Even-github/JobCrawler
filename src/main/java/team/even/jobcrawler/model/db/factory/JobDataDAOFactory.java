@@ -13,17 +13,8 @@ import team.even.jobcrawler.model.db.dbc.DatabaseConnection;
  */
 public class JobDataDAOFactory
 {
-	public IJobDataDAO getJobDataDAOInstance()
+	public static IJobDataDAO getJobDataDAOInstance()
 	{
-		Connection conn = null;
-		try
-		{
-			conn = new DatabaseConnection().getConnection();
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		} 
-		
-		return new JobDataDAOimpl(conn);
+		return new JobDataDAOimpl();
 	}
 }

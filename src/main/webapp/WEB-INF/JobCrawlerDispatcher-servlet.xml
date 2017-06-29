@@ -17,7 +17,8 @@
       <property name="prefix" value="/view/jsp/" />
       <property name="suffix" value=".jsp" />
    </bean>
-    
+   
+<!-- 
    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
       <property name="messageConverters">
           <list>
@@ -34,12 +35,16 @@
           </list>
       </property>
    </bean>
-
-   <mvc:annotation-driven>
+   
+ -->
+ 	<!-- 注解处理器映射驱动 -->
+   <mvc:annotation-driven> 
 	  <mvc:message-converters register-defaults="true">
+	  		<!-- 字符串转换，解决Controller传递中文乱码 -->
 	   	  <bean class="org.springframework.http.converter.StringHttpMessageConverter">
 	      	<property name="supportedMediaTypes" value = "text/plain;charset=UTF-8" />
 	   	  </bean>
 	  </mvc:message-converters>
    </mvc:annotation-driven>
+
 </beans>
