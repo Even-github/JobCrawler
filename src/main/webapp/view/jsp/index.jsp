@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>JobCrawler管理器</title>
-<link rel="stylesheet" type="text/css" href="view/CSS/index.css">
-<script type="text/javascript" src="view/JS/jquery-3.2.0.min.js"></script>
-<script type="text/javascript" src="view/JS/index.js"></script>
+<link rel="stylesheet" type="text/css" href="<%= path %>/view/CSS/index.css">
+<script type="text/javascript" src="<%= path %>/view/JS/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="<%= path %>/view/JS/index.js"></script>
 </head>
 <body>
 	<div class="maincontainer">
@@ -64,9 +67,13 @@
 						</select>					
 					</td>
 				</tr>
-				<tr style="height:200px">
+				<tr>
+					<td>已获取数据量（条）</td>
+					<td id="dataAmount">0</td>
+				</tr>
+				<tr style="height:180px">
 					<td>运行状态<td>
-					<textarea rows="10" cols="50" readonly="readonly"></textarea>
+					<textarea rows="8" cols="70" readonly="readonly"></textarea>
 				</tr>
 				<tr>
 					<td colspan="2">

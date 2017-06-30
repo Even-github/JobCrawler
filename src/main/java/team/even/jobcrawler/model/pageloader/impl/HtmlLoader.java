@@ -7,8 +7,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
@@ -20,6 +24,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
 import team.even.jobcrawler.model.pageloader.IPageLoader;
+import team.even.jobcrawler.model.proxy.ProxyManager;
 import team.even.jobcrawler.model.filecounter.FileCounter;
 import team.even.jobcrawler.model.filepath.FilePath;
 
@@ -31,17 +36,35 @@ import team.even.jobcrawler.model.filepath.FilePath;
 public class HtmlLoader implements IPageLoader
 {
 	@Override
-	public String downLoad(String url)
+	public String downLoad(String url, boolean useProxy)
 	{
 		String fileName = null; //页面下载后保存的文件名
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		try
 		{
 			HttpPost post = new HttpPost(url);
-			RequestConfig reqConfig = RequestConfig.custom()
-					.setConnectTimeout(5000)   //设置超时时间5秒
-					.setSocketTimeout(10000)	//设置获取数据超时时间10秒
-					.build();
+			RequestConfig reqConfig = null;
+			if(useProxy == true) //使用代理服务器
+			{
+				Map<String, String> proxyMap = ProxyManager.getRandomProxyMap();
+				HttpHost proxy = new HttpHost(proxyMap.get("ip"),   //代理服务器ip地址
+						Integer.parseInt(proxyMap.get("port")), //代理服务器port
+						"http"); //代理服务器协议
+				reqConfig = RequestConfig.custom()
+						.setProxy(proxy)
+						.setConnectTimeout(10000) //设置连接超时
+						.setSocketTimeout(10000) //设置数据获取超时
+						.setConnectionRequestTimeout(10000)
+						.build();
+			}
+			else //不使用代理服务器
+			{
+				reqConfig = RequestConfig.custom()
+						.setConnectTimeout(10000) //设置连接超时
+						.setSocketTimeout(10000) //设置数据获取超时
+						.setConnectionRequestTimeout(10000)
+						.build();
+			}
 			post.setConfig(reqConfig);
 			//随机切换http请求报头中的“User-Agent”
 			post.setHeader("User-Agent", (new UserAgentLib()).getRandomUserAgent());
@@ -92,8 +115,10 @@ public class HtmlLoader implements IPageLoader
 						String saveUrl = null;
 						OutputStreamWriter output = null;
 						saveUrl = FilePath.CONTENTHTMLPATH;
-						int num = (new FileCounter()).getFileNum(saveUrl);
-						fileName = saveUrl + "/contentPage" + (num + 1) + ".html";
+						Timestamp ts = new Timestamp(System.currentTimeMillis()); //时间戳
+						DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+						String fileNumber = df.format(ts) + (int)(Math.random() * 900 + 100); //通过时间戳命名文件
+						fileName = saveUrl + "/contentPage" + fileNumber + ".html";
 						File file = new File(saveUrl);
 						if(!file.exists())
 						{
@@ -132,7 +157,7 @@ public class HtmlLoader implements IPageLoader
 	}
 
 	@Override
-	public String downLoad(String distinct, String kind, int page)
+	public String downLoad(String distinct, String kind, int page, boolean useProxy)
 	{
 		return null;
 	}

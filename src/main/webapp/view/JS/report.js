@@ -1,3 +1,4 @@
+var hostpath=location.protocol+"//"+location.host+"/JobCrawler/"; //获取url根目录
 //打开页面时，自动加载图表
 $(document).ready(function() {
 	getSalaryData();
@@ -10,7 +11,7 @@ function getSalaryData()
 {
 	$.ajax({
 		type: "post",
-		url: "http://localhost:8080/JobCrawler/report/getSalaryData" + window.location.search,
+		url: hostpath + "report/getSalaryData" + window.location.search,
 		dataType: "json",
 		success: function(data)
 		{
@@ -85,7 +86,7 @@ function getExpData()
 {
 	$.ajax({
 		type: 'post',
-		url: "http://localhost:8080/JobCrawler/report/getExpData" + window.location.search,
+		url: hostpath + "report/getExpData" + window.location.search,
 		dataType: 'json',
 		success: function(data)
 		{
@@ -150,7 +151,7 @@ function getAcadeData()
 {
 	$.ajax({
 		type: 'post',
-		url: "http://localhost:8080/JobCrawler/report/getAcadeData" + window.location.search,
+		url: hostpath + "report/getAcadeData" + window.location.search,
 		dataType: 'json',
 		success: function(data)
 		{

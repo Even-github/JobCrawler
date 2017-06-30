@@ -1,7 +1,8 @@
+var hostpath=location.protocol+"//"+location.host+"/JobCrawler/"; //获取url根目录
 $(document).ready(function(){
 	$.ajax({
 		type: "get",
-		url: "http://localhost:8080/JobCrawler/displayData/getData" + window.location.search,
+		url: hostpath + "displayData/getData" + window.location.search,
 		dataType: "json",
 		success: function(data)
 		{

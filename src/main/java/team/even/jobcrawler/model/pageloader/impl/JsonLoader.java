@@ -10,13 +10,18 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpHost;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -29,12 +34,13 @@ import org.apache.http.message.BasicNameValuePair;
 import team.even.jobcrawler.model.filecounter.FileCounter;
 import team.even.jobcrawler.model.filepath.FilePath;
 import team.even.jobcrawler.model.pageloader.IPageLoader;
+import team.even.jobcrawler.model.proxy.ProxyManager;
 
 public class JsonLoader implements IPageLoader
 {
 
 	@Override
-	public String downLoad(String distinct, String kind, int page)
+	public String downLoad(String distinct, String kind, int page, boolean useProxy)
 	{
 		String fileName = null; //页面下载后保存的文件名
 		if(distinct != null && kind != null && page > 0) //参数正确
@@ -59,10 +65,28 @@ public class JsonLoader implements IPageLoader
 			try
 			{
 				HttpPost post = new HttpPost(reqUrl);
-				RequestConfig config = RequestConfig.custom()
-										.setConnectTimeout(5000) //设置连接超时5秒
-										.setSocketTimeout(10000) //设置数据获取超时10秒
-										.build();
+				RequestConfig config = null;
+				if(useProxy == true) //使用代理服务器
+				{
+					Map<String, String> proxyMap = ProxyManager.getRandomProxyMap();
+					HttpHost proxy = new HttpHost(proxyMap.get("ip"),   //代理服务器ip地址
+							Integer.parseInt(proxyMap.get("port")), //代理服务器port
+							"http"); //代理服务器协议
+					config = RequestConfig.custom()
+							.setProxy(proxy)
+							.setConnectTimeout(10000) //设置连接超时
+							.setSocketTimeout(10000) //设置数据获取超时
+							.setConnectionRequestTimeout(10000)
+							.build();
+				}
+				else //不使用代理服务器
+				{
+					config = RequestConfig.custom()
+							.setConnectTimeout(10000) //设置连接超时
+							.setSocketTimeout(10000) //设置数据获取超时
+							.setConnectionRequestTimeout(10000)
+							.build();
+				}
 				post.setConfig(config);
 				//设置请求报头，模拟浏览器访问服务器
 				post.setHeader("User-agent", (new UserAgentLib()).getRandomUserAgent());
@@ -121,9 +145,12 @@ public class JsonLoader implements IPageLoader
 						{
 							//获取json文件夹下的文件数量
 							int num = new FileCounter().getFileNum(FilePath.JSONPATH);
+							Timestamp ts = new Timestamp(System.currentTimeMillis()); //时间戳
+							DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+							String fileNumber = df.format(ts) + (int)(Math.random() * 900 + 100); //通过时间戳命名文件
 							fileName = FilePath.JSONPATH
 									+ "/json" 
-									+ (num + 1)
+									+ fileNumber
 									+ ".json";
 							//如果存放json文件的目录不存在，则创建此目录
 							File file = new File(FilePath.JSONPATH);
@@ -171,7 +198,7 @@ public class JsonLoader implements IPageLoader
 	}
 	
 	@Override
-	public String downLoad(String url)
+	public String downLoad(String url, boolean useProxy)
 	{
 		return null;
 	}

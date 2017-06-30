@@ -117,4 +117,7 @@ select
 textarea
 {
 	text-align: left;
+	height: 180px;
+	width: 550px;
+	border: 0px;
 }

@@ -1,3 +1,4 @@
+var hostpath=location.protocol+"//"+location.host+"/JobCrawler/"; //获取url根目录
 //JQuery实现网页的动态变化
 $(document).ready(function() {
 	$("#savedContentTag").css('background-color', '#FFFFFF');
@@ -29,7 +30,7 @@ function loadTable()
 {
 	$.ajax({
 		type: "post",
-		url: "http://localhost:8080/JobCrawler/savedContent?t=" + Math.random(),
+		url: hostpath + "savedContent?t=" + Math.random(),
 		dataType: "json",
 		cache: false,
 		success: function(data)
@@ -61,7 +62,7 @@ function loadKind()
 {
 	$.ajax({
 		type: "post",
-		url: "http://localhost:8080/JobCrawler/getKind",
+		url: hostpath + "getKind",
 		dataType: "json",
 		success: function(data)
 		{
@@ -78,7 +79,7 @@ function loadDistrict()
 {
 	$.ajax({
 		type: "post",
-		url: "http://localhost:8080/JobCrawler/getDistrict",
+		url: hostpath + "getDistrict",
 		dataType: "json",
 		success: function(data)
 		{
@@ -102,28 +103,38 @@ function displayData(kind, workPlace)
 //清空对应表单中的数据库信息
 function removeData(kind, workPlace)
 {
+	var inputPassword = prompt("删除数据需要口令，请输入口令：");
 	$.ajax({
 		type: "post",
-		url: "http://localhost:8080/JobCrawler/removeData",
-		data: "kind=" + kind + "&workPlace=" + workPlace,
+		url: hostpath + "removeData",
+		data: "kind=" + kind + "&workPlace=" + workPlace + "&inputPassword=" + inputPassword,
 		success: function(data)
 		{
 			if(data == "true")
 			{
 				alert("清除数据成功！");
 			}
-			else
+			else if(data == "false")
 			{
 				alert("清除数据失败！");
 			}
-			$(".contentTr").remove();
-			loadTable();
+			else if(data == "passwordError")
+			{
+				alert("口令不正确！");
+			}
+			else
+			{
+				alert("未知错误！");
+			}
+			$(".contentTr").remove(); //清空列表
+			loadTable(); //重新加载列表
 		}
 	});
 }
 
-//全局变量finishFlag用于记录爬虫程序是否已经结束
-var finishFlag = false;
+//全局变量
+var finishFlag = false; //全局变量finishFlag用于记录爬虫程序是否已经结束
+var currentStatus = ""; //记录爬虫最新的状态
 
 //启动后台爬虫程序
 function startCrawler()
@@ -132,7 +143,7 @@ function startCrawler()
 	var distinct = $("#sel_distinct option:selected").text();
 	$.ajax({
 		type: "post",
-		url: "http://localhost:8080/JobCrawler/startCrawler",
+		url: hostpath + "startCrawler",
 		data: "kind=" + kind + "&distinct=" + distinct,
 		success: function(data)
 		{
@@ -155,11 +166,15 @@ function startCrawler()
 			}
 			else if(data == "failure")
 			{
+				alert("启动失败，爬虫程序正在被其他用户使用，请稍后再试。\n");
+			}
+			else if(data == "existed")
+			{
 				alert("启动失败！" + distinct + "地区的" + kind + "招聘信息已存在。");
 			}
 			else
 			{
-				alert("error!");
+				alert("启动失败，发生未知错误!");
 			}
 		}
 	});
@@ -170,11 +185,20 @@ function getCrawlerStatus()
 {
 	$.ajax({
 		type: "post",
-		url: "http://localhost:8080/JobCrawler/getCrawlerStatus",
+		url: hostpath + "getCrawlerStatus",
 		dataType: "json",
 		success:function(data)
 		{
-			$("textarea").append("已获取" + data.count + "条信息,"+ data.status + "\n");
+			$("#dataAmount").text(data.count);
+			var newStatus = "已获取" + data.count + "条信息]"+ data.status + "\n";
+			if(currentStatus != newStatus)
+			{
+				currentStatus = newStatus;
+				var date = new Date();
+				var time = date.toLocaleTimeString();
+//				var time = date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+				$("textarea").append("["+time+","+currentStatus);
+			}
 			if(data.status == "爬虫程序已停止运行。")
 			{
 				finishFlag = true;
@@ -192,7 +216,7 @@ function stopCrawler()
 {
 	$.ajax({
 		type: "post",
-		url: "http://localhost:8080/JobCrawler/stopCrawler",
+		url: hostpath + "stopCrawler",
 		success: function(data)
 		{
 			$("textarea").append(data);

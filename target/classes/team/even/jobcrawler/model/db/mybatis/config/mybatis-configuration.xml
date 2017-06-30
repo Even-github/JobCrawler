@@ -26,5 +26,6 @@
     <mapper resource="team/even/jobcrawler/model/db/mybatis/mapper/JobDataMapper.xml"/>
     <mapper resource="team/even/jobcrawler/model/db/mybatis/mapper/JobKindMapper.xml"/>
     <mapper resource="team/even/jobcrawler/model/db/mybatis/mapper/JobTypesMapper.xml"/>
+    <mapper resource="team/even/jobcrawler/model/db/mybatis/mapper/PasswordMapper.xml"/>
   </mappers>
 </configuration>

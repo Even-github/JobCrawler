@@ -1,6 +1,7 @@
 <%
 	String kind = request.getParameter("kind");
 	String workPlace = request.getParameter("workPlace");
+	String path = request.getContextPath();
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -9,9 +10,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><%= workPlace %>地区<%= kind %>招聘信息一览表</title>
-<link rel="stylesheet" type="text/css" href="view/CSS/displayData.css">
-<script type="text/javascript" src="view/JS/jquery-3.2.0.min.js"></script>
-<script type="text/javascript" src="view/JS/displayData.js"></script>
+<link rel="stylesheet" type="text/css" href="<%= path %>/view/CSS/displayData.css">
+<script type="text/javascript" src="<%= path %>/view/JS/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="<%= path %>/view/JS/displayData.js"></script>
 </head>
 <body>
 	<div class="tableContainer">
