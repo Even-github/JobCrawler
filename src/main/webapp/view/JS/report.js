@@ -39,6 +39,7 @@ function getSalaryData()
 		},
 		error: function()
 		{
+			$("#loadingLab").remove();
 			$("#header").after("<p id='errorLab'>加载失败</p>");
 		}
 	});

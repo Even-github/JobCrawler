@@ -65,6 +65,7 @@ function loadTable()
 		},
 		error: function()
 		{
+			$("#loadingLab").remove();
 			$("#savedContent").append("<p id='errorLab'>加载失败</p>");
 		}
 	});
