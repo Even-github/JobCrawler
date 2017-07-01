@@ -33,6 +33,7 @@
 				<th>招聘页面地址</th>
 			</tr>
 		</table>
+		<p id="loadingLab">正在加载数据...</p>
 	</div>	
 </body>
 </html>

@@ -14,6 +14,7 @@ $(document).ready(function() {
 			$("#savedContent").show();
 			$("#newContent").hide();
 			$(".contentTr").remove();
+			$("#savedContent").append("<p id='loadingLab'>正在加载数据...</p>");
 			loadTable();
 		});
 	$("#newContentTag").click(function()
@@ -35,24 +36,36 @@ function loadTable()
 		cache: false,
 		success: function(data)
 		{
-			var json = data;
-			$.each(json, function(i, n)
+			$("#loadingLab").remove();
+			if(data == "" || data == null)
 			{
-				var next = 
-					"<tr class='contentTr'><td>" + n.kind+ "</td>"
-					+ "<td>" + n.workPlace+"</td>" 
-					+ "<td>" + n.amount + "</td>"
-					+ "<td>"
-					+ "<img src='view/IMG/ico-see.png' style='width:30px;cursor:pointer' title='查看数据' onclick='displayData(\"" + n.kind + "\",\"" + n.workPlace + "\")'>"
-					+ "</td>"
-					+ "<td>"
-					+ "<img src='view/IMG/ico-del.png' style='width:30px;cursor:pointer' title='删除数据' onclick='removeData(\"" + n.kind + "\",\"" + n.workPlace + "\")'>"
-					+ "</td>"
-					+ "<td>"
-					+ "<img src='view/IMG/ico-report.png' style='width:30px;cursor:pointer' title='查看数据' onclick='generateReport(\"" + n.kind + "\",\"" + n.workPlace + "\")'>"
-					+ "</td></tr>";
-				$("#savedContent table").append(next);
-			});
+				$("#savedContent").append("<p id='emptyLab'>无数据</p>");
+			}
+			else
+			{
+				var json = data;
+				$.each(json, function(i, n)
+						{
+					var next = 
+						"<tr class='contentTr'><td>" + n.kind+ "</td>"
+						+ "<td>" + n.workPlace+"</td>" 
+						+ "<td>" + n.amount + "</td>"
+						+ "<td>"
+						+ "<img src='view/IMG/ico-see.png' style='width:30px;cursor:pointer' title='查看数据' onclick='displayData(\"" + n.kind + "\",\"" + n.workPlace + "\")'>"
+						+ "</td>"
+						+ "<td>"
+						+ "<img src='view/IMG/ico-del.png' style='width:30px;cursor:pointer' title='删除数据' onclick='removeData(\"" + n.kind + "\",\"" + n.workPlace + "\")'>"
+						+ "</td>"
+						+ "<td>"
+						+ "<img src='view/IMG/ico-report.png' style='width:30px;cursor:pointer' title='查看数据' onclick='generateReport(\"" + n.kind + "\",\"" + n.workPlace + "\")'>"
+						+ "</td></tr>";
+					$("#savedContent table").append(next);
+						});
+			}
+		},
+		error: function()
+		{
+			$("#savedContent").append("<p id='errorLab'>加载失败</p>");
 		}
 	});
 }

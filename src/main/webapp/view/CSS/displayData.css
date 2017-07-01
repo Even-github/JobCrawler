@@ -24,6 +24,12 @@ body
 	line-height: 60px;
 }
 
+#loadingLab, #emptyLab, #errorLab
+{
+	font-size: 24px;
+	text-align: center;
+}
+
 table
 {
 	margin-left: 5px;

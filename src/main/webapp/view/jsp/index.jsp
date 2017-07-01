@@ -36,6 +36,7 @@ String path = request.getContextPath();
 					<th style="width:100px">生成报告</th>
 				</tr>
 			</table>
+			<p id="loadingLab">正在加载数据...</p>
 		</div>
 		<div class="contentContainer" id="newContent">
 			<table>

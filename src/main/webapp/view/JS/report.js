@@ -15,19 +15,31 @@ function getSalaryData()
 		dataType: "json",
 		success: function(data)
 		{
-			var p = new Array(7);
-			p[0] = data['2k以下'];
-			p[1] = data['2k-4k'];
-			p[2] = data['4k-6k'];
-			p[3] = data['6k-8k'];
-			p[4] = data['8k-10k'];
-			p[5] = data['10k-15k'];
-			p[6] = data['15k-20k'];
-			p[7] = data['20k-30k'];
-			p[8] = data['30k-40k'];
-			p[9] = data['40k以上'];
-
-			generateSalaryChart(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9]);
+			$("#loadingLab").remove();
+			if(data == "" || data == null)
+			{
+				$("#tableContainer").append("<p id='emptyLab'>无数据</p>");
+			}
+			else
+			{
+				var p = new Array(7);
+				p[0] = data['2k以下'];
+				p[1] = data['2k-4k'];
+				p[2] = data['4k-6k'];
+				p[3] = data['6k-8k'];
+				p[4] = data['8k-10k'];
+				p[5] = data['10k-15k'];
+				p[6] = data['15k-20k'];
+				p[7] = data['20k-30k'];
+				p[8] = data['30k-40k'];
+				p[9] = data['40k以上'];
+				
+				generateSalaryChart(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9]);
+			}
+		},
+		error: function()
+		{
+			$("#header").after("<p id='errorLab'>加载失败</p>");
 		}
 	});
 }

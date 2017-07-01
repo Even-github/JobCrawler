@@ -20,6 +20,7 @@
 		<div id="header">
 			<h1><%= district %>地区<%= kind %>职业招聘数据统计报告</h1>
 		</div>
+		<p id="loadingLab">正在加载数据...</p>
 		<div id="salaryChartDiv" class="chartDiv"></div>
 		<div id="expChartDiv" class="chartDiv"></div>
 		<div id="acadeChartDiv" class="chartDiv"></div>

@@ -73,6 +73,12 @@ body
 	border-radius: 0px 0px 10px 10px;
 }
 
+#loadingLab, #emptyLab, #errorLab
+{
+	font-size: 24px;
+	text-align: center;
+}
+
 table,tr
 {
 	border: 1px solid gray;

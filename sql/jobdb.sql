@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2017-06-29 14:41:01
+Date: 2017-07-01 09:34:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -319,7 +319,7 @@ CREATE TABLE `jobdata` (
   PRIMARY KEY (`id`),
   KEY `idx_kind` (`kind`),
   KEY `idx_workPlace` (`workPlace`)
-) ENGINE=InnoDB AUTO_INCREMENT=7026 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7278 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of jobdata
@@ -5880,6 +5880,135 @@ INSERT INTO `jobdata` VALUES ('6986', 'Android', '安卓独立开发视频社交
 INSERT INTO `jobdata` VALUES ('6987', 'Android', '安卓SDK开发工程师', '起源天下平台中心招聘', '12k-18k', '深圳', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/1521396.html');
 INSERT INTO `jobdata` VALUES ('6988', 'Android', 'Android前端开发工程师（兼职）', '智简生活IT部门招聘', '2k-3k', '深圳', '经验3-5年', '本科及以上', '兼职', 'https://www.lagou.com/jobs/3047330.html');
 INSERT INTO `jobdata` VALUES ('6989', 'Android', 'android前端软件开发工程师', 'Agatha技术部门招聘', '10k-14k', '深圳', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3084710.html');
+INSERT INTO `jobdata` VALUES ('7036', 'Android', 'Android高级开发工程师', '乐至科技招聘', '20k-40k', '上海', '经验5-10年', '本科及以上', '全职', 'https://www.lagou.com/jobs/2519386.html');
+INSERT INTO `jobdata` VALUES ('7037', 'Android', 'Android', '名片全能王招聘', '15k-30k', '上海', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/610505.html');
+INSERT INTO `jobdata` VALUES ('7038', 'Android', 'Android系统开发工程师', '爱奇艺招聘', '20k-30k', '上海', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/2335868.html');
+INSERT INTO `jobdata` VALUES ('7039', 'Android', '资深Android工程师', '饿了么物流研发部招聘', '18k-35k', '上海', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3191280.html');
+INSERT INTO `jobdata` VALUES ('7040', 'Android', 'Android开发工程师', '饿了么用户交易研发部招聘', '15k-20k', '上海', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/2817823.html');
+INSERT INTO `jobdata` VALUES ('7041', 'Android', '资深Android开发工程师', '喜马拉雅智能硬件事业部招聘', '15k-25k', '上海', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/2823062.html');
+INSERT INTO `jobdata` VALUES ('7042', 'Android', 'Android开发工程师', '公园盒子ParkBox产品研发招聘', '15k-30k', '上海', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3288246.html');
+INSERT INTO `jobdata` VALUES ('7043', 'Android', 'Android开发工程师', '易乎社区技术部招聘', '12k-20k', '上海', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3201177.html');
+INSERT INTO `jobdata` VALUES ('7044', 'Android', '技术总监（精通PHP熟悉IOS...', '粉粉日记技术部招聘', '25k-35k', '上海', '经验5-10年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2558967.html');
+INSERT INTO `jobdata` VALUES ('7045', 'Android', 'Android开发工程师', '爱回收IT招聘', '15k-30k', '上海', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/416856.html');
+INSERT INTO `jobdata` VALUES ('7046', 'Android', 'Android开发工程师', '迈微科技研发部招聘', '15k-25k', '上海', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3281967.html');
+INSERT INTO `jobdata` VALUES ('7047', 'Android', '安卓开发工程师-导航', '泰为DOP招聘', '15k-23k', '上海', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/2879402.html');
+INSERT INTO `jobdata` VALUES ('7048', 'Android', '资深Android开发工程师', '简书产品部招聘', '25k-35k', '上海', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/2982163.html');
+INSERT INTO `jobdata` VALUES ('7049', 'Android', 'Android开发工程师', '美团点评境外度假业务部招聘', '15k-30k', '上海', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3245597.html');
+INSERT INTO `jobdata` VALUES ('7050', 'Android', 'Android开发工程师', '招商银行信用卡中心信息技术部招聘', '25k-40k', '上海', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/2762432.html');
+INSERT INTO `jobdata` VALUES ('7051', 'Android', '高级Android工程师', '携程招聘', '15k-25k', '上海', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/1540260.html');
+INSERT INTO `jobdata` VALUES ('7052', 'Android', 'Android', '携程火车票事业部招聘', '11k-19k', '上海', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/340123.html');
+INSERT INTO `jobdata` VALUES ('7053', 'Android', '安卓工程师', '爵星网络研发部招聘', '15k-25k', '上海', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/2967794.html');
+INSERT INTO `jobdata` VALUES ('7054', 'Android', '百度众测_Android研发工程...', '百度平台部招聘', '18k-28k', '上海', '经验1-3年', '硕士及以上', '全职', 'https://www.lagou.com/jobs/3254392.html');
+INSERT INTO `jobdata` VALUES ('7055', 'Android', 'Android', '路路由产品研发部招聘', '15k-30k', '上海', '经验不限', '学历不限', '全职', 'https://www.lagou.com/jobs/3148950.html');
+INSERT INTO `jobdata` VALUES ('7080', '.NET', '高级.NET开发工程师', '丛文研发部招聘', '12k-16k', '广州', '经验3-5年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2276211.html');
+INSERT INTO `jobdata` VALUES ('7081', '.NET', '.NET软件工程师', '上海酆泽IT部招聘', '6k-9k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2263908.html');
+INSERT INTO `jobdata` VALUES ('7082', '.NET', 'C#.net开发工程师', '印孚瑟斯JABIL招聘', '7k-12k', '广州', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3219385.html');
+INSERT INTO `jobdata` VALUES ('7083', '.NET', '.NET高级开发工程师', '九顶软件研发中心招聘', '8k-15k', '广州', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/2358915.html');
+INSERT INTO `jobdata` VALUES ('7084', '.NET', '.net开发工程师', '晟威科技技术部招聘', '7K-12K', '广州', '经验3-5年', '学历不限', '全职', 'https://www.lagou.com/jobs/3243881.html');
+INSERT INTO `jobdata` VALUES ('7085', '.NET', '.net开发工程师', '华矩科技技术部招聘', '8k-12k', '广州', '经验3-5年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3057098.html');
+INSERT INTO `jobdata` VALUES ('7086', '.NET', '.NET程序员', '镭拓科技技术部招聘', '5k-8k', '广州', '经验不限', '大专及以上', '全职', 'https://www.lagou.com/jobs/2755065.html');
+INSERT INTO `jobdata` VALUES ('7087', '.NET', '.NET开发工程师', '赞赏技术招聘', '7k-14k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2710569.html');
+INSERT INTO `jobdata` VALUES ('7088', '.NET', '.net软件工程师', '12缸12缸汽车网招聘', '7k-12k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3284031.html');
+INSERT INTO `jobdata` VALUES ('7089', '.NET', '.net程序开发', '万纵联开发部招聘', '5k-8k', '广州', '经验1-3年', '学历不限', '全职', 'https://www.lagou.com/jobs/3050802.html');
+INSERT INTO `jobdata` VALUES ('7090', '.NET', '.Net开发工程师', '赛姆科技研发中心招聘', '8K-12K', '广州', '经验3-5年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2739205.html');
+INSERT INTO `jobdata` VALUES ('7091', '.NET', '.NET开发工程师', '一唯信息技术部招聘', '4k-8k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3257835.html');
+INSERT INTO `jobdata` VALUES ('7092', '.NET', '.net中级开发工程师', '众时科技技术部招聘', '10k-13k', '广州', '经验3-5年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3135542.html');
+INSERT INTO `jobdata` VALUES ('7093', '.NET', '.net程序员', '企泰科技开发部招聘', '6k-12k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2953346.html');
+INSERT INTO `jobdata` VALUES ('7094', '.NET', '.net软件工程师', '米多网络技术研发部招聘', '5k-10k', '广州', '经验1-3年', '学历不限', '全职', 'https://www.lagou.com/jobs/3252081.html');
+INSERT INTO `jobdata` VALUES ('7095', '.NET', '.NET开发工程师', '博宏研发中心招聘', '8k-10k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3208585.html');
+INSERT INTO `jobdata` VALUES ('7096', '.NET', '.NET开发工程师', '往来科技IT部招聘', '2k-4k', '广州', '经验不限', '大专及以上', '全职', 'https://www.lagou.com/jobs/3207575.html');
+INSERT INTO `jobdata` VALUES ('7097', '.NET', '.NET开发工程师', '宜配网技术研发部招聘', '5k-9k', '广州', '经验1-3年', '学历不限', '全职', 'https://www.lagou.com/jobs/1090374.html');
+INSERT INTO `jobdata` VALUES ('7098', '.NET', '.NET中级开发', '创惠科技软件产业部招聘', '8k-15k', '广州', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3080567.html');
+INSERT INTO `jobdata` VALUES ('7099', '.NET', '.net开发工程师', '新禾道软件工程部招聘', '7k-13k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2898025.html');
+INSERT INTO `jobdata` VALUES ('7100', '.NET', 'NET工程师（初级）', '悦策技术部招聘', '4k-7k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3068521.html');
+INSERT INTO `jobdata` VALUES ('7101', '.NET', '.NET软件工程师', '华锐软件游民星空开发部招聘', '5k-8k', '广州', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/2989871.html');
+INSERT INTO `jobdata` VALUES ('7102', '.NET', '.net工程师', '广州易脉技术部招聘', '5k-8k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2989840.html');
+INSERT INTO `jobdata` VALUES ('7103', '.NET', '.NET开发工程师', '基谷网络技术部招聘', '10k-20k', '广州', '经验3-5年', '学历不限', '全职', 'https://www.lagou.com/jobs/3091807.html');
+INSERT INTO `jobdata` VALUES ('7104', '.NET', '.net软件工程师', '收客易技术中心招聘', '9k-18k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3253147.html');
+INSERT INTO `jobdata` VALUES ('7105', '.NET', 'C#.NET软件工程师', '蓝鸽集团蓝鸽研究院招聘', '8k-16k', '广州', '经验不限', '本科及以上', '全职', 'https://www.lagou.com/jobs/3141742.html');
+INSERT INTO `jobdata` VALUES ('7106', '.NET', '.net开发', '壹豆技术部招聘', '4k-8k', '广州', '经验应届毕业生', '大专及以上', '全职', 'https://www.lagou.com/jobs/2960414.html');
+INSERT INTO `jobdata` VALUES ('7107', '.NET', 'ASP.NET开发工程师', '广州露乐母婴用品有限公司会员营销部招聘', '10k-15k', '广州', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3253725.html');
+INSERT INTO `jobdata` VALUES ('7108', '.NET', '.NET高级开发工程师', '国游网络移动互联网中心招聘', '8k-13k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2720824.html');
+INSERT INTO `jobdata` VALUES ('7109', '.NET', '.net开发工程师', '旭诚科技软件开发部招聘', '5k-9k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/1994920.html');
+INSERT INTO `jobdata` VALUES ('7110', '.NET', '.NET初级开发', '创惠科技软件产业部招聘', '6k-8k', '广州', '经验不限', '本科及以上', '全职', 'https://www.lagou.com/jobs/3080551.html');
+INSERT INTO `jobdata` VALUES ('7111', '.NET', '.net开发工程师', '龙席网络技术类招聘', '6k-12k', '广州', '经验不限', '本科及以上', '全职', 'https://www.lagou.com/jobs/2953754.html');
+INSERT INTO `jobdata` VALUES ('7112', '.NET', '高级.NET软件工程师', '凡跃集团研发部招聘', '10k-20k', '广州', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3093073.html');
+INSERT INTO `jobdata` VALUES ('7113', '.NET', '.Net开发工程师', '广州人资选开发部招聘', '6k-12k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2958212.html');
+INSERT INTO `jobdata` VALUES ('7114', '.NET', '云系统.NET开发工程师', '南方现代物流公共信息平台技术部招聘', '10k-15k', '广州', '经验3-5年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3183017.html');
+INSERT INTO `jobdata` VALUES ('7115', '.NET', '.Net工程师', '时尚家技术开发中心招聘', '10k-15k', '广州', '经验3-5年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3243754.html');
+INSERT INTO `jobdata` VALUES ('7116', '.NET', '.NET开发工程师', '天工网技术部招聘', '7k-12k', '广州', '经验不限', '本科及以上', '全职', 'https://www.lagou.com/jobs/2445865.html');
+INSERT INTO `jobdata` VALUES ('7117', '.NET', '.NET开发工程师', '竞优软件研发中心招聘', '6k-12k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2706531.html');
+INSERT INTO `jobdata` VALUES ('7118', '.NET', '.NET开发工程师', '深圳贝斯通技术部招聘', '4k-6k', '广州', '经验不限', '大专及以上', '全职', 'https://www.lagou.com/jobs/3249036.html');
+INSERT INTO `jobdata` VALUES ('7119', '.NET', '.NET工程师', 'Medalsoft华南事业部招聘', '7k-12k', '广州', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3170444.html');
+INSERT INTO `jobdata` VALUES ('7120', '.NET', 'Asp.net开发工程师', '动易软件研发中心招聘', '6k-12k', '广州', '经验1-3年', '学历不限', '全职', 'https://www.lagou.com/jobs/2773642.html');
+INSERT INTO `jobdata` VALUES ('7121', '.NET', '.net开发工程师', '来福掌柜IT部招聘', '5k-8k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2869792.html');
+INSERT INTO `jobdata` VALUES ('7122', '.NET', '软件开发工程师（.NET开发）...', '广州市全周至程软件技术有限公司研发部招聘', '6k-9k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2039956.html');
+INSERT INTO `jobdata` VALUES ('7123', '.NET', '.NET开发工程师', '傲程软件项目一部招聘', '7k-10k', '广州', '经验3-5年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2281261.html');
+INSERT INTO `jobdata` VALUES ('7124', '.NET', '.NET开发', '彩乐网络开发招聘', '8k-16k', '广州', '经验3-5年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3283672.html');
+INSERT INTO `jobdata` VALUES ('7125', '.NET', '.net初级开发工程师', '众时科技技术部招聘', '5k-7k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3212268.html');
+INSERT INTO `jobdata` VALUES ('7126', '.NET', '.NET程序员', '聚焦网络集团.Net开发部招聘', '6k-10k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/1965473.html');
+INSERT INTO `jobdata` VALUES ('7127', '.NET', '.net开发工程师', '广州拓源软件研发部招聘', '8k-10k', '广州', '经验不限', '大专及以上', '全职', 'https://www.lagou.com/jobs/3131718.html');
+INSERT INTO `jobdata` VALUES ('7128', '.NET', '.net开发工程师', '奥迪安软件开发部招聘', '8k-15k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3079017.html');
+INSERT INTO `jobdata` VALUES ('7129', '.NET', '.NET工程师', '家庭医生在线技术部招聘', '5k-10k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/1801611.html');
+INSERT INTO `jobdata` VALUES ('7130', '.NET', '.net开发工程师', '黑箭科技技术部招聘', '7k-10k', '广州', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3197240.html');
+INSERT INTO `jobdata` VALUES ('7131', '.NET', '.net', 'IChild程序部招聘', '5K-10K', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3175582.html');
+INSERT INTO `jobdata` VALUES ('7132', '.NET', '.net开发工程师', '上哪儿学研发部招聘', '9k-15k', '广州', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3150887.html');
+INSERT INTO `jobdata` VALUES ('7133', '.NET', '.NET工程师', '多宝科技技术部招聘', '7k-10k', '广州', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/2955774.html');
+INSERT INTO `jobdata` VALUES ('7134', '.NET', '.net开发工程师', '广州扬海研发部招聘', '6k-10k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3039095.html');
+INSERT INTO `jobdata` VALUES ('7135', '.NET', '.NET初级开发工程师', '高禾泰研发部招聘', '5k-7k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2980968.html');
+INSERT INTO `jobdata` VALUES ('7136', '.NET', '高级.NET程序员', '广州中汉技术部招聘', '7k-14k', '广州', '经验5-10年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3219655.html');
+INSERT INTO `jobdata` VALUES ('7137', '.NET', '.NET开发工程师', '维朗技术招聘', '8K-13K', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3190060.html');
+INSERT INTO `jobdata` VALUES ('7138', '.NET', '.NET', '易城科技招聘', '6k-10k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/1797660.html');
+INSERT INTO `jobdata` VALUES ('7139', '.NET', '.Net软件工程师', '广东元慧软件研发部招聘', '4k-7k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3009322.html');
+INSERT INTO `jobdata` VALUES ('7140', '.NET', '.net开发工程师', '企泰科技技术部招聘', '8k-12k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3199902.html');
+INSERT INTO `jobdata` VALUES ('7141', '.NET', '.net工程师', '微谱科技项目发展部招聘', '10k-15k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3187618.html');
+INSERT INTO `jobdata` VALUES ('7142', '.NET', '.net工程师', '畅途汽车保养连锁公司IT部门招聘', '8k-9k', '广州', '经验不限', '大专及以上', '全职', 'https://www.lagou.com/jobs/3068758.html');
+INSERT INTO `jobdata` VALUES ('7143', '.NET', '.NET软件工程师', '邦富软件招聘', '6k-10k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/1675396.html');
+INSERT INTO `jobdata` VALUES ('7144', '.NET', '.Net开发工程师', '奔步CBU招聘', '15k-20k', '广州', '经验5-10年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3213904.html');
+INSERT INTO `jobdata` VALUES ('7145', '.NET', '（HD）.Net软件工程师', '广州市环德信息科技有限公司技术部招聘', '9k-18k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3272442.html');
+INSERT INTO `jobdata` VALUES ('7146', '.NET', '.net开发工程师', '富力地产互联网事业部招聘', '10k-15k', '广州', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/2949713.html');
+INSERT INTO `jobdata` VALUES ('7147', '.NET', '.Net软件工程师', '哈图开发部招聘', '4k-7k', '广州', '经验不限', '学历不限', '全职', 'https://www.lagou.com/jobs/3021461.html');
+INSERT INTO `jobdata` VALUES ('7148', '.NET', '.Net工程师（cs）', '大数据研发部招聘', '8K-15K', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3264014.html');
+INSERT INTO `jobdata` VALUES ('7149', '.NET', '.NET软件工程师', '高新兴科技集团尚云在线招聘', '12k-24k', '广州', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/2717478.html');
+INSERT INTO `jobdata` VALUES ('7150', '.NET', '.NET开发技术工程师', '吉飞科技技术部招聘', '4k-6k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3228820.html');
+INSERT INTO `jobdata` VALUES ('7151', '.NET', '.NET', '长远软件开发部招聘', '4k-8k', '广州', '经验1-3年', '学历不限', '全职', 'https://www.lagou.com/jobs/2001290.html');
+INSERT INTO `jobdata` VALUES ('7152', '.NET', '.Net开发工程师', '尚博信开发部招聘', '8k-15k', '广州', '经验不限', '大专及以上', '全职', 'https://www.lagou.com/jobs/3054273.html');
+INSERT INTO `jobdata` VALUES ('7153', '.NET', '.NET开发工程师', '美奇集团技术中心招聘', '7k-10k', '广州', '经验3-5年', '大专及以上', '全职', 'https://www.lagou.com/jobs/1647864.html');
+INSERT INTO `jobdata` VALUES ('7154', '.NET', '.NET程序开发.NET开发工...', '稻禾科技开发部招聘', '4k-8k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2244664.html');
+INSERT INTO `jobdata` VALUES ('7155', '.NET', '.net开发工程师', '觅奇科技开发部招聘', '4k-8k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3228553.html');
+INSERT INTO `jobdata` VALUES ('7156', '.NET', 'NET工程师（中级）', '悦策技术部招聘', '10k-15k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3068513.html');
+INSERT INTO `jobdata` VALUES ('7157', '.NET', '.NET', '百畅科技IT招聘', '5k-8k', '广州', '经验不限', '大专及以上', '全职', 'https://www.lagou.com/jobs/2204016.html');
+INSERT INTO `jobdata` VALUES ('7158', '.NET', '.net高级开发工程师', '蜘点商业技术部招聘', '10k-15k', '广州', '经验3-5年', '学历不限', '全职', 'https://www.lagou.com/jobs/2998084.html');
+INSERT INTO `jobdata` VALUES ('7159', '.NET', '.NET工程师', '碧辉腾乐研发部招聘', '4k-8k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3200526.html');
+INSERT INTO `jobdata` VALUES ('7160', '.NET', '.NET开发工程师.NET程序...', '稻禾科技开发部招聘', '5k-10k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2496177.html');
+INSERT INTO `jobdata` VALUES ('7161', '.NET', '.Net软件工程师', '三好计算机互联网技术部招聘', '5k-10k', '广州', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3221263.html');
+INSERT INTO `jobdata` VALUES ('7162', '.NET', '.net开发工程师软件开发...', '索菲亚家居IDC招聘', '8k-10k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3176839.html');
+INSERT INTO `jobdata` VALUES ('7163', '.NET', '中高级.net开发工程师', '宇闻网络技术部招聘', '10k-15k', '广州', '经验3-5年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3161186.html');
+INSERT INTO `jobdata` VALUES ('7164', '.NET', 'asp.net高级开发工程师', '云图电商技术部招聘', '8k-12k', '广州', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3176034.html');
+INSERT INTO `jobdata` VALUES ('7165', '.NET', '.NET（急聘）', '广州中汉开发部招聘', '4k-7k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/557331.html');
+INSERT INTO `jobdata` VALUES ('7166', '.NET', '.NET软件开发工程师', '慧扬信息开发部招聘', '8k-15k', '广州', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/1137352.html');
+INSERT INTO `jobdata` VALUES ('7167', '.NET', '.net软件工程师', '车行易技术部招聘', '9k-15k', '广州', '经验3-5年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2855374.html');
+INSERT INTO `jobdata` VALUES ('7168', '.NET', '高级.net程序员', '申丰科技技术部招聘', '5k-10k', '广州', '经验1-3年', '学历不限', '全职', 'https://www.lagou.com/jobs/3177174.html');
+INSERT INTO `jobdata` VALUES ('7169', '.NET', '.net开发主管', '飞特物流it招聘', '10k-20k', '广州', '经验3-5年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3000779.html');
+INSERT INTO `jobdata` VALUES ('7170', '.NET', '.NET软件开发工程师', '趣运动技术中心招聘', '7k-14k', '广州', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/1270380.html');
+INSERT INTO `jobdata` VALUES ('7171', '.NET', '.net开发工程师', '唯彩会技术招聘', '10k-15k', '广州', '经验3-5年', '学历不限', '全职', 'https://www.lagou.com/jobs/3013001.html');
+INSERT INTO `jobdata` VALUES ('7172', '.NET', '.net中级开发工程师', '美电贝尔研发中心招聘', '8k-15k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2597056.html');
+INSERT INTO `jobdata` VALUES ('7173', '.NET', '.NET网站开发工程师', '一号家居网技术部招聘', '8k-12k', '广州', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/668757.html');
+INSERT INTO `jobdata` VALUES ('7174', '.NET', '.net开发工程师', '省广诺时信息服务有限公司技术部招聘', '10k-15k', '广州', '经验1-3年', '学历不限', '全职', 'https://www.lagou.com/jobs/2864663.html');
+INSERT INTO `jobdata` VALUES ('7175', '.NET', '.net软件工程师（BS)', '大数据研发部招聘', '8K-15K', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3263963.html');
+INSERT INTO `jobdata` VALUES ('7176', '.NET', '.net高级开发', '臻蓝网络技术部招聘', '6k-10k', '广州', '经验1-3年', '学历不限', '全职', 'https://www.lagou.com/jobs/3066012.html');
+INSERT INTO `jobdata` VALUES ('7177', '.NET', 'ASP.NET初中级工程师', '简美网络科技有限公司政府项目部招聘', '4k-6k', '广州', '经验不限', '大专及以上', '全职', 'https://www.lagou.com/jobs/2937061.html');
+INSERT INTO `jobdata` VALUES ('7178', '.NET', '.netc#软件工程师', '企泰科技开发部招聘', '6k-12k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2965881.html');
+INSERT INTO `jobdata` VALUES ('7179', '.NET', '.NET开发工程师', '傲程软件项目中心招聘', '8k-12k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2281041.html');
+INSERT INTO `jobdata` VALUES ('7180', '.NET', '.NET开发工程师', '直信创邺软件组招聘', '7k-10k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/1446668.html');
+INSERT INTO `jobdata` VALUES ('7181', '.NET', '.NET后台开发工程师', '超越通信研发部招聘', '6k-11k', '广州', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3196467.html');
+INSERT INTO `jobdata` VALUES ('7182', '.NET', '.netC#开发工程师', '艾佩克信息开发部招聘', '7k-12k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3168576.html');
+INSERT INTO `jobdata` VALUES ('7183', '.NET', '.Net开发（实习）', '机智云欧美事业部招聘', '2k-4k', '广州', '经验1年以下', '本科及以上', '实习', 'https://www.lagou.com/jobs/2805792.html');
+INSERT INTO `jobdata` VALUES ('7184', '.NET', '.net软件工程师（广州）', '金慧软件招聘', '7k-9k', '广州', '经验1-3年', '本科及以上', '全职', 'https://www.lagou.com/jobs/1437060.html');
+INSERT INTO `jobdata` VALUES ('7185', '.NET', 'asp.net开发工程师', '省广诺时信息服务有限公司技术部招聘', '10k-15k', '广州', '经验3-5年', '学历不限', '全职', 'https://www.lagou.com/jobs/2864644.html');
+INSERT INTO `jobdata` VALUES ('7186', '.NET', '.net开发工程师', '众览无限传媒技术部招聘', '8k-10k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/2953749.html');
+INSERT INTO `jobdata` VALUES ('7187', '.NET', '.Net开发工程师', '聚焦网络集团.Net开发部招聘', '8k-15k', '广州', '经验1-3年', '大专及以上', '全职', 'https://www.lagou.com/jobs/3257465.html');
+INSERT INTO `jobdata` VALUES ('7188', '.NET', '.net开发工程师', '广州海晟科技有限公司软件部招聘', '7k-12k', '广州', '经验3-5年', '本科及以上', '全职', 'https://www.lagou.com/jobs/3138321.html');
 
 -- ----------------------------
 -- Table structure for jobkind
@@ -6193,6 +6322,8 @@ CREATE TABLE `jobtypes` (
 -- Records of jobtypes
 -- ----------------------------
 INSERT INTO `jobtypes` VALUES ('.NET', '北京', '456');
+INSERT INTO `jobtypes` VALUES ('.NET', '广州', '109');
+INSERT INTO `jobtypes` VALUES ('Android', '上海', '20');
 INSERT INTO `jobtypes` VALUES ('Android', '南京', '43');
 INSERT INTO `jobtypes` VALUES ('Android', '深圳', '464');
 INSERT INTO `jobtypes` VALUES ('C#', '上海', '78');
@@ -6207,3 +6338,18 @@ INSERT INTO `jobtypes` VALUES ('会计', '广州', '156');
 INSERT INTO `jobtypes` VALUES ('后端开发', '深圳', '145');
 INSERT INTO `jobtypes` VALUES ('客服', '广州', '285');
 INSERT INTO `jobtypes` VALUES ('架构师', '深圳', '398');
+
+-- ----------------------------
+-- Table structure for password
+-- ----------------------------
+DROP TABLE IF EXISTS `password`;
+CREATE TABLE `password` (
+  `id` varchar(255) NOT NULL DEFAULT '1',
+  `pwd` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of password
+-- ----------------------------
+INSERT INTO `password` VALUES ('1', '123123');

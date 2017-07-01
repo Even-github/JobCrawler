@@ -6,22 +6,34 @@ $(document).ready(function(){
 		dataType: "json",
 		success: function(data)
 		{
-			$.each(data, function(i, e)
+			$("#loadingLab").remove();
+			if(data == "" || data == null)
 			{
-				var next = 
-					"<tr style='height:45px'><td>" + (i+1) +"</td>"
-					+ "<td>" + e.kind + "</td>"
-					+ "<td>" + e.job + "</td>"
-					+ "<td>" + e.recruitingUnit + "</td>"
-					+ "<td>" + e.salary + "</td>"
-					+ "<td>" + e.workPlace + "</td>"
-					+ "<td>" + e.experience + "</td>"
-					+ "<td>" + e.academic + "</td>"
-					+ "<td>" + e.workType + "</td>"
-					+ "<td><a href=" + e.url + ">"+ e.url +"</a></td>"
-					+ "</tr>";
-				$("table").append(next);
-			});
+				$("#tableContainer").append("<p id='emptyLab'>无数据</p>");
+			}
+			else
+			{
+				$.each(data, function(i, e)
+						{
+					var next = 
+						"<tr style='height:45px'><td>" + (i+1) +"</td>"
+						+ "<td>" + e.kind + "</td>"
+						+ "<td>" + e.job + "</td>"
+						+ "<td>" + e.recruitingUnit + "</td>"
+						+ "<td>" + e.salary + "</td>"
+						+ "<td>" + e.workPlace + "</td>"
+						+ "<td>" + e.experience + "</td>"
+						+ "<td>" + e.academic + "</td>"
+						+ "<td>" + e.workType + "</td>"
+						+ "<td><a href=" + e.url + ">"+ e.url +"</a></td>"
+						+ "</tr>";
+					$("table").append(next);
+						});
+			}
+		},
+		error: function()
+		{
+			$("#savedContent").append("<p id='errorLab'>加载失败</p>");
 		}
 	});
 });
