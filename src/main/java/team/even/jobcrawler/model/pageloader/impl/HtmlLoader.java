@@ -74,20 +74,21 @@ public class HtmlLoader implements IPageLoader
 			post.setHeader("Origin", "https://www.lagou.com");
 			post.setHeader("Content-Type", 
 					"application/x-www-form-urlencoded; charset=UTF-8");
-			post.setHeader("Cookie", 
-					"user_trace_token=20170322164744-3bc0f3c99827474abf66f801560ab979; "
-					+ "LGUID=20170322164744-37a1bb81-0edc-11e7-954d-5254005c3644; "
-					+ "td_cookie=18446744071585481892; "
-					+ "index_location_city=%E5%B9%BF%E5%B7%9E; "
-					+ "isCloseNotice=0; "
-					+ "JSESSIONID=5911D91387A82EDD19C2E2680A6D97E4; "
-					+ "_gat=1; SEARCH_ID=742979fc5f274246a3356cb8229e4c9e; "
-					+ "_ga=GA1.2.1413671222.1490172465; "
-					+ "LGSID=20170326231432-ea59c030-1236-11e7-956e-5254005c3644; "
-					+ "LGRID=20170327000307-b38a023e-123d-11e7-9570-5254005c3644; "
-					+ "Hm_lvt_4233e74dff0ae5bd0a3d81c6ccf756e6="
-					+ "1490529683,1490530280,1490532040,1490542460; "
-					+ "Hm_lpvt_4233e74dff0ae5bd0a3d81c6ccf756e6=1490544188; TG-TRACK-CODE=search_code");
+			post.setHeader("Cookie", "JSESSIONID=ABAAABAABEEAAJAA1F32254C581B2BDBC46BC2657D20F21; "
+					+ "Hm_lvt_4233e74dff0ae5bd0a3d81c6ccf756e6=1499048836; "
+					+ "Hm_lpvt_4233e74dff0ae5bd0a3d81c6ccf756e6=1499048890; "
+					+ "_ga=GA1.2.1366457569.1499048836; _gat=1; "
+					+ "user_trace_token=20170703102717-225534cb-5f97-11e7-a18b-5254005c3644; "
+					+ "LGSID=20170703102717-22553675-5f97-11e7-a18b-5254005c3644; "
+					+ "PRE_UTM=; "
+					+ "PRE_HOST=; "
+					+ "PRE_SITE=; "
+					+ "PRE_LAND=https%3A%2F%2Fwww.lagou.com%2F; "
+					+ "LGRID=20170703102812-42d445e8-5f97-11e7-a18b-5254005c3644; "
+					+ "LGUID=20170703102717-2255380e-5f97-11e7-a18b-5254005c3644; "
+					+ "index_location_city=%E5%85%A8%E5%9B%BD; "
+					+ "TG-TRACK-CODE=index_navigation; "
+					+ "SEARCH_ID=575985ffe2174de0a1adb86d1646f49b");
 			try
 			{
 				CloseableHttpResponse response = httpClient.execute(post);
