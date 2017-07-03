@@ -75,7 +75,7 @@ public class StartRunnable implements Runnable
 				{
 					try
 					{	//降低访问网站的频率，防止被网站识别为爬虫行为而封锁ip
-						Thread.sleep((int)(Math.random() * 1800));
+						Thread.sleep((int)(Math.random() * 2500));
 					} catch (InterruptedException e)
 					{
 						e.printStackTrace();
