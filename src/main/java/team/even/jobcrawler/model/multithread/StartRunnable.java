@@ -16,6 +16,7 @@ import team.even.jobcrawler.model.jsonresolver.impl.JsonResolver;
 import team.even.jobcrawler.model.pageloader.IPageLoader;
 import team.even.jobcrawler.model.pageloader.impl.HtmlLoader;
 import team.even.jobcrawler.model.pageloader.impl.JsonLoader;
+import team.even.jobcrawler.model.service.Service;
 
 /**
  * 实现Runnable接口，用于为爬虫核心功能创建一条独立线程，以实现通过RunStatusCtrl对象中途停止爬虫的运行。
@@ -141,7 +142,7 @@ public class StartRunnable implements Runnable
 			ctrl.saveJobTypes(kind, distinct);
 			FileClear.clearFile(FilePath.DOWNLOADPATH); //清空爬虫下载的json文件和html文件
 			ctrl.setStatus("爬虫程序已停止运行。");
-			ctrl.close();
+			Service.getInstance().setCrawlerIsRuning(false);//将爬虫程序状态设置为未启动状态
 		}
 //		ctrl.setStatus("爬虫程序已停止运行。");
 	}

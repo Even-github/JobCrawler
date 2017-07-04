@@ -118,32 +118,35 @@ function displayData(kind, workPlace)
 function removeData(kind, workPlace)
 {
 	var inputPassword = prompt("删除数据需要口令，请输入口令：");
-	$.ajax({
-		type: "post",
-		url: hostpath + "removeData",
-		data: "kind=" + kind + "&workPlace=" + workPlace + "&inputPassword=" + inputPassword,
-		success: function(data)
-		{
-			if(data == "true")
+	if(inputPassword != null)
+	{
+		$.ajax({
+			type: "post",
+			url: hostpath + "removeData",
+			data: "kind=" + kind + "&workPlace=" + workPlace + "&inputPassword=" + inputPassword,
+			success: function(data)
 			{
-				alert("清除数据成功！");
+				if(data == "true")
+				{
+					alert("清除数据成功！");
+				}
+				else if(data == "false")
+				{
+					alert("清除数据失败！");
+				}
+				else if(data == "passwordError")
+				{
+					alert("口令不正确！");
+				}
+				else
+				{
+					alert("未知错误！");
+				}
+				$(".contentTr").remove(); //清空列表
+				loadTable(); //重新加载列表
 			}
-			else if(data == "false")
-			{
-				alert("清除数据失败！");
-			}
-			else if(data == "passwordError")
-			{
-				alert("口令不正确！");
-			}
-			else
-			{
-				alert("未知错误！");
-			}
-			$(".contentTr").remove(); //清空列表
-			loadTable(); //重新加载列表
-		}
-	});
+		});
+	}
 }
 
 //全局变量

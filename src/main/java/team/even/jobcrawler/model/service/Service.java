@@ -136,7 +136,6 @@ public class Service
 				runStatusctrl.setStatus("代理服务器获取失败，爬虫程序结束！");
 				runStatusctrl.close();
 			}
-			this.setCrawlerIsRuning(false); //爬虫程序结束运行
 		}
 		return startFlag;
 	}
