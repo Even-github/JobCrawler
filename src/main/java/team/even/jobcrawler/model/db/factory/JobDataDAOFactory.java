@@ -4,7 +4,6 @@ import java.sql.Connection;
 
 import team.even.jobcrawler.model.db.dao.IJobDataDAO;
 import team.even.jobcrawler.model.db.dao.impl.JobDataDAOimpl;
-import team.even.jobcrawler.model.db.dbc.DatabaseConnection;
 
 /**
  * JobDataDAOimpl类的工厂方法

@@ -22,11 +22,13 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.log4j.Logger;
 
 import team.even.jobcrawler.model.pageloader.IPageLoader;
 import team.even.jobcrawler.model.proxy.ProxyManager;
 import team.even.jobcrawler.model.filecounter.FileCounter;
 import team.even.jobcrawler.model.filepath.FilePath;
+import team.even.jobcrawler.model.multithread.StartRunnable;
 
 /**
  * html页面下载器，用于下载网页的html代码，并保存为本地的html文件
@@ -35,9 +37,12 @@ import team.even.jobcrawler.model.filepath.FilePath;
  */
 public class HtmlLoader implements IPageLoader
 {
+	private static Logger logger = Logger.getLogger(StartRunnable.class);
+	
 	@Override
 	public String downLoad(String url, boolean useProxy)
 	{
+		logger.info("准备发送请求，目标html的url：" + url);
 		String fileName = null; //页面下载后保存的文件名
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		try
@@ -91,7 +96,9 @@ public class HtmlLoader implements IPageLoader
 					+ "SEARCH_ID=575985ffe2174de0a1adb86d1646f49b");
 			try
 			{
+				logger.info("向服务器发送请求，下载html数据...");
 				CloseableHttpResponse response = httpClient.execute(post);
+				logger.info("html页面响应状态码：" + response.getStatusLine().getStatusCode());
 				try
 				{
 					if(response.getStatusLine().getStatusCode() == 200)
@@ -129,6 +136,7 @@ public class HtmlLoader implements IPageLoader
 							new FileOutputStream(fileName), "UTF-8");
 						output.write(content.toString());
 						output.close();
+						logger.info("html文件保存完毕，保存地址：" + fileName);
 					}
 				}
 				finally

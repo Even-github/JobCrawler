@@ -4,7 +4,6 @@ import java.sql.Connection;
 
 import team.even.jobcrawler.model.db.dao.IJobKindDAO;
 import team.even.jobcrawler.model.db.dao.impl.JobKindDAOimpl;
-import team.even.jobcrawler.model.db.dbc.DatabaseConnection;
 
 public class JobKindDAOFactory
 {

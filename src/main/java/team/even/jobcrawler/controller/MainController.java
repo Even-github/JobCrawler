@@ -11,7 +11,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpRequest;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,9 +35,13 @@ import team.even.jobcrawler.model.service.Service;
 @RequestMapping("/")
 public class MainController
 {
+	private static Log logger = LogFactory.getLog("visitLog");
+	
 	@RequestMapping("/index")
-	public String index()
+	public String index(HttpServletRequest request)
 	{
+		String remoteAddr = request.getRemoteAddr();
+		logger.info("网友" + remoteAddr + "访问了首页。");
 		return "index";
 	}
 
@@ -67,8 +74,11 @@ public class MainController
 
 	@RequestMapping("/startCrawler")
 	public @ResponseBody String startCrawler(@RequestParam(value = "kind")String kind,
-			@RequestParam(value = "distinct")String distinct) throws Exception
+			@RequestParam(value = "distinct")String distinct,
+			HttpServletRequest request) throws Exception
 	{
+		String remoteAddr = request.getRemoteAddr();
+		logger.info("网友" + remoteAddr + "启动了爬虫。职业类型：" + kind + ",地区:" + distinct);
 		List<JobTypes> list = JobTypesDAOFactory.getJobTypesDAOInstance()
 				.findByKindandWorkPlace(kind, distinct);
 		if(list.isEmpty())
@@ -103,8 +113,10 @@ public class MainController
 	}
 	
 	@RequestMapping("/stopCrawler")
-	public @ResponseBody String stopCrawler()
+	public @ResponseBody String stopCrawler(HttpServletRequest request)
 	{
+		String remoteAddr = request.getRemoteAddr();
+		logger.info("网友" + remoteAddr + "停止了爬虫。");
 		Service service = Service.getInstance();
 		service.close();
 		String operation = "正在停止运行爬虫程序,请稍等...\n";
@@ -119,8 +131,11 @@ public class MainController
 	
 	@RequestMapping("/displayData/getData")
 	public @ResponseBody List<JobData> display(@RequestParam("kind") String kind,
-			@RequestParam("workPlace") String workPlace) throws Exception
+			@RequestParam("workPlace") String workPlace,
+			HttpServletRequest request) throws Exception
 	{
+		String remoteAddr = request.getRemoteAddr();
+		logger.info("网友" + remoteAddr + "查看了" + workPlace + "地区" + kind + "职业的数据。");
 		List<JobData> list = JobDataDAOFactory.getJobDataDAOInstance()
 				.findByKindandWorkPlace(kind, workPlace);
 		return list;
@@ -166,8 +181,11 @@ public class MainController
 	@RequestMapping("/report/getSalaryData")
 	public @ResponseBody Map<String, String> getSalaryData(
 			@RequestParam(value = "kind")String kind,
-			@RequestParam(value="district")String district) throws Exception
+			@RequestParam(value="district")String district,
+			HttpServletRequest request) throws Exception
 	{
+		String remoteAddr = request.getRemoteAddr();
+		logger.info("网友" + remoteAddr + "查看了" + district + "地区" + kind + "职业的报告。");
 		Map<String, String> dataMap = new HashMap<String, String>();
 		DataAnalyzer analyzer = new DataAnalyzer();
 		dataMap = analyzer.analyzeSalary(kind, district);

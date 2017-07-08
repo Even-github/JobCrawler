@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -21,6 +22,8 @@ import team.even.jobcrawler.model.multithread.RunStatusCtrl;
  */
 public class ProxyGetter
 {
+	private static Logger logger = Logger.getLogger(ProxyGetter.class);
+	
 	public static List<Map<String, String>> getProxy() throws IOException
 	{
 		List<Map<String, String>> proxyList = new ArrayList<>(); 
@@ -47,6 +50,7 @@ public class ProxyGetter
 	{
 		RunStatusCtrl runStatusCtrl = RunStatusCtrl.getInstance();
 		runStatusCtrl.setStatus("正在获取代理服务器...");
+		logger.info("正在获取代理服务器...");
 		ProxyManager.setProxyMap(getProxy());
 	}
 }

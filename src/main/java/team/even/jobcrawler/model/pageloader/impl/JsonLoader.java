@@ -30,14 +30,17 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.log4j.Logger;
 
 import team.even.jobcrawler.model.filecounter.FileCounter;
 import team.even.jobcrawler.model.filepath.FilePath;
+import team.even.jobcrawler.model.multithread.StartRunnable;
 import team.even.jobcrawler.model.pageloader.IPageLoader;
 import team.even.jobcrawler.model.proxy.ProxyManager;
 
 public class JsonLoader implements IPageLoader
 {
+	private static Logger logger = Logger.getLogger(StartRunnable.class);
 
 	@Override
 	public String downLoad(String distinct, String kind, int page, boolean useProxy)
@@ -59,6 +62,7 @@ public class JsonLoader implements IPageLoader
 			String reqUrl = "https://www.lagou.com/jobs/positionAjax.json?px=default&city="
 					+ dist  //嵌入转码后的地区参数
 					+"&needAddtionalResult=false";
+			logger.info("准备发送请求，目标json的url地址：" + reqUrl);
 			//将page变量由int类型转换成String类型，以嵌入请求参数中
 			String strPage = String.valueOf(page);
 			CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -124,7 +128,9 @@ public class JsonLoader implements IPageLoader
 				CloseableHttpResponse response = null;
 				try
 				{
+					logger.info("向服务器发送请求，下载json数据...");
 					response = httpClient.execute(post);
+					logger.info("json页面响应状态码：" + response.getStatusLine().getStatusCode());
 					if(response.getStatusLine().getStatusCode() == 200)
 					{
 						HttpEntity entity = response.getEntity();
@@ -144,6 +150,7 @@ public class JsonLoader implements IPageLoader
 						Matcher matcher = pattern.matcher(content.toString());
 						if(matcher.find()) //页码相匹配
 						{
+							logger.info("json数据有效，正在保存...");
 							//获取json文件夹下的文件数量
 							int num = new FileCounter().getFileNum(FilePath.JSONPATH);
 							Timestamp ts = new Timestamp(System.currentTimeMillis()); //时间戳
@@ -163,6 +170,7 @@ public class JsonLoader implements IPageLoader
 										new FileOutputStream(fileName),"UTF-8");
 							out.write(content.toString());
 							out.close();
+							logger.info("json数据保存完毕，保存路径：" + fileName);
 						}
 					}
 				} catch (IOException e)

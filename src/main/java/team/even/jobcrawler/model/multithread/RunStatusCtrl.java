@@ -1,5 +1,7 @@
 package team.even.jobcrawler.model.multithread;
 
+import org.apache.log4j.Logger;
+
 import team.even.jobcrawler.model.db.factory.JobTypesDAOFactory;
 import team.even.jobcrawler.model.db.vo.JobTypes;
 
@@ -17,6 +19,7 @@ public class RunStatusCtrl
 	private volatile int page; //记录已经爬取的json数量
 	private volatile String status; //字符串描述爬虫运行状态
 	private static RunStatusCtrl ctrl = null;
+	private static Logger logger = Logger.getLogger(RunStatusCtrl.class);
 	
 	private RunStatusCtrl()
 	{
@@ -43,6 +46,7 @@ public class RunStatusCtrl
 		count = 0;
 		page = 0;
 		status = "爬虫正在初始化...";
+		logger.info("爬虫正在初始化...");
 	}
 	
 	public synchronized int getThreadAmount()
@@ -78,6 +82,7 @@ public class RunStatusCtrl
 	{
 		finishedthreadAmount++;
 		status = "线程" + finishedthreadAmount + "结束...";
+		logger.info(status);
 	}
 	
 	/**

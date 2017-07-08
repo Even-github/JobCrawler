@@ -8,6 +8,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import org.apache.log4j.Logger;
+
 import team.even.jobcrawler.model.db.factory.DistrictDAOFactory;
 import team.even.jobcrawler.model.db.factory.JobDataDAOFactory;
 import team.even.jobcrawler.model.db.factory.JobKindDAOFactory;
@@ -45,6 +47,7 @@ public class Service
 	private IDistrictResolver districtResolver = null;
 	private volatile boolean crawlerIsRuning; //爬虫程序是否正在运行的标识，true正在运行，false表示未运行
 	private static Service service = null;
+	private static Logger logger = Logger.getLogger(Service.class);
 	
 	private Service()
 	{
@@ -113,6 +116,7 @@ public class Service
 		boolean startFlag = false; //标识爬虫启动成功与否
 		if(this.getCrawlerIsRuningStatus() == false) //程序未运行，可以启动
 		{
+			logger.info("服务层启动爬虫。");
 			startFlag = true;
 			runStatusctrl.init(); //初始化爬虫运行状态控制器
 			runStatusctrl.open(); //爬虫开始运行
@@ -120,6 +124,7 @@ public class Service
 			ProxyGetter.saveProxy(); //获取代理服务器
 			if(ProxyManager.getProxyList() != null) //获取代理服务器成功
 			{
+				logger.info("代理服务器获取成功。");
 				ExecutorService pool = Executors.newFixedThreadPool(poolSize); //创建容量为poolSize的线程池
 				for(int i = 0; i < poolSize - 1; i++ )
 				{
@@ -134,6 +139,7 @@ public class Service
 			else
 			{
 				runStatusctrl.setStatus("代理服务器获取失败，爬虫程序结束！");
+				logger.info("代理服务器获取失败，爬虫程序结束！");
 				runStatusctrl.close();
 			}
 		}

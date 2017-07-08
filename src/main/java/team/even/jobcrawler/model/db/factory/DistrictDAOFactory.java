@@ -4,7 +4,6 @@ import java.sql.Connection;
 
 import team.even.jobcrawler.model.db.dao.IDistrictDAO;
 import team.even.jobcrawler.model.db.dao.impl.DistrictDAOimpl;
-import team.even.jobcrawler.model.db.dbc.DatabaseConnection;
 
 public class DistrictDAOFactory
 {
