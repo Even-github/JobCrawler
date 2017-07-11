@@ -1,25 +1,25 @@
-package team.even.jobcrawler.model.htmlresolver;
+ï»¿package team.even.jobcrawler.model.htmlresolver;
 
 import java.util.Map;
 
 /**
- * Ò³ÃæÄÚÈİ½âÎöÆ÷½Ó¿Ú
- * @author ÔøÔ£ÎÄ
+ * é¡µé¢å†…å®¹è§£æå™¨æ¥å£
+ * @author æ›¾è£•æ–‡
  *
  */
 public interface IContentResolver
 {
 	/**
-	 * »ñÈ¡ÕĞÆ¸Ò³ÃæºËĞÄĞÅÏ¢
-	 * @param fileName ±»½âÎöhtmlÎÄ¼ş
-	 * @return »ñÈ¡µÄÕĞÆ¸ĞÅÏ¢
+	 * è·å–æ‹›è˜é¡µé¢æ ¸å¿ƒä¿¡æ¯
+	 * @param fileName è¢«è§£æhtmlæ–‡ä»¶
+	 * @return è·å–çš„æ‹›è˜ä¿¡æ¯
 	 */
 	Map<String, String> getContent(String fileName);
 	
 	/**
-	 * ×Ö·û´®¹ıÂËÆ÷£¬¹ıÂËµô²»ĞèÒªµÄ×Ö·û´®
-	 * @param str ĞèÒª±»¹ıÂËµÄ×Ö·û´®
-	 * @return ¹ıÂËºóµÃµ½µÄ×Ö·û´®
+	 * å­—ç¬¦ä¸²è¿‡æ»¤å™¨ï¼Œè¿‡æ»¤æ‰ä¸éœ€è¦çš„å­—ç¬¦ä¸²
+	 * @param str éœ€è¦è¢«è¿‡æ»¤çš„å­—ç¬¦ä¸²
+	 * @return è¿‡æ»¤åå¾—åˆ°çš„å­—ç¬¦ä¸²
 	 */
 	String strFilter(String str);
 }

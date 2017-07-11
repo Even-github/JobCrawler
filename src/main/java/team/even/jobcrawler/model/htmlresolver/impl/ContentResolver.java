@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.htmlresolver.impl;
+ï»¿package team.even.jobcrawler.model.htmlresolver.impl;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,28 +40,28 @@ public class ContentResolver implements IContentResolver
 			{
 				e.printStackTrace();
 			}	
-			//»ñÈ¡class="job-name"µÄ±êÇ©ÔªËØ
+			//è·å–class="job-name"çš„æ ‡ç­¾å…ƒç´ 
 			Element jobName = doc.getElementsByClass("job-name").first();
 			if(jobName != null)
 			{
-				recruitingUnit = jobName.child(0).text(); //»ñÈ¡ÕĞÆ¸µ¥Î»Ãû³Æ
-				job = jobName.child(1).text(); //»ñÈ¡ÕĞÆ¸µÄÖ°ÒµÃû³Æ				
+				recruitingUnit = jobName.child(0).text(); //è·å–æ‹›è˜å•ä½åç§°
+				job = jobName.child(1).text(); //è·å–æ‹›è˜çš„èŒä¸šåç§°				
 			}
-			//»ñÈ¡class="job_request"µÄ±êÇ©ÔªËØ
+			//è·å–class="job_request"çš„æ ‡ç­¾å…ƒç´ 
 			Element jobRequest = doc.getElementsByClass("job_request").first();
 			if(jobRequest != null)
 			{
 				Element p = jobRequest.child(0);
 				if(p != null)
 				{
-					salary = p.child(0).text(); //»ñÈ¡Ğ½×Ê
-					workPlace = p.child(1).text(); //»ñÈ¡¹¤×÷µØµã
-					experience = p.child(2).text(); //»ñÈ¡¹¤×÷¾­ÑéÒªÇó
-					academic = p.child(3).text(); //»ñÈ¡Ñ§ÀúÒªÇó
-					workType = p.child(4).text(); //»ñÈ¡¹¤×÷ÖÖÀà£¨È«Ö°/ÊµÏ°£©
+					salary = p.child(0).text(); //è·å–è–ªèµ„
+					workPlace = p.child(1).text(); //è·å–å·¥ä½œåœ°ç‚¹
+					experience = p.child(2).text(); //è·å–å·¥ä½œç»éªŒè¦æ±‚
+					academic = p.child(3).text(); //è·å–å­¦å†è¦æ±‚
+					workType = p.child(4).text(); //è·å–å·¥ä½œç§ç±»ï¼ˆå…¨èŒ/å®ä¹ ï¼‰
 				}
 			}
-			//¹ıÂËĞÅÏ¢
+			//è¿‡æ»¤ä¿¡æ¯
 			recruitingUnit = strFilter(recruitingUnit);
 			job = strFilter(job);
 			salary = strFilter(salary);
@@ -69,7 +69,7 @@ public class ContentResolver implements IContentResolver
 			experience = strFilter(experience);
 			academic = strFilter(academic);
 			workType = strFilter(workType);
-			//½«¹ıÂËºóµÄĞÅÏ¢Ìí¼Óµ½infoMapÖĞ
+			//å°†è¿‡æ»¤åçš„ä¿¡æ¯æ·»åŠ åˆ°infoMapä¸­
 			infoMap.put("recruitingUnit", recruitingUnit);
 			infoMap.put("job", job);
 			infoMap.put("salary", salary);
@@ -80,7 +80,7 @@ public class ContentResolver implements IContentResolver
 			
 			return infoMap;
 		}
-		else //ÎÄ¼şÃûÎª¿Õ£¬ÎŞ·¨ÕÒµ½ÎÄ¼ş
+		else //æ–‡ä»¶åä¸ºç©ºï¼Œæ— æ³•æ‰¾åˆ°æ–‡ä»¶
 		{
 			return null;
 		}
@@ -89,11 +89,11 @@ public class ContentResolver implements IContentResolver
 	@Override
 	public String strFilter(String str)
 	{
-		//¹ıÂËµô×Ö·û´®ÖĞËùÓĞµÄ·´Ğ±¸Ü"/"
+		//è¿‡æ»¤æ‰å­—ç¬¦ä¸²ä¸­æ‰€æœ‰çš„åæ–œæ "/"
 		Pattern pattern1 = Pattern.compile("/");
 		Matcher matcher1 = pattern1.matcher(str);
 		String rs1 = matcher1.replaceAll("");
-		//¹ıÂËµô×Ö·û´®ÖĞËùÓĞµÄ¿Õ¸ñ
+		//è¿‡æ»¤æ‰å­—ç¬¦ä¸²ä¸­æ‰€æœ‰çš„ç©ºæ ¼
 		Pattern pattern2 = Pattern.compile(" ");
 		Matcher matcher2 = pattern2.matcher(rs1);
 		String rs2 = matcher2.replaceAll("");

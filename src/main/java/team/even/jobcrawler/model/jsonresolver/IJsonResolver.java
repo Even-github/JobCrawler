@@ -1,12 +1,12 @@
-package team.even.jobcrawler.model.jsonresolver;
+锘縫ackage team.even.jobcrawler.model.jsonresolver;
 
 import java.util.List;
 
 public interface IJsonResolver
 {
 	/**
-	 * 从指定的json文件中解析出url
-	 * @return 解析出的url
+	 * 浠庢寚瀹氱殑json鏂囦欢涓В鏋愬嚭url
+	 * @return 瑙ｆ瀽鍑虹殑url
 	 */
 	List<String> getUrl(String fileName);
 }

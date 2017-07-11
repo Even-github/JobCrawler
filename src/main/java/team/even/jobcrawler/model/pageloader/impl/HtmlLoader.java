@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.pageloader.impl;
+ï»¿package team.even.jobcrawler.model.pageloader.impl;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -31,8 +31,8 @@ import team.even.jobcrawler.model.filepath.FilePath;
 import team.even.jobcrawler.model.multithread.StartRunnable;
 
 /**
- * htmlÒ³ÃæÏÂÔØÆ÷£¬ÓÃÓÚÏÂÔØÍøÒ³µÄhtml´úÂë£¬²¢±£´æÎª±¾µØµÄhtmlÎÄ¼ş
- * @author ÔøÔ£ÎÄ
+ * htmlé¡µé¢ä¸‹è½½å™¨ï¼Œç”¨äºä¸‹è½½ç½‘é¡µçš„htmlä»£ç ï¼Œå¹¶ä¿å­˜ä¸ºæœ¬åœ°çš„htmlæ–‡ä»¶
+ * @author æ›¾è£•æ–‡
  *
  */
 public class HtmlLoader implements IPageLoader
@@ -42,36 +42,36 @@ public class HtmlLoader implements IPageLoader
 	@Override
 	public String downLoad(String url, boolean useProxy)
 	{
-		logger.info("×¼±¸·¢ËÍÇëÇó£¬Ä¿±êhtmlµÄurl£º" + url);
-		String fileName = null; //Ò³ÃæÏÂÔØºó±£´æµÄÎÄ¼şÃû
+		logger.info("å‡†å¤‡å‘é€è¯·æ±‚ï¼Œç›®æ ‡htmlçš„urlï¼š" + url);
+		String fileName = null; //é¡µé¢ä¸‹è½½åä¿å­˜çš„æ–‡ä»¶å
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		try
 		{
 			HttpPost post = new HttpPost(url);
 			RequestConfig reqConfig = null;
-			if(useProxy == true) //Ê¹ÓÃ´úÀí·şÎñÆ÷
+			if(useProxy == true) //ä½¿ç”¨ä»£ç†æœåŠ¡å™¨
 			{
 				Map<String, String> proxyMap = ProxyManager.getRandomProxyMap();
-				HttpHost proxy = new HttpHost(proxyMap.get("ip"),   //´úÀí·şÎñÆ÷ipµØÖ·
-						Integer.parseInt(proxyMap.get("port")), //´úÀí·şÎñÆ÷port
-						"http"); //´úÀí·şÎñÆ÷Ğ­Òé
+				HttpHost proxy = new HttpHost(proxyMap.get("ip"),   //ä»£ç†æœåŠ¡å™¨ipåœ°å€
+						Integer.parseInt(proxyMap.get("port")), //ä»£ç†æœåŠ¡å™¨port
+						"http"); //ä»£ç†æœåŠ¡å™¨åè®®
 				reqConfig = RequestConfig.custom()
 						.setProxy(proxy)
-						.setConnectTimeout(10000) //ÉèÖÃÁ¬½Ó³¬Ê±
-						.setSocketTimeout(10000) //ÉèÖÃÊı¾İ»ñÈ¡³¬Ê±
+						.setConnectTimeout(10000) //è®¾ç½®è¿æ¥è¶…æ—¶
+						.setSocketTimeout(10000) //è®¾ç½®æ•°æ®è·å–è¶…æ—¶
 						.setConnectionRequestTimeout(10000)
 						.build();
 			}
-			else //²»Ê¹ÓÃ´úÀí·şÎñÆ÷
+			else //ä¸ä½¿ç”¨ä»£ç†æœåŠ¡å™¨
 			{
 				reqConfig = RequestConfig.custom()
-						.setConnectTimeout(10000) //ÉèÖÃÁ¬½Ó³¬Ê±
-						.setSocketTimeout(10000) //ÉèÖÃÊı¾İ»ñÈ¡³¬Ê±
+						.setConnectTimeout(10000) //è®¾ç½®è¿æ¥è¶…æ—¶
+						.setSocketTimeout(10000) //è®¾ç½®æ•°æ®è·å–è¶…æ—¶
 						.setConnectionRequestTimeout(10000)
 						.build();
 			}
 			post.setConfig(reqConfig);
-			//Ëæ»úÇĞ»»httpÇëÇó±¨Í·ÖĞµÄ¡°User-Agent¡±
+			//éšæœºåˆ‡æ¢httpè¯·æ±‚æŠ¥å¤´ä¸­çš„â€œUser-Agentâ€
 			post.setHeader("User-Agent", (new UserAgentLib()).getRandomUserAgent());
 			post.setHeader("Referer", "https://www.lagou.com/jobs/");
 			post.setHeader("Host", "www.lagou.com");
@@ -96,9 +96,9 @@ public class HtmlLoader implements IPageLoader
 					+ "SEARCH_ID=575985ffe2174de0a1adb86d1646f49b");
 			try
 			{
-				logger.info("Ïò·şÎñÆ÷·¢ËÍÇëÇó£¬ÏÂÔØhtmlÊı¾İ...");
+				logger.info("å‘æœåŠ¡å™¨å‘é€è¯·æ±‚ï¼Œä¸‹è½½htmlæ•°æ®...");
 				CloseableHttpResponse response = httpClient.execute(post);
-				logger.info("htmlÒ³ÃæÏìÓ¦×´Ì¬Âë£º" + response.getStatusLine().getStatusCode());
+				logger.info("htmlé¡µé¢å“åº”çŠ¶æ€ç ï¼š" + response.getStatusLine().getStatusCode());
 				try
 				{
 					if(response.getStatusLine().getStatusCode() == 200)
@@ -123,9 +123,9 @@ public class HtmlLoader implements IPageLoader
 						String saveUrl = null;
 						OutputStreamWriter output = null;
 						saveUrl = FilePath.CONTENTHTMLPATH;
-						Timestamp ts = new Timestamp(System.currentTimeMillis()); //Ê±¼ä´Á
+						Timestamp ts = new Timestamp(System.currentTimeMillis()); //æ—¶é—´æˆ³
 						DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
-						String fileNumber = df.format(ts) + (int)(Math.random() * 900 + 100); //Í¨¹ıÊ±¼ä´ÁÃüÃûÎÄ¼ş
+						String fileNumber = df.format(ts) + (int)(Math.random() * 900 + 100); //é€šè¿‡æ—¶é—´æˆ³å‘½åæ–‡ä»¶
 						fileName = saveUrl + "/contentPage" + fileNumber + ".html";
 						File file = new File(saveUrl);
 						if(!file.exists())
@@ -136,7 +136,7 @@ public class HtmlLoader implements IPageLoader
 							new FileOutputStream(fileName), "UTF-8");
 						output.write(content.toString());
 						output.close();
-						logger.info("htmlÎÄ¼ş±£´æÍê±Ï£¬±£´æµØÖ·£º" + fileName);
+						logger.info("htmlæ–‡ä»¶ä¿å­˜å®Œæ¯•ï¼Œä¿å­˜åœ°å€ï¼š" + fileName);
 					}
 				}
 				finally

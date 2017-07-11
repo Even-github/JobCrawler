@@ -1,27 +1,27 @@
-package team.even.jobcrawler.model.db.dao;
+ï»¿package team.even.jobcrawler.model.db.dao;
 
 import java.util.List;
 
 import team.even.jobcrawler.model.db.vo.District;
 
 /**
- * ´Ë½Ó¿Ú¶¨Òådistrict±íµÄ»ù±¾²Ù×÷£¬°üÀ¨²éÑ¯¡¢²åÈë
- * @author ÔøÔ£ÎÄ
+ * æ­¤æ¥å£å®šä¹‰districtè¡¨çš„åŸºæœ¬æ“ä½œï¼ŒåŒ…æ‹¬æŸ¥è¯¢ã€æ’å…¥
+ * @author æ›¾è£•æ–‡
  *
  */
 public interface IDistrictDAO
 {
 	/**
-	 * Ïòdistrict±í²åÈëÒ»ÌõÊı¾İ
-	 * @param district ±»²åÈëµÄÊı¾İ
-	 * @return ÊÇ·ñ²åÈë³É¹¦
+	 * å‘districtè¡¨æ’å…¥ä¸€æ¡æ•°æ®
+	 * @param district è¢«æ’å…¥çš„æ•°æ®
+	 * @return æ˜¯å¦æ’å…¥æˆåŠŸ
 	 * @throws Exception 
 	 */
 	boolean doCreate(District district) throws Exception;
 	
 	/**
-	 * ²éÑ¯districtÖĞµÄËùÓĞÊı¾İ
-	 * @return ±»²åÈëµÄÊı¾İ
+	 * æŸ¥è¯¢districtä¸­çš„æ‰€æœ‰æ•°æ®
+	 * @return è¢«æ’å…¥çš„æ•°æ®
 	 * @throws Exception 
 	 */
 	List<District> findAll() throws Exception;

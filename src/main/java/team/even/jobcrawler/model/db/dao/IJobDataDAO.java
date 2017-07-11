@@ -1,63 +1,63 @@
-package team.even.jobcrawler.model.db.dao;
+ï»¿package team.even.jobcrawler.model.db.dao;
 
 import java.util.List;
 
 import team.even.jobcrawler.model.db.vo.JobData;
 
 /**
- * ±¾½Ó¿Ú¶¨ÒåÊı¾İ¿â±íjobdataµÄ²Ù×÷·½·¨£¬°üÀ¨²åÈë¡¢É¾³ı¡¢²éÕÒ
- * @author ÔøÔ£ÎÄ
+ * æœ¬æ¥å£å®šä¹‰æ•°æ®åº“è¡¨jobdataçš„æ“ä½œæ–¹æ³•ï¼ŒåŒ…æ‹¬æ’å…¥ã€åˆ é™¤ã€æŸ¥æ‰¾
+ * @author æ›¾è£•æ–‡
  *
  */
 public interface IJobDataDAO
 {
 	/**
-	 * Ïòjobdata±í²åÈëÒ»Ìõ¼ÇÂ¼
-	 * @param jobData ±»²åÈëµÄÊı¾İ
-	 * @return ²åÈëÊÇ·ñ³É¹¦
+	 * å‘jobdataè¡¨æ’å…¥ä¸€æ¡è®°å½•
+	 * @param jobData è¢«æ’å…¥çš„æ•°æ®
+	 * @return æ’å…¥æ˜¯å¦æˆåŠŸ
 	 * @throws Exception 
 	 */
 	boolean doCreate(JobData jobData) throws Exception;
 
 	/**
-	 * É¾³ıÌõ¼şÖ¸¶¨µÄ¼ÇÂ¼
-	 * @param column Ìõ¼şÖĞµÄÁĞÃû
-	 * @param value ÁĞµÄÖµ
-	 * @return É¾³ıÊÇ·ñ³É¹¦
+	 * åˆ é™¤æ¡ä»¶æŒ‡å®šçš„è®°å½•
+	 * @param column æ¡ä»¶ä¸­çš„åˆ—å
+	 * @param value åˆ—çš„å€¼
+	 * @return åˆ é™¤æ˜¯å¦æˆåŠŸ
 	 * @throws Exception 
 	 */
 	boolean doDelete(String column, String value) throws Exception;
 
 	/**
-	 * Í¨¹ı±íÊôĞÔkindºÍworkPlaceÖ¸¶¨É¾³ıÌõ¼ş£¬½øĞĞÉ¾³ı¼ÇÂ¼
-	 * @param kind ±»É¾³ı¼ÇÂ¼kindÊôĞÔµÄÖµ
-	 * @param workPlace ±»É¾³ı¼ÇÂ¼workPlaceÊôĞÔµÄÖµ
-	 * @return É¾³ıÊÇ·ñ³É¹¦
+	 * é€šè¿‡è¡¨å±æ€§kindå’ŒworkPlaceæŒ‡å®šåˆ é™¤æ¡ä»¶ï¼Œè¿›è¡Œåˆ é™¤è®°å½•
+	 * @param kind è¢«åˆ é™¤è®°å½•kindå±æ€§çš„å€¼
+	 * @param workPlace è¢«åˆ é™¤è®°å½•workPlaceå±æ€§çš„å€¼
+	 * @return åˆ é™¤æ˜¯å¦æˆåŠŸ
 	 * @throws Exception 
 	 */
 	boolean doDeleteByKindandWorkPlace(String kind, String workPlace) throws Exception;
 	
 	/**
-	 * ²éÕÒjobdata±íÖĞµÄËùÓĞÊı¾İ
-	 * @return ±íÖĞµÄËùÓĞÊı¾İ
+	 * æŸ¥æ‰¾jobdataè¡¨ä¸­çš„æ‰€æœ‰æ•°æ®
+	 * @return è¡¨ä¸­çš„æ‰€æœ‰æ•°æ®
 	 * @throws Exception 
 	 */
 	List<JobData> findAll() throws Exception;
 	
 	/**
-	 * ²éÕÒÌõ¼şÖ¸¶¨µÄÖµ
-	 * @param column Ìõ¼şÖĞµÄÁĞÃû
-	 * @param value ÁĞµÄÖµ
-	 * @return ²éÑ¯µÄ½á¹û
+	 * æŸ¥æ‰¾æ¡ä»¶æŒ‡å®šçš„å€¼
+	 * @param column æ¡ä»¶ä¸­çš„åˆ—å
+	 * @param value åˆ—çš„å€¼
+	 * @return æŸ¥è¯¢çš„ç»“æœ
 	 * @throws Exception 
 	 */
 	List<JobData> find(String column, String value) throws Exception;
 	
 	/**
-	 * Í¨¹ıÊôĞÔkindºÍworkPlace²éÕÒ¼ÇÂ¼
-	 * @param kind Ö¸¶¨²éÑ¯Ìõ¼şÖĞkindµÄÖµ
-	 * @param workPlace Ö¸¶¨²éÑ¯Ìõ¼şÖĞworkPlaceµÄÖµ 
-	 * @return ²éÑ¯µÄ½á¹û
+	 * é€šè¿‡å±æ€§kindå’ŒworkPlaceæŸ¥æ‰¾è®°å½•
+	 * @param kind æŒ‡å®šæŸ¥è¯¢æ¡ä»¶ä¸­kindçš„å€¼
+	 * @param workPlace æŒ‡å®šæŸ¥è¯¢æ¡ä»¶ä¸­workPlaceçš„å€¼ 
+	 * @return æŸ¥è¯¢çš„ç»“æœ
 	 * @throws Exception 
 	 */
 	List<JobData> findByKindandWorkPlace(String kind, String workPlace) throws Exception;

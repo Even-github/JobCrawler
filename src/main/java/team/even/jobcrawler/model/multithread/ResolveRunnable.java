@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.multithread;
+ï»¿package team.even.jobcrawler.model.multithread;
 
 import java.util.Map;
 
@@ -8,8 +8,8 @@ import team.even.jobcrawler.model.htmlresolver.IContentResolver;
 import team.even.jobcrawler.model.htmlresolver.impl.ContentResolver;
 
 /**
- * ÊµÏÖRunnable½Ó¿Ú£¬ÒÔÌá¹©¶àÏß³Ì½âÎöÄÚÈİÒ³ÃæÎÄ¼ş£¬½«¿â´æµÄËùÓĞhtmlÎÄ¼ş½âÎöµ½Êı¾İ¿âÖĞ±£´æ
- * @author ÔøÔ£ÎÄ
+ * å®ç°Runnableæ¥å£ï¼Œä»¥æä¾›å¤šçº¿ç¨‹è§£æå†…å®¹é¡µé¢æ–‡ä»¶ï¼Œå°†åº“å­˜çš„æ‰€æœ‰htmlæ–‡ä»¶è§£æåˆ°æ•°æ®åº“ä¸­ä¿å­˜
+ * @author æ›¾è£•æ–‡
  *
  */
 public class ResolveRunnable implements Runnable

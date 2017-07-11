@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.multithread;
+ï»¿package team.even.jobcrawler.model.multithread;
 
 import org.apache.log4j.Logger;
 
@@ -6,18 +6,18 @@ import team.even.jobcrawler.model.db.factory.JobTypesDAOFactory;
 import team.even.jobcrawler.model.db.vo.JobTypes;
 
 /**
- * ¿ØÖÆÅÀ³æµÄÔËĞĞ×´Ì¬£¬isContinue=trueÊ±£¬ÅÀ³æ³ÖĞøÔËĞĞ£¬isContinue=falseÊ±£¬ÅÀ³æÍ£Ö¹ÔËĞĞ
- * @author ÔøÔ£ÎÄ
+ * æ§åˆ¶çˆ¬è™«çš„è¿è¡ŒçŠ¶æ€ï¼ŒisContinue=trueæ—¶ï¼Œçˆ¬è™«æŒç»­è¿è¡Œï¼ŒisContinue=falseæ—¶ï¼Œçˆ¬è™«åœæ­¢è¿è¡Œ
+ * @author æ›¾è£•æ–‡
  *
  */
 public class RunStatusCtrl
 {
-	private boolean isContinue; //ÅÀ³æ³ÌĞòÔËĞĞ×´Ì¬±êÊ¶£¬true±íÊ¾¼ÌĞøÔËĞĞ£¬false±êÊ¶Í£Ö¹ÔËĞĞ£¬ËùÓĞÏß³Ì¶¼»áÑ­»·¼ì²â´Ë±êÊ¶
-	private volatile int threadAmount; //ÅÀ³æÔËĞĞµÄÏß³Ì×ÜÊı
-	private volatile int finishedthreadAmount; //ÒÑ¾­½áÊøµÄÏß³ÌÊıÁ¿
-	private volatile int count; //¼ÇÂ¼Ìí¼ÓµÄ¼ÇÂ¼ÊıÁ¿
-	private volatile int page; //¼ÇÂ¼ÒÑ¾­ÅÀÈ¡µÄjsonÊıÁ¿
-	private volatile String status; //×Ö·û´®ÃèÊöÅÀ³æÔËĞĞ×´Ì¬
+	private boolean isContinue; //çˆ¬è™«ç¨‹åºè¿è¡ŒçŠ¶æ€æ ‡è¯†ï¼Œtrueè¡¨ç¤ºç»§ç»­è¿è¡Œï¼Œfalseæ ‡è¯†åœæ­¢è¿è¡Œï¼Œæ‰€æœ‰çº¿ç¨‹éƒ½ä¼šå¾ªç¯æ£€æµ‹æ­¤æ ‡è¯†
+	private volatile int threadAmount; //çˆ¬è™«è¿è¡Œçš„çº¿ç¨‹æ€»æ•°
+	private volatile int finishedthreadAmount; //å·²ç»ç»“æŸçš„çº¿ç¨‹æ•°é‡
+	private volatile int count; //è®°å½•æ·»åŠ çš„è®°å½•æ•°é‡
+	private volatile int page; //è®°å½•å·²ç»çˆ¬å–çš„jsonæ•°é‡
+	private volatile String status; //å­—ç¬¦ä¸²æè¿°çˆ¬è™«è¿è¡ŒçŠ¶æ€
 	private static RunStatusCtrl ctrl = null;
 	private static Logger logger = Logger.getLogger(RunStatusCtrl.class);
 	
@@ -36,7 +36,7 @@ public class RunStatusCtrl
 	}
 	
 	/**
-	 * ³õÊ¼»¯ÅÀ³æÔËĞĞ×´Ì¬¿ØÖÆÆ÷
+	 * åˆå§‹åŒ–çˆ¬è™«è¿è¡ŒçŠ¶æ€æ§åˆ¶å™¨
 	 */
 	public void init()
 	{
@@ -45,8 +45,8 @@ public class RunStatusCtrl
 		finishedthreadAmount = 0;
 		count = 0;
 		page = 0;
-		status = "ÅÀ³æÕıÔÚ³õÊ¼»¯...";
-		logger.info("ÅÀ³æÕıÔÚ³õÊ¼»¯...");
+		status = "çˆ¬è™«æ­£åœ¨åˆå§‹åŒ–...";
+		logger.info("çˆ¬è™«æ­£åœ¨åˆå§‹åŒ–...");
 	}
 	
 	public synchronized int getThreadAmount()
@@ -60,7 +60,7 @@ public class RunStatusCtrl
 	}
 
 	/**
-	 * ½«ÅÀ³æÔËĞĞµÄ±êÊ¶ÉèÖÃÎªtrue£¬¼´Æô¶¯ÅÀ³æ
+	 * å°†çˆ¬è™«è¿è¡Œçš„æ ‡è¯†è®¾ç½®ä¸ºtrueï¼Œå³å¯åŠ¨çˆ¬è™«
 	 */
 	public synchronized void open()
 	{
@@ -68,7 +68,7 @@ public class RunStatusCtrl
 	}
 	
 	/**
-	 * ½«ÅÀ³æ³ÌĞòµÄÔËĞĞ±êÊ¶ÉèÖÃÎªfalse£¬±íÊ¾ÅÀ³æ³ÌĞò½«±»¹Ø±Õ
+	 * å°†çˆ¬è™«ç¨‹åºçš„è¿è¡Œæ ‡è¯†è®¾ç½®ä¸ºfalseï¼Œè¡¨ç¤ºçˆ¬è™«ç¨‹åºå°†è¢«å…³é—­
 	 */
 	public synchronized void close()
 	{
@@ -76,23 +76,23 @@ public class RunStatusCtrl
 	}
 	
 	/**
-	 * Ïß³Ìµ÷ÓÃ´Ë·½·¨±íÊ¾Ïß³ÌÈÎÎñ½áÊø
+	 * çº¿ç¨‹è°ƒç”¨æ­¤æ–¹æ³•è¡¨ç¤ºçº¿ç¨‹ä»»åŠ¡ç»“æŸ
 	 */
 	public synchronized void stop()
 	{
 		finishedthreadAmount++;
-		status = "Ïß³Ì" + finishedthreadAmount + "½áÊø...";
+		status = "çº¿ç¨‹" + finishedthreadAmount + "ç»“æŸ...";
 		logger.info(status);
 	}
 	
 	/**
-	 * ÅĞ¶ÏËùÓĞÏß³ÌµÄÈÎÎñ¶¼ÒÑ¾­½áÊø
-	 * @param threadAmount Ïß³Ì×ÜÊı
-	 * @return true±íÊ¾ËùÓĞÏß³ÌµÄÈÎÎñ¶¼ÒÑ¾­½áÊø£¬false±íÊ¾»¹ÓĞÏß³ÌÕıÔÚÔËĞĞ
+	 * åˆ¤æ–­æ‰€æœ‰çº¿ç¨‹çš„ä»»åŠ¡éƒ½å·²ç»ç»“æŸ
+	 * @param threadAmount çº¿ç¨‹æ€»æ•°
+	 * @return trueè¡¨ç¤ºæ‰€æœ‰çº¿ç¨‹çš„ä»»åŠ¡éƒ½å·²ç»ç»“æŸï¼Œfalseè¡¨ç¤ºè¿˜æœ‰çº¿ç¨‹æ­£åœ¨è¿è¡Œ
 	 */
 	public synchronized boolean isFinish()
 	{
-		if(finishedthreadAmount == threadAmount) //ÒÑ¾­½áÊøµÄÏß³ÌÊıÁ¿µÈÓÚÏß³Ì×ÜÊı
+		if(finishedthreadAmount == threadAmount) //å·²ç»ç»“æŸçš„çº¿ç¨‹æ•°é‡ç­‰äºçº¿ç¨‹æ€»æ•°
 		{
 			return true;
 		}
@@ -118,7 +118,7 @@ public class RunStatusCtrl
 	}
 	
 	/**
-	 * ÅÀÈ¡µÄĞÅÏ¢ÌõÊı¼Ó1
+	 * çˆ¬å–çš„ä¿¡æ¯æ¡æ•°åŠ 1
 	 */
 	public synchronized void countAdd()
 	{
@@ -136,7 +136,7 @@ public class RunStatusCtrl
 	}
 	
 	/**
-	 * ÅÀÈ¡µÄjsonÊıÁ¿¼Ó1
+	 * çˆ¬å–çš„jsonæ•°é‡åŠ 1
 	 */
 	public synchronized void pageAdd()
 	{
@@ -144,8 +144,8 @@ public class RunStatusCtrl
 	}
 	
 	/**
-	 * »ñÈ¡ÏÂÒ»Ò³jsonµÄÒ³Âë£¬Í¬Ê±½«ÒÑÅÀÈ¡Ò³ÂëÊı¼Ó1
-	 * @return ÏÂÒ»Ò³jsonµÄÒ³Âë
+	 * è·å–ä¸‹ä¸€é¡µjsonçš„é¡µç ï¼ŒåŒæ—¶å°†å·²çˆ¬å–é¡µç æ•°åŠ 1
+	 * @return ä¸‹ä¸€é¡µjsonçš„é¡µç 
 	 */
 	public synchronized int getNextPage()
 	{
@@ -164,10 +164,10 @@ public class RunStatusCtrl
 	}
 	
 	/**
-	 * ËùÓĞÅÀ³æÈÎÎñ½áÊøºó£¬½«ÅÀÈ¡µÄÕĞÆ¸ĞÅÏ¢ÌõÊı´æÈëÊı¾İ¿â
+	 * æ‰€æœ‰çˆ¬è™«ä»»åŠ¡ç»“æŸåï¼Œå°†çˆ¬å–çš„æ‹›è˜ä¿¡æ¯æ¡æ•°å­˜å…¥æ•°æ®åº“
 	 * @param kind
 	 * @param distinct
-	 * @param amount ÅÀÈ¡µÄÕĞÆ¸ĞÅÏ¢ÌõÊı
+	 * @param amount çˆ¬å–çš„æ‹›è˜ä¿¡æ¯æ¡æ•°
 	 * @throws Exception
 	 */
 	public void doCreateJobTypes(String kind, String distinct, int amount) throws Exception
@@ -180,7 +180,7 @@ public class RunStatusCtrl
 	}
 	
 	/**
-	 * Èç¹ûÅÀÈ¡ÕĞÆ¸ĞÅÏ¢ÊıÁ¿´óÓÚ0£¬Ôò°ÑÏàÓ¦µÄĞÅÏ¢´æÈëÊı¾İ¿â
+	 * å¦‚æœçˆ¬å–æ‹›è˜ä¿¡æ¯æ•°é‡å¤§äº0ï¼Œåˆ™æŠŠç›¸åº”çš„ä¿¡æ¯å­˜å…¥æ•°æ®åº“
 	 */
 	public void saveJobTypes(String kind, String distinct)
 	{

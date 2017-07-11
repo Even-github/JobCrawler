@@ -1,19 +1,19 @@
-package team.even.jobcrawler.model.filepath;
+ï»¿package team.even.jobcrawler.model.filepath;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * FilePathÀàÓÃ»§±£´æË÷ÒıÒ³ÃæÎÄ¼şÂ·¾¶ºÍÄÚÈİÒ³ÃæÎÄ¼şÂ·¾¶
- * @author ÔøÔ£ÎÄ
+ * FilePathç±»ç”¨æˆ·ä¿å­˜ç´¢å¼•é¡µé¢æ–‡ä»¶è·¯å¾„å’Œå†…å®¹é¡µé¢æ–‡ä»¶è·¯å¾„
+ * @author æ›¾è£•æ–‡
  *
  */
 public class FilePath
 {
 	public static String DOWNLOADPATH = getAbsoluteRootPath() + "Download_resources";
-	//jsonÎÄ¼şÂ·¾¶
+	//jsonæ–‡ä»¶è·¯å¾„
 	public static String JSONPATH = getAbsoluteRootPath() + "Download_resources/json";
-	//ÄÚÈİÒ³ÃæÎÄ¼şÂ·¾¶
+	//å†…å®¹é¡µé¢æ–‡ä»¶è·¯å¾„
 	public static String CONTENTHTMLPATH = getAbsoluteRootPath() + "Download_resources/contentHtml";
 	
 	public static String getAbsoluteRootPath()

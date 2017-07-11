@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.passwordmanager;
+ï»¿package team.even.jobcrawler.model.passwordmanager;
 
 import team.even.jobcrawler.model.db.dao.IPasswordDAO;
 import team.even.jobcrawler.model.db.factory.PasswordDAOFactory;
@@ -6,9 +6,9 @@ import team.even.jobcrawler.model.db.factory.PasswordDAOFactory;
 public class PasswordManager
 {
 	/**
-	 * ¼ì²éÃÜÂëÊÇ·ñÕıÈ·
-	 * @param password ÊäÈëµÄÃÜÂë
-	 * @return true±íÊ¾ÕıÈ·£¬false±íÊ¾´íÎó
+	 * æ£€æŸ¥å¯†ç æ˜¯å¦æ­£ç¡®
+	 * @param password è¾“å…¥çš„å¯†ç 
+	 * @return trueè¡¨ç¤ºæ­£ç¡®ï¼Œfalseè¡¨ç¤ºé”™è¯¯
 	 * @throws Exception
 	 */
 	public static boolean checkPassword(String password) throws Exception
@@ -25,9 +25,9 @@ public class PasswordManager
 	}
 	
 	/**
-	 * ¸üĞÂÃÜÂë
-	 * @param password ĞÂÃÜÂë
-	 * @return ¸üĞÂÊÇ·ñ³É¹¦
+	 * æ›´æ–°å¯†ç 
+	 * @param password æ–°å¯†ç 
+	 * @return æ›´æ–°æ˜¯å¦æˆåŠŸ
 	 * @throws Exception
 	 */ 
 	public static boolean updatePassword(String password) throws Exception

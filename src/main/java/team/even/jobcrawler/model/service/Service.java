@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.service;
+ï»¿package team.even.jobcrawler.model.service;
 
 import java.io.IOException;
 import java.util.List;
@@ -42,10 +42,10 @@ public class Service
 	private IContentResolver contentResolver = null;
 	private JsonLoader jsonLoader = null;
 	private JsonResolver jsonResolver = null;
-	private RunStatusCtrl runStatusctrl = null; //ÅÀ³æÔËĞĞ×´Ì¬¿ØÖÆÆ÷
+	private RunStatusCtrl runStatusctrl = null; //çˆ¬è™«è¿è¡ŒçŠ¶æ€æ§åˆ¶å™¨
 	private IKindResolver kindResolver = null; 
 	private IDistrictResolver districtResolver = null;
-	private volatile boolean crawlerIsRuning; //ÅÀ³æ³ÌĞòÊÇ·ñÕıÔÚÔËĞĞµÄ±êÊ¶£¬trueÕıÔÚÔËĞĞ£¬false±íÊ¾Î´ÔËĞĞ
+	private volatile boolean crawlerIsRuning; //çˆ¬è™«ç¨‹åºæ˜¯å¦æ­£åœ¨è¿è¡Œçš„æ ‡è¯†ï¼Œtrueæ­£åœ¨è¿è¡Œï¼Œfalseè¡¨ç¤ºæœªè¿è¡Œ
 	private static Service service = null;
 	private static Logger logger = Logger.getLogger(Service.class);
 	
@@ -59,7 +59,7 @@ public class Service
 		crawlerIsRuning = false; 
 	}
 	
-	//ÔËÓÃµ¥ÀıÄ£Ê½Ê¹³ÌĞòÖĞ×î¶à´æÔÚÒ»¸öService¶ÔÏó
+	//è¿ç”¨å•ä¾‹æ¨¡å¼ä½¿ç¨‹åºä¸­æœ€å¤šå­˜åœ¨ä¸€ä¸ªServiceå¯¹è±¡
 	public static Service getInstance()
 	{
 		if(service == null)
@@ -70,30 +70,30 @@ public class Service
 	}
 	
 	/**
-	 * Æô¶¯¶à¸öÏß³Ì¶ÔcontentHtmlÎÄ¼ş¼ĞÏÂµÄÎÄ¼ş½âÎöµ½
+	 * å¯åŠ¨å¤šä¸ªçº¿ç¨‹å¯¹contentHtmlæ–‡ä»¶å¤¹ä¸‹çš„æ–‡ä»¶è§£æåˆ°
 	 */
 	public void resolverAllContent()
 	{
 		FileNameDistributor distributor = new FileNameDistributor();
 		ResolveRunnable resolve = new ResolveRunnable(distributor);
-		//´´½¨Ïß³Ì³Ø
+		//åˆ›å»ºçº¿ç¨‹æ± 
 		ExecutorService pool = Executors.newFixedThreadPool(5);
 		pool.submit(resolve);
 		pool.shutdown();
 	}
 	
 	/**
-	 * »ñÈ¡ÅÀ³æÔËĞĞ×´Ì¬£¬Èç¹ûÎªfalse£¬Ôò½«ÆäÉèÖÃÎªtrue£¬²¢·µ»Øfalse;Èç¹ûÎªtrue£¬Ôò·µ»Øtrue
+	 * è·å–çˆ¬è™«è¿è¡ŒçŠ¶æ€ï¼Œå¦‚æœä¸ºfalseï¼Œåˆ™å°†å…¶è®¾ç½®ä¸ºtrueï¼Œå¹¶è¿”å›false;å¦‚æœä¸ºtrueï¼Œåˆ™è¿”å›true
 	 * @return
 	 */
 	public synchronized boolean getCrawlerIsRuningStatus()
 	{
-		if(crawlerIsRuning == false) //Î´Æô¶¯
+		if(crawlerIsRuning == false) //æœªå¯åŠ¨
 		{
-			crawlerIsRuning = true; //±êÊ¶ÎªÒÑÆô¶¯
+			crawlerIsRuning = true; //æ ‡è¯†ä¸ºå·²å¯åŠ¨
 			return false;
 		}
-		else //ÒÑÆô¶¯
+		else //å·²å¯åŠ¨
 		{
 			return true;
 		}
@@ -105,41 +105,41 @@ public class Service
 	}
 
 	/**
-	 * Æô¶¯ÅÀ³æÈÎÎñ
-	 * @param distinct µØÇø
-	 * @param kind Ö°ÒµÖÖÀà
+	 * å¯åŠ¨çˆ¬è™«ä»»åŠ¡
+	 * @param distinct åœ°åŒº
+	 * @param kind èŒä¸šç§ç±»
 	 * @throws IOException 
-	 * @return true±íÊ¾Æô¶¯³É¹¦£¬false±íÊ¾ÅÀ³æ³ÌĞòÒÑ¾­ÔÚÔËĞĞ£¬²»ÄÜÆô¶¯
+	 * @return trueè¡¨ç¤ºå¯åŠ¨æˆåŠŸï¼Œfalseè¡¨ç¤ºçˆ¬è™«ç¨‹åºå·²ç»åœ¨è¿è¡Œï¼Œä¸èƒ½å¯åŠ¨
 	 */
 	public boolean start(String distinct, String kind) throws IOException
 	{
-		boolean startFlag = false; //±êÊ¶ÅÀ³æÆô¶¯³É¹¦Óë·ñ
-		if(this.getCrawlerIsRuningStatus() == false) //³ÌĞòÎ´ÔËĞĞ£¬¿ÉÒÔÆô¶¯
+		boolean startFlag = false; //æ ‡è¯†çˆ¬è™«å¯åŠ¨æˆåŠŸä¸å¦
+		if(this.getCrawlerIsRuningStatus() == false) //ç¨‹åºæœªè¿è¡Œï¼Œå¯ä»¥å¯åŠ¨
 		{
-			logger.info("·şÎñ²ãÆô¶¯ÅÀ³æ¡£");
+			logger.info("æœåŠ¡å±‚å¯åŠ¨çˆ¬è™«ã€‚");
 			startFlag = true;
-			runStatusctrl.init(); //³õÊ¼»¯ÅÀ³æÔËĞĞ×´Ì¬¿ØÖÆÆ÷
-			runStatusctrl.open(); //ÅÀ³æ¿ªÊ¼ÔËĞĞ
-			int poolSize = 5; //Ïß³Ì³ØÈİÁ¿
-			ProxyGetter.saveProxy(); //»ñÈ¡´úÀí·şÎñÆ÷
-			if(ProxyManager.getProxyList() != null) //»ñÈ¡´úÀí·şÎñÆ÷³É¹¦
+			runStatusctrl.init(); //åˆå§‹åŒ–çˆ¬è™«è¿è¡ŒçŠ¶æ€æ§åˆ¶å™¨
+			runStatusctrl.open(); //çˆ¬è™«å¼€å§‹è¿è¡Œ
+			int poolSize = 5; //çº¿ç¨‹æ± å®¹é‡
+			ProxyGetter.saveProxy(); //è·å–ä»£ç†æœåŠ¡å™¨
+			if(ProxyManager.getProxyList() != null) //è·å–ä»£ç†æœåŠ¡å™¨æˆåŠŸ
 			{
-				logger.info("´úÀí·şÎñÆ÷»ñÈ¡³É¹¦¡£");
-				ExecutorService pool = Executors.newFixedThreadPool(poolSize); //´´½¨ÈİÁ¿ÎªpoolSizeµÄÏß³Ì³Ø
+				logger.info("ä»£ç†æœåŠ¡å™¨è·å–æˆåŠŸã€‚");
+				ExecutorService pool = Executors.newFixedThreadPool(poolSize); //åˆ›å»ºå®¹é‡ä¸ºpoolSizeçš„çº¿ç¨‹æ± 
 				for(int i = 0; i < poolSize - 1; i++ )
 				{
-					//Ìá½»Ê¹ÓÃ´úÀí·şÎñÆ÷µÄÅÀ³æÈÎÎñµ½Ïß³Ì³Ø
+					//æäº¤ä½¿ç”¨ä»£ç†æœåŠ¡å™¨çš„çˆ¬è™«ä»»åŠ¡åˆ°çº¿ç¨‹æ± 
 					pool.submit(new StartRunnable(distinct, kind, runStatusctrl, true));
 				}
-				//Ìá½»²»Ê¹ÓÃ´úÀí·şÎñµÄÅÀ³æÈÎÎñµ½Ïß³Ì³Ø
+				//æäº¤ä¸ä½¿ç”¨ä»£ç†æœåŠ¡çš„çˆ¬è™«ä»»åŠ¡åˆ°çº¿ç¨‹æ± 
 				pool.submit(new StartRunnable(distinct, kind, runStatusctrl, false));
 				runStatusctrl.setThreadAmount(poolSize);
 				pool.shutdown();			
 			}
 			else
 			{
-				runStatusctrl.setStatus("´úÀí·şÎñÆ÷»ñÈ¡Ê§°Ü£¬ÅÀ³æ³ÌĞò½áÊø£¡");
-				logger.info("´úÀí·şÎñÆ÷»ñÈ¡Ê§°Ü£¬ÅÀ³æ³ÌĞò½áÊø£¡");
+				runStatusctrl.setStatus("ä»£ç†æœåŠ¡å™¨è·å–å¤±è´¥ï¼Œçˆ¬è™«ç¨‹åºç»“æŸï¼");
+				logger.info("ä»£ç†æœåŠ¡å™¨è·å–å¤±è´¥ï¼Œçˆ¬è™«ç¨‹åºç»“æŸï¼");
 				runStatusctrl.close();
 			}
 		}
@@ -147,17 +147,17 @@ public class Service
 	}
 	
 	/**
-	 * ½«ÅÀ³æµÄÔËĞĞ±êÖ¾ÉèÖÃÎªfalseÒÔÍ£Ö¹ÔËĞĞÅÀ³æ
+	 * å°†çˆ¬è™«çš„è¿è¡Œæ ‡å¿—è®¾ç½®ä¸ºfalseä»¥åœæ­¢è¿è¡Œçˆ¬è™«
 	 */
 	public void close()
 	{
-		//ÉèÖÃÅÀ³æÔËĞĞ±êÖ¾Îªfalse
+		//è®¾ç½®çˆ¬è™«è¿è¡Œæ ‡å¿—ä¸ºfalse
 		runStatusctrl.close();
 	}
 	
 	/**
-	 * ·µ»ØÅÀ³æÔËĞĞ×´Ì¬¿ØÖÆÆ÷
-	 * @return ÅÀ³æ×´Ì¬¿ØÖÆÆ÷
+	 * è¿”å›çˆ¬è™«è¿è¡ŒçŠ¶æ€æ§åˆ¶å™¨
+	 * @return çˆ¬è™«çŠ¶æ€æ§åˆ¶å™¨
 	 */
 	public RunStatusCtrl getRunStatusCtrl()
 	{
@@ -201,7 +201,7 @@ public class Service
 	}
 	
 	/**
-	 * ¼ì²éÃÜÂë
+	 * æ£€æŸ¥å¯†ç 
 	 * @param password
 	 * @return
 	 * @throws Exception
@@ -212,7 +212,7 @@ public class Service
 	}
 	
 	/**
-	 * ĞŞ¸ÄÃÜÂë
+	 * ä¿®æ”¹å¯†ç 
 	 * @param password
 	 * @return
 	 * @throws Exception

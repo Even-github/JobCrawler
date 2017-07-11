@@ -1,12 +1,12 @@
-package team.even.jobcrawler.model.fileclear;
+ï»¿package team.even.jobcrawler.model.fileclear;
 
 import java.io.File;
 
 import org.apache.log4j.Logger;
 
 /**
- * ÎÄ¼şÇåÀíÀà£¬ÇåÀíÅÀ³æÏÂÔØµÄjsonÎÄ¼şºÍhtmlÎÄ¼ş
- * @author ÔøÔ£ÎÄ
+ * æ–‡ä»¶æ¸…ç†ç±»ï¼Œæ¸…ç†çˆ¬è™«ä¸‹è½½çš„jsonæ–‡ä»¶å’Œhtmlæ–‡ä»¶
+ * @author æ›¾è£•æ–‡
  *
  */
 public class FileClear
@@ -15,11 +15,11 @@ public class FileClear
 	
 	public static void clearFile(String filePath)
 	{
-		logger.info("ÕıÔÚÉ¾³ı»º´æÎÄ¼ş...");
+		logger.info("æ­£åœ¨åˆ é™¤ç¼“å­˜æ–‡ä»¶...");
 		File file = new File(filePath);
-		if(file.exists()) //ÎÄ¼ş´æÔÚ
+		if(file.exists()) //æ–‡ä»¶å­˜åœ¨
 		{
-			if(file.isDirectory()) //ÎÄ¼ş¼Ğ
+			if(file.isDirectory()) //æ–‡ä»¶å¤¹
 			{
 				File[] fileList = file.listFiles();
 				for(File childFile : fileList)
@@ -27,7 +27,7 @@ public class FileClear
 					clearFile(childFile.getAbsolutePath());
 				}
 			}
-			else //ÎÄ¼ş
+			else //æ–‡ä»¶
 			{
 				file.delete();
 			}

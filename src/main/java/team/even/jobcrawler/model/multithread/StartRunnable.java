@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.multithread;
+ï»¿package team.even.jobcrawler.model.multithread;
 
 import java.io.File;
 import java.util.List;
@@ -21,8 +21,8 @@ import team.even.jobcrawler.model.pageloader.impl.JsonLoader;
 import team.even.jobcrawler.model.service.Service;
 
 /**
- * ÊµÏÖRunnable½Ó¿Ú£¬ÓÃÓÚÎªÅÀ³æºËĞÄ¹¦ÄÜ´´½¨Ò»Ìõ¶ÀÁ¢Ïß³Ì£¬ÒÔÊµÏÖÍ¨¹ıRunStatusCtrl¶ÔÏóÖĞÍ¾Í£Ö¹ÅÀ³æµÄÔËĞĞ¡£
- * @author ÔøÔ£ÎÄ
+ * å®ç°Runnableæ¥å£ï¼Œç”¨äºä¸ºçˆ¬è™«æ ¸å¿ƒåŠŸèƒ½åˆ›å»ºä¸€æ¡ç‹¬ç«‹çº¿ç¨‹ï¼Œä»¥å®ç°é€šè¿‡RunStatusCtrlå¯¹è±¡ä¸­é€”åœæ­¢çˆ¬è™«çš„è¿è¡Œã€‚
+ * @author æ›¾è£•æ–‡
  *
  */
 public class StartRunnable implements Runnable
@@ -34,15 +34,15 @@ public class StartRunnable implements Runnable
 	private IPageLoader htmlLoader = null;
 	private IContentResolver contentResolver = null;
 	private RunStatusCtrl ctrl = null;
-	private boolean useProxy; //±êÊ¶ÊÇ·ñÊ¹ÓÃ´úÀí·şÎñÆ÷
+	private boolean useProxy; //æ ‡è¯†æ˜¯å¦ä½¿ç”¨ä»£ç†æœåŠ¡å™¨
 	private static Logger logger = Logger.getLogger(StartRunnable.class);
 	
 	/**
 	 * 
 	 * @param distinct
 	 * @param kind
-	 * @param ctrl ×¢ÈëÅÀ³æÔËĞĞ×´Ì¬¿ØÖÆÆ÷
-	 * @param useProxy ÊÇ·ñÊ¹ÓÃ´úÀí·şÎñÆ÷
+	 * @param ctrl æ³¨å…¥çˆ¬è™«è¿è¡ŒçŠ¶æ€æ§åˆ¶å™¨
+	 * @param useProxy æ˜¯å¦ä½¿ç”¨ä»£ç†æœåŠ¡å™¨
 	 */
 	public StartRunnable(String distinct, String kind, RunStatusCtrl ctrl, boolean useProxy)
 	{
@@ -59,46 +59,46 @@ public class StartRunnable implements Runnable
 	@Override
 	public void run()
 	{
-		logger.info("Ïß³Ì¿ªÊ¼¡£");
-		int page = ctrl.getNextPage(); //ÅÀÈ¡ÏÂÒ»Ò³µÄjsonÊı¾İ
-		logger.info("»ñÈ¡µÚ" + page + "Ò³jsonÊı¾İ¡£");
+		logger.info("çº¿ç¨‹å¼€å§‹ã€‚");
+		int page = ctrl.getNextPage(); //çˆ¬å–ä¸‹ä¸€é¡µçš„jsonæ•°æ®
+		logger.info("è·å–ç¬¬" + page + "é¡µjsonæ•°æ®ã€‚");
 		String jsonPath = null;
-		int jsonFailureTimes = 0; //Á¬½ÓjsonÒ³ÃæÁ¬ĞøÊ§°ÜµÄ´ÎÊı£¬³¬¹ıÒ»¶¨´ÎÊı½«Í£Ö¹ÅÀ³æÔËĞĞ
-		while(ctrl.getIsContinue() == true && jsonFailureTimes < 3) //Á¬½ÓÁ¬ĞøÊ§°Ü3´ÎÔòµ±Ç°Ïß³Ì½áÊø
+		int jsonFailureTimes = 0; //è¿æ¥jsoné¡µé¢è¿ç»­å¤±è´¥çš„æ¬¡æ•°ï¼Œè¶…è¿‡ä¸€å®šæ¬¡æ•°å°†åœæ­¢çˆ¬è™«è¿è¡Œ
+		while(ctrl.getIsContinue() == true && jsonFailureTimes < 3) //è¿æ¥è¿ç»­å¤±è´¥3æ¬¡åˆ™å½“å‰çº¿ç¨‹ç»“æŸ
 		{
 			jsonPath = jsonLoader.downLoad(distinct, kind, page, useProxy);
-			if(jsonPath == null) //jsonÒ³ÃæÏÂÔØÊ§°Ü
+			if(jsonPath == null) //jsoné¡µé¢ä¸‹è½½å¤±è´¥
 			{
-				ctrl.setStatus("ÍøÂçÁ¬½ÓÒì³££¬ÕıÔÚÖØĞÂÁ¬½Ó...");
-				jsonFailureTimes++; //Á¬½ÓÊ§°Ü´ÎÊı¼Ó1
-				logger.info("µÚ"+ page +"Ò³jsonÊı¾İÏÂÔØÊ§°Ü£¬Ê§°Ü´ÎÊı£º" + jsonFailureTimes + "£¬ÕıÔÚÖØĞÂÁ¬½Ó...");
+				ctrl.setStatus("ç½‘ç»œè¿æ¥å¼‚å¸¸ï¼Œæ­£åœ¨é‡æ–°è¿æ¥...");
+				jsonFailureTimes++; //è¿æ¥å¤±è´¥æ¬¡æ•°åŠ 1
+				logger.info("ç¬¬"+ page +"é¡µjsonæ•°æ®ä¸‹è½½å¤±è´¥ï¼Œå¤±è´¥æ¬¡æ•°ï¼š" + jsonFailureTimes + "ï¼Œæ­£åœ¨é‡æ–°è¿æ¥...");
 			}
-			else //jsonÒ³ÃæÏÂÔØ³É¹¦
+			else //jsoné¡µé¢ä¸‹è½½æˆåŠŸ
 			{
-				jsonFailureTimes = 0; //Á¬ĞøÊ§°Ü´ÎÊıÇåÁã
-				ctrl.setStatus("µÚ"+ page +"Ò³jsonÊı¾İ°üÏÂÔØ³É¹¦£¬Êı¾İ°üÂ·¾¶£º" + jsonPath);
+				jsonFailureTimes = 0; //è¿ç»­å¤±è´¥æ¬¡æ•°æ¸…é›¶
+				ctrl.setStatus("ç¬¬"+ page +"é¡µjsonæ•°æ®åŒ…ä¸‹è½½æˆåŠŸï¼Œæ•°æ®åŒ…è·¯å¾„ï¼š" + jsonPath);
 				List<String> urlList = jsonResolver.getUrl(jsonPath);
-				logger.info("µÚ"+ page +"Ò³jsonÊı¾İ½âÎö³É¹¦¡£");
+				logger.info("ç¬¬"+ page +"é¡µjsonæ•°æ®è§£ææˆåŠŸã€‚");
 				for(String url: urlList)
 				{
 					try
-					{	//½µµÍ·ÃÎÊÍøÕ¾µÄÆµÂÊ£¬·ÀÖ¹±»ÍøÕ¾Ê¶±ğÎªÅÀ³æĞĞÎª¶ø·âËøip
+					{	//é™ä½è®¿é—®ç½‘ç«™çš„é¢‘ç‡ï¼Œé˜²æ­¢è¢«ç½‘ç«™è¯†åˆ«ä¸ºçˆ¬è™«è¡Œä¸ºè€Œå°é”ip
 						Thread.sleep((int)(Math.random() * 2500));
 					} catch (InterruptedException e)
 					{
 						e.printStackTrace();
 					}
-					ctrl.setStatus("ÕıÔÚÏÂÔØhtmlÎÄ¼ş...");
-					logger.info("ÕıÔÚÏÂÔØhtmlÎÄ¼ş£º" + url);
+					ctrl.setStatus("æ­£åœ¨ä¸‹è½½htmlæ–‡ä»¶...");
+					logger.info("æ­£åœ¨ä¸‹è½½htmlæ–‡ä»¶ï¼š" + url);
 					String htmlPath = htmlLoader.downLoad(url, useProxy);
-					if(htmlPath == null) //htmlÏÂÔØÊ§°Ü
+					if(htmlPath == null) //htmlä¸‹è½½å¤±è´¥
 					{
-						ctrl.setStatus("ÍøÂçÁ¬½ÓÒì³££¬ÕıÔÚÖØĞÂÁ¬½Ó...");
-						int htmlFailureTimes = 1; //htmlÏÂÔØÁ¬ĞøÊ§°Ü´ÎÊı
+						ctrl.setStatus("ç½‘ç»œè¿æ¥å¼‚å¸¸ï¼Œæ­£åœ¨é‡æ–°è¿æ¥...");
+						int htmlFailureTimes = 1; //htmlä¸‹è½½è¿ç»­å¤±è´¥æ¬¡æ•°
 						while(htmlFailureTimes < 3)
 						{
-							logger.info("htmlÎÄ¼şÏÂÔØÊ§°Ü£¬Ê§°Ü´ÎÊı£º" + htmlFailureTimes + "£¬ÕıÔÚÖØĞÂÁ¬½Ó...");
-							htmlPath = htmlLoader.downLoad(url, useProxy); //ÖØĞÂÏÂÔØ
+							logger.info("htmlæ–‡ä»¶ä¸‹è½½å¤±è´¥ï¼Œå¤±è´¥æ¬¡æ•°ï¼š" + htmlFailureTimes + "ï¼Œæ­£åœ¨é‡æ–°è¿æ¥...");
+							htmlPath = htmlLoader.downLoad(url, useProxy); //é‡æ–°ä¸‹è½½
 							if(htmlPath == null)
 							{
 								htmlFailureTimes++;
@@ -108,16 +108,16 @@ public class StartRunnable implements Runnable
 								break;
 							}
 						}
-						if(htmlFailureTimes >= 3) //Á¬ĞøÈı´ÎÁ¬½ÓÊ§°Ü£¬·ÅÆúµ±Ç°htmlÒ³Ãæ£¬¿ªÊ¼ÅÀÈ¡ÏÂÒ»¸öÒ³Ãæ
+						if(htmlFailureTimes >= 3) //è¿ç»­ä¸‰æ¬¡è¿æ¥å¤±è´¥ï¼Œæ”¾å¼ƒå½“å‰htmlé¡µé¢ï¼Œå¼€å§‹çˆ¬å–ä¸‹ä¸€ä¸ªé¡µé¢
 						{
-							logger.info("htmlÎÄ¼şÏÂÔØÊ§°Ü´ÎÊı³¬¹ı3´Î£¬·ÅÆú´Ëhtml¡£");
+							logger.info("htmlæ–‡ä»¶ä¸‹è½½å¤±è´¥æ¬¡æ•°è¶…è¿‡3æ¬¡ï¼Œæ”¾å¼ƒæ­¤htmlã€‚");
 							continue;
 						}
 					}
 					if(htmlPath != null)
 					{
-						ctrl.setStatus("ÕıÔÚ½âÎöhtmlÎÄ¼ş£¬ÎÄ¼şÂ·¾¶£º" + htmlPath);
-						logger.info("ÕıÔÚ½âÎöhtmlÎÄ¼ş£¬ÎÄ¼şÂ·¾¶£º" + htmlPath);
+						ctrl.setStatus("æ­£åœ¨è§£æhtmlæ–‡ä»¶ï¼Œæ–‡ä»¶è·¯å¾„ï¼š" + htmlPath);
+						logger.info("æ­£åœ¨è§£æhtmlæ–‡ä»¶ï¼Œæ–‡ä»¶è·¯å¾„ï¼š" + htmlPath);
 						Map<String, String> dataMap = contentResolver.getContent(htmlPath);
 						JobData jobData = new JobData();
 						jobData.setKind(kind);
@@ -144,20 +144,20 @@ public class StartRunnable implements Runnable
 						break;
 					}
 				}
-				page = ctrl.getNextPage();  //ÏÂÒ»Ò³jsonÊı¾İ
+				page = ctrl.getNextPage();  //ä¸‹ä¸€é¡µjsonæ•°æ®
 			}
 		}
-		ctrl.stop(); //½áÊøµ±Ç°Ïß³ÌÈÎÎñ
-		logger.info("Ïß³Ì½áÊø¡£");
-		if(ctrl.isFinish() == true) //Èç¹ûËùÓĞÏß³ÌµÄÈÎÎñ¶¼½áÊøÁË
+		ctrl.stop(); //ç»“æŸå½“å‰çº¿ç¨‹ä»»åŠ¡
+		logger.info("çº¿ç¨‹ç»“æŸã€‚");
+		if(ctrl.isFinish() == true) //å¦‚æœæ‰€æœ‰çº¿ç¨‹çš„ä»»åŠ¡éƒ½ç»“æŸäº†
 		{
-			logger.info("ËùÓĞÏß³ÌÈÎÎñ¶¼ÒÑ¾­½áÊø£¬ÕıÔÚ±£´æÅÀÈ¡µÄÊı¾İ...");
+			logger.info("æ‰€æœ‰çº¿ç¨‹ä»»åŠ¡éƒ½å·²ç»ç»“æŸï¼Œæ­£åœ¨ä¿å­˜çˆ¬å–çš„æ•°æ®...");
 			ctrl.saveJobTypes(kind, distinct);
-			FileClear.clearFile(FilePath.DOWNLOADPATH); //Çå¿ÕÅÀ³æÏÂÔØµÄjsonÎÄ¼şºÍhtmlÎÄ¼ş
-			ctrl.setStatus("ÅÀ³æ³ÌĞòÒÑÍ£Ö¹ÔËĞĞ¡£");
-			Service.getInstance().setCrawlerIsRuning(false);//½«ÅÀ³æ³ÌĞò×´Ì¬ÉèÖÃÎªÎ´Æô¶¯×´Ì¬
-			logger.info("ÅÀ³æ³ÌĞòÒÑ¾­ÍêÈ«Í£Ö¹¡£");
+			FileClear.clearFile(FilePath.DOWNLOADPATH); //æ¸…ç©ºçˆ¬è™«ä¸‹è½½çš„jsonæ–‡ä»¶å’Œhtmlæ–‡ä»¶
+			ctrl.setStatus("çˆ¬è™«ç¨‹åºå·²åœæ­¢è¿è¡Œã€‚");
+			Service.getInstance().setCrawlerIsRuning(false);//å°†çˆ¬è™«ç¨‹åºçŠ¶æ€è®¾ç½®ä¸ºæœªå¯åŠ¨çŠ¶æ€
+			logger.info("çˆ¬è™«ç¨‹åºå·²ç»å®Œå…¨åœæ­¢ã€‚");
 		}
-//		ctrl.setStatus("ÅÀ³æ³ÌĞòÒÑÍ£Ö¹ÔËĞĞ¡£");
+//		ctrl.setStatus("çˆ¬è™«ç¨‹åºå·²åœæ­¢è¿è¡Œã€‚");
 	}
 }

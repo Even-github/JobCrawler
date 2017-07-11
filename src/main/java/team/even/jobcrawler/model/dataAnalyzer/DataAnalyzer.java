@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.dataAnalyzer;
+ï»¿package team.even.jobcrawler.model.dataAnalyzer;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,17 +10,17 @@ import team.even.jobcrawler.model.db.factory.JobDataDAOFactory;
 import team.even.jobcrawler.model.db.vo.JobData;
 
 /**
- * Êı¾İ·ÖÎöÆ÷£¬¶ÔÅÀ³æ³ÌĞò»ñÈ¡µÄĞÅÏ¢½øĞĞ·ÖÎö£¬ÎªÉú³É±¨¸æÌá¹©Êı¾İÖ§³Ö
- * @author ÔøÔ£ÎÄ
+ * æ•°æ®åˆ†æå™¨ï¼Œå¯¹çˆ¬è™«ç¨‹åºè·å–çš„ä¿¡æ¯è¿›è¡Œåˆ†æï¼Œä¸ºç”ŸæˆæŠ¥å‘Šæä¾›æ•°æ®æ”¯æŒ
+ * @author æ›¾è£•æ–‡
  *
  */
 public class DataAnalyzer
 {
 	/**
-	 * ·ÖÎöjobdata±íÖĞ·ûºÏÌõ¼şµÄÔÂĞ½£¬Í³¼Æ¸÷·¶Î§ÄÚµÄÊıÁ¿
-	 * @param kind Ö°ÒµÖÖÀàÌõ¼ş
-	 * @param district µØÇøÌõ¼ş
-	 * @return ÒÔ·¶Î§/ÔÂĞ½µÄĞÎÊ½Êä³öÔÚ¸÷¸ö·¶Î§ÄÚµÄÊıÁ¿Í³¼Æ
+	 * åˆ†æjobdataè¡¨ä¸­ç¬¦åˆæ¡ä»¶çš„æœˆè–ªï¼Œç»Ÿè®¡å„èŒƒå›´å†…çš„æ•°é‡
+	 * @param kind èŒä¸šç§ç±»æ¡ä»¶
+	 * @param district åœ°åŒºæ¡ä»¶
+	 * @return ä»¥èŒƒå›´/æœˆè–ªçš„å½¢å¼è¾“å‡ºåœ¨å„ä¸ªèŒƒå›´å†…çš„æ•°é‡ç»Ÿè®¡
 	 * @throws Exception 
 	 */
 	public Map<String, String> analyzeSalary(String kind, String district) throws Exception
@@ -28,7 +28,7 @@ public class DataAnalyzer
 		Map<String, String> dataMap = new HashMap<String, String>();
 		String[] scope = new String[10];
 		int[] countScope = new int[10];
-		scope[0] = "2kÒÔÏÂ";
+		scope[0] = "2kä»¥ä¸‹";
 		scope[1] = "2k-4k";
 		scope[2] = "4k-6k";
 		scope[3] = "6k-8k";
@@ -37,14 +37,14 @@ public class DataAnalyzer
 		scope[6] = "15k-20k";
 		scope[7] = "20k-30k";
 		scope[8] = "30k-40k";
-		scope[9] = "40kÒÔÉÏ";
+		scope[9] = "40kä»¥ä¸Š";
 
 		List<JobData> dataList = JobDataDAOFactory
 				.getJobDataDAOInstance()
 				.findByKindandWorkPlace(kind, district);
 		for(JobData data: dataList)
 		{
-			//Í¨¹ıÕıÔò±í´ïÊ½»ñÈ¡ÔÂĞ½µÄ¶î¶È
+			//é€šè¿‡æ­£åˆ™è¡¨è¾¾å¼è·å–æœˆè–ªçš„é¢åº¦
 			String salaryStr = data.getSalary();
 			salaryStr = salaryStr.toLowerCase();
 			Pattern pattern = Pattern.compile("[0-9]+k");
@@ -106,10 +106,10 @@ public class DataAnalyzer
 	}
 	
 	/**
-	 * ·ÖÎöjobdata±íÖĞ·ûºÏÌõ¼şµÄ¾­ÑéÒªÇó£¬Í³¼Æ¸÷·¶Î§ÄÚµÄÊıÁ¿
-	 * @param kind Ö°ÒµÖÖÀàÌõ¼ş
-	 * @param district µØÇøÌõ¼ş
-	 * @return ÒÔÒªÇóÖÖÀà/ÊıÁ¿µÄĞÎÊ½Êä³öÔÚ¸÷¸ö·¶Î§ÄÚµÄÊıÁ¿Í³¼Æ
+	 * åˆ†æjobdataè¡¨ä¸­ç¬¦åˆæ¡ä»¶çš„ç»éªŒè¦æ±‚ï¼Œç»Ÿè®¡å„èŒƒå›´å†…çš„æ•°é‡
+	 * @param kind èŒä¸šç§ç±»æ¡ä»¶
+	 * @param district åœ°åŒºæ¡ä»¶
+	 * @return ä»¥è¦æ±‚ç§ç±»/æ•°é‡çš„å½¢å¼è¾“å‡ºåœ¨å„ä¸ªèŒƒå›´å†…çš„æ•°é‡ç»Ÿè®¡
 	 * @throws Exception 
 	 */
 	public Map<String, String> analyzeExp(String kind, String district) throws Exception
@@ -117,11 +117,11 @@ public class DataAnalyzer
 		Map<String, String> dataMap = new HashMap<String, String>();
 		String[] type = new String[5];
 		int[] countType = new int[5];
-		type[0] = "¾­ÑéÓ¦½ì±ÏÒµÉú";
-		type[1] = "¾­Ñé1-3Äê";
-		type[2] = "¾­Ñé3-5Äê";
-		type[3] = "¾­Ñé5-10Äê";
-		type[4] = "¾­Ñé²»ÏŞ";
+		type[0] = "ç»éªŒåº”å±Šæ¯•ä¸šç”Ÿ";
+		type[1] = "ç»éªŒ1-3å¹´";
+		type[2] = "ç»éªŒ3-5å¹´";
+		type[3] = "ç»éªŒ5-10å¹´";
+		type[4] = "ç»éªŒä¸é™";
 		List<JobData> dataList = JobDataDAOFactory
 				.getJobDataDAOInstance()
 				.findByKindandWorkPlace(kind, district);
@@ -146,10 +146,10 @@ public class DataAnalyzer
 	}
 	
 	/**
-	 * ·ÖÎöjobdata±íÖĞ·ûºÏÌõ¼şµÄÑ§ÀúÒªÇó£¬Í³¼Æ¸÷·¶Î§ÄÚµÄÊıÁ¿
-	 * @param kind Ö°ÒµÖÖÀàÌõ¼ş
-	 * @param district µØÇøÌõ¼ş
-	 * @return ÒÔÑ§Àú/ÊıÁ¿µÄĞÎÊ½Êä³öÔÚ¸÷¸ö·¶Î§ÄÚµÄÊıÁ¿Í³¼Æ
+	 * åˆ†æjobdataè¡¨ä¸­ç¬¦åˆæ¡ä»¶çš„å­¦å†è¦æ±‚ï¼Œç»Ÿè®¡å„èŒƒå›´å†…çš„æ•°é‡
+	 * @param kind èŒä¸šç§ç±»æ¡ä»¶
+	 * @param district åœ°åŒºæ¡ä»¶
+	 * @return ä»¥å­¦å†/æ•°é‡çš„å½¢å¼è¾“å‡ºåœ¨å„ä¸ªèŒƒå›´å†…çš„æ•°é‡ç»Ÿè®¡
 	 * @throws Exception 
 	 */
 	public Map<String, String> analyzeAcade(String kind, String district) throws Exception
@@ -157,11 +157,11 @@ public class DataAnalyzer
 		Map<String, String> dataMap = new HashMap<String, String>();
 		String[] type = new String[5];
 		int[] countType = new int[5];
-		type[0] = "´ó×¨¼°ÒÔÉÏ";
-		type[1] = "±¾¿Æ¼°ÒÔÉÏ";
-		type[2] = "Ë¶Ê¿¼°ÒÔÉÏ";
-		type[3] = "²©Ê¿¼°ÒÔÉÏ";
-		type[4] = "Ñ§Àú²»ÏŞ";
+		type[0] = "å¤§ä¸“åŠä»¥ä¸Š";
+		type[1] = "æœ¬ç§‘åŠä»¥ä¸Š";
+		type[2] = "ç¡•å£«åŠä»¥ä¸Š";
+		type[3] = "åšå£«åŠä»¥ä¸Š";
+		type[4] = "å­¦å†ä¸é™";
 		List<JobData> dataList = JobDataDAOFactory
 				.getJobDataDAOInstance()
 				.findByKindandWorkPlace(kind, district);

@@ -1,12 +1,12 @@
-package team.even.jobcrawler.model.proxy;
+ï»¿package team.even.jobcrawler.model.proxy;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 /**
- * ´úÀí·şÎñ¹ÜÀíÆ÷£¬¸ºÔğ´æ´¢´úÀí·şÎñÆ÷µÄipºÍportÒÔ¼°Ëæ»ú·Ö·¢´úÀí·şÎñÆ÷
- * @author ÔøÔ£ÎÄ
+ * ä»£ç†æœåŠ¡ç®¡ç†å™¨ï¼Œè´Ÿè´£å­˜å‚¨ä»£ç†æœåŠ¡å™¨çš„ipå’Œportä»¥åŠéšæœºåˆ†å‘ä»£ç†æœåŠ¡å™¨
+ * @author æ›¾è£•æ–‡
  *
  */
 public class ProxyManager
@@ -24,7 +24,7 @@ public class ProxyManager
 	}
 	
 	/**
-	 * »ñÈ¡Ëæ»úµÄ´úÀí·şÎñÆ÷µÄipºÍport
+	 * è·å–éšæœºçš„ä»£ç†æœåŠ¡å™¨çš„ipå’Œport
 	 * @return
 	 */
 	public static Map<String, String> getRandomProxyMap()

@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.db.factory;
+ï»¿package team.even.jobcrawler.model.db.factory;
 
 import java.sql.Connection;
 
@@ -6,8 +6,8 @@ import team.even.jobcrawler.model.db.dao.IJobDataDAO;
 import team.even.jobcrawler.model.db.dao.impl.JobDataDAOimpl;
 
 /**
- * JobDataDAOimplÀàµÄ¹¤³§·½·¨
- * @author ÔøÔ£ÎÄ
+ * JobDataDAOimplç±»çš„å·¥åŽ‚æ–¹æ³•
+ * @author æ›¾è£•æ–‡
  *
  */
 public class JobDataDAOFactory

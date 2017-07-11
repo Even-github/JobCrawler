@@ -1,11 +1,11 @@
-package team.even.jobcrawler.model.multithread;
+ï»¿package team.even.jobcrawler.model.multithread;
 
 import team.even.jobcrawler.model.filecounter.FileCounter;
 import team.even.jobcrawler.model.filepath.FilePath;
 
 /**
- * ÎÄ¼şÃû·ÖÅäÆ÷£¬½«ÎÄ¼şÃû·ÖÅä¸ø¶àÏß³ÌÖĞµÄContentResolver×÷ÎªÎÄ¼ş²ÎÊı½øĞĞ½øÒ»²½½âÎö
- * @author ÔøÔ£ÎÄ
+ * æ–‡ä»¶ååˆ†é…å™¨ï¼Œå°†æ–‡ä»¶ååˆ†é…ç»™å¤šçº¿ç¨‹ä¸­çš„ContentResolverä½œä¸ºæ–‡ä»¶å‚æ•°è¿›è¡Œè¿›ä¸€æ­¥è§£æ
+ * @author æ›¾è£•æ–‡
  *
  */
 public class FileNameDistributor
@@ -14,13 +14,13 @@ public class FileNameDistributor
 	
 	public FileNameDistributor()
 	{
-		//»ñÈ¡ÄÚÈİÒ³ÃæÎÄ¼ş¼ĞµÄÊıÁ¿
+		//è·å–å†…å®¹é¡µé¢æ–‡ä»¶å¤¹çš„æ•°é‡
 		contentPageNum = new FileCounter().getFileNum(FilePath.CONTENTHTMLPATH);
 	}
 	
 	/**
-	 * »ñÈ¡ÎÄ¼şÃû£¬Ïß³Ì°²È«
-	 * @return ÎÄ¼şÃû£¬·ÖÅäÍê±Ïºó£¬·µ»Ønull
+	 * è·å–æ–‡ä»¶åï¼Œçº¿ç¨‹å®‰å…¨
+	 * @return æ–‡ä»¶åï¼Œåˆ†é…å®Œæ¯•åï¼Œè¿”å›null
 	 */
 	public synchronized String getFileName()
 	{

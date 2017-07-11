@@ -1,16 +1,16 @@
-package team.even.jobcrawler.model.htmlresolver;
+ï»¿package team.even.jobcrawler.model.htmlresolver;
 
 import java.util.List;
 
 /**
- * µØÇø½âÎöÆ÷£¬»ñÈ¡Ò³ÃæÖĞËùÓĞµÄµØÇøÃû³Æ
- * @author ÔøÔ£ÎÄ
+ * åœ°åŒºè§£æå™¨ï¼Œè·å–é¡µé¢ä¸­æ‰€æœ‰çš„åœ°åŒºåç§°
+ * @author æ›¾è£•æ–‡
  *
  */
 public interface IDistrictResolver
 {
 	/**
-	 * »ñÈ¡À­¹´ÍøÌá¹©ËùÓĞÕĞÆ¸µØÇø
+	 * è·å–æ‹‰å‹¾ç½‘æä¾›æ‰€æœ‰æ‹›è˜åœ°åŒº
 	 * @return
 	 */
 	List<String> getDistrict();

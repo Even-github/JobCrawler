@@ -1,17 +1,17 @@
-package team.even.jobcrawler.model.htmlresolver;
+ï»¿package team.even.jobcrawler.model.htmlresolver;
 
 import java.util.List;
 
 /**
- * Ö°ÒµÀàĞÍ½âÎöÆ÷£¬ÓÃÓÚ»ñÈ¡Ò³ÃæÖĞµÄÖ°ÒµÀàĞÍ
- * @author ÔøÔ£ÎÄ
+ * èŒä¸šç±»å‹è§£æå™¨ï¼Œç”¨äºè·å–é¡µé¢ä¸­çš„èŒä¸šç±»å‹
+ * @author æ›¾è£•æ–‡
  *
  */
 public interface IKindResolver
 {
 	/**
-	 * »ñÈ¡À­¹´ÍøÊ×Ò³µÄËùÓĞÖ°Î»Ãû³Æ
-	 * @return °üº¬ËùÓĞÖ°Î»Ãû³ÆµÄ¶ÓÁĞ
+	 * è·å–æ‹‰å‹¾ç½‘é¦–é¡µçš„æ‰€æœ‰èŒä½åç§°
+	 * @return åŒ…å«æ‰€æœ‰èŒä½åç§°çš„é˜Ÿåˆ—
 	 */
 	List<String> getKind();
 }

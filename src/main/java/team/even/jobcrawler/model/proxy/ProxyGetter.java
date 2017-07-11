@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.proxy;
+ï»¿package team.even.jobcrawler.model.proxy;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,9 +15,9 @@ import org.jsoup.select.Elements;
 import team.even.jobcrawler.model.multithread.RunStatusCtrl;
 
 /**
- * ´úÀí·şÎñ»ñÈ¡Æ÷£¬ ´ÓÍøÉÏ»ñÈ¡´úÀí·şÎñÆ÷µÄipºÍport£¬²¢´æ´¢µ½ProxyManagerÖĞ
- * ´úÀí·şÎñÆ÷À´Ô´£ºhttp://www.kuaidaili.com/free/intr/
- * @author ÔøÔ£ÎÄ
+ * ä»£ç†æœåŠ¡è·å–å™¨ï¼Œ ä»ç½‘ä¸Šè·å–ä»£ç†æœåŠ¡å™¨çš„ipå’Œportï¼Œå¹¶å­˜å‚¨åˆ°ProxyManagerä¸­
+ * ä»£ç†æœåŠ¡å™¨æ¥æºï¼šhttp://www.kuaidaili.com/free/intr/
+ * @author æ›¾è£•æ–‡
  *
  */
 public class ProxyGetter
@@ -31,7 +31,7 @@ public class ProxyGetter
 		String url = "http://www.kuaidaili.com/free/inha/";
 		Document doc = Jsoup.connect(url).get();
 		Elements trElements = doc.getElementsByTag("tr");
-		for(int i = 1; i < trElements.size(); i++) //´ÓµÚ¶ş¸ötrÔªËØ¿ªÊ¼£¬±éÀúËùÓĞtrÔªËØ
+		for(int i = 1; i < trElements.size(); i++) //ä»ç¬¬äºŒä¸ªtrå…ƒç´ å¼€å§‹ï¼Œéå†æ‰€æœ‰trå…ƒç´ 
 		{
 			Element e = trElements.get(i);
 			Elements ipElements = e.getElementsByAttributeValue("data-title", "IP");
@@ -49,8 +49,8 @@ public class ProxyGetter
 	public static void saveProxy() throws IOException
 	{
 		RunStatusCtrl runStatusCtrl = RunStatusCtrl.getInstance();
-		runStatusCtrl.setStatus("ÕıÔÚ»ñÈ¡´úÀí·şÎñÆ÷...");
-		logger.info("ÕıÔÚ»ñÈ¡´úÀí·şÎñÆ÷...");
+		runStatusCtrl.setStatus("æ­£åœ¨è·å–ä»£ç†æœåŠ¡å™¨...");
+		logger.info("æ­£åœ¨è·å–ä»£ç†æœåŠ¡å™¨...");
 		ProxyManager.setProxyMap(getProxy());
 	}
 }

@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.db.dao.impl;
+﻿package team.even.jobcrawler.model.db.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

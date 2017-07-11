@@ -1,16 +1,16 @@
-package team.even.jobcrawler.model.db.dao;
+ï»¿package team.even.jobcrawler.model.db.dao;
 
 public interface IPasswordDAO
 {
 	/**
-	 * »ñÈ¡ÃÜÂë
-	 * @return ·µ»Ø»ñÈ¡µÄÃÜÂë
+	 * è·å–å¯†ç 
+	 * @return è¿”å›è·å–çš„å¯†ç 
 	 * @throws Exception 
 	 */
 	public String getPassword() throws Exception;
 	
 	/**
-	 * ÉèÖÃÃÜÂë
+	 * è®¾ç½®å¯†ç 
 	 * @throws Exception 
 	 */
 	public boolean updatePassword(String password) throws Exception;

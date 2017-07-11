@@ -1,10 +1,10 @@
-package team.even.jobcrawler.model.filecounter;
+ï»¿package team.even.jobcrawler.model.filecounter;
 
 import java.io.File;
 
 /**
- * ÎÄ¼ş¼ÆÊıÆ÷£¬¼ÆËãÖ¸¶¨ÎÄ¼ş¼ĞÏÂµÄÎÄ¼şÊıÁ¿
- * @author ÔøÔ£ÎÄ
+ * æ–‡ä»¶è®¡æ•°å™¨ï¼Œè®¡ç®—æŒ‡å®šæ–‡ä»¶å¤¹ä¸‹çš„æ–‡ä»¶æ•°é‡
+ * @author æ›¾è£•æ–‡
  *
  */
 public class FileCounter

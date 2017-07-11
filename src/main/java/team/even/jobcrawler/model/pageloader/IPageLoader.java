@@ -1,26 +1,26 @@
-package team.even.jobcrawler.model.pageloader;
+ï»¿package team.even.jobcrawler.model.pageloader;
 
 /*
- * Ò³ÃæÏÂÔØÆ÷½Ó¿Ú
+ * é¡µé¢ä¸‹è½½å™¨æ¥å£
  */
 public interface IPageLoader
 {
 	/**
-	 * ÖØÔØdownLoad·½·¨
-	 * ÏÂÔØÖ¸¶¨Ò³Ãæ£¬²¢±£´æÎª±¾µØÎÄ¼ş£¬Ò»°ãÓÃÓÚhtmlÒ³ÃæÏÂÔØ
-	 * @param url Ö¸¶¨ÏÂÔØµÄurl
-	 * @param useProxy ±êÊ¶ÊÇ·ñÊ¹ÓÃ´úÀí·şÎñÆ÷
-	 * @return ÎÄ¼şÏÂÔØºó±£´æµÄÎÄ¼şÃû
+	 * é‡è½½downLoadæ–¹æ³•
+	 * ä¸‹è½½æŒ‡å®šé¡µé¢ï¼Œå¹¶ä¿å­˜ä¸ºæœ¬åœ°æ–‡ä»¶ï¼Œä¸€èˆ¬ç”¨äºhtmlé¡µé¢ä¸‹è½½
+	 * @param url æŒ‡å®šä¸‹è½½çš„url
+	 * @param useProxy æ ‡è¯†æ˜¯å¦ä½¿ç”¨ä»£ç†æœåŠ¡å™¨
+	 * @return æ–‡ä»¶ä¸‹è½½åä¿å­˜çš„æ–‡ä»¶å
 	 */
 	String downLoad(String url, boolean useProxy);
 	
 	/**
-	 * ÖØÔØdownLoad·½·¨
-	 * ÏÂÔØÖ¸¶¨Ò³Ãæ£¬²¢±£´æÎª±¾µØÎÄ¼ş£¬Ò»°ãÓÃÓÚjson°üÏÂÔØ
-	 * @param distinct ÕĞÆ¸µØÇø
-	 * @param kind ÕĞÆ¸Ö°ÒµÀàĞÍ£¨Èç£ºJava£¬C++£©
-	 * @param page ÇëÇó·µ»ØµÚ¼¸Ò³Êı¾İ
-	 * @param useProxy ±êÊ¶ÊÇ·ñÊ¹ÓÃ´úÀí·şÎñÆ÷
+	 * é‡è½½downLoadæ–¹æ³•
+	 * ä¸‹è½½æŒ‡å®šé¡µé¢ï¼Œå¹¶ä¿å­˜ä¸ºæœ¬åœ°æ–‡ä»¶ï¼Œä¸€èˆ¬ç”¨äºjsonåŒ…ä¸‹è½½
+	 * @param distinct æ‹›è˜åœ°åŒº
+	 * @param kind æ‹›è˜èŒä¸šç±»å‹ï¼ˆå¦‚ï¼šJavaï¼ŒC++ï¼‰
+	 * @param page è¯·æ±‚è¿”å›ç¬¬å‡ é¡µæ•°æ®
+	 * @param useProxy æ ‡è¯†æ˜¯å¦ä½¿ç”¨ä»£ç†æœåŠ¡å™¨
 	 * @return
 	 */
 	String downLoad(String distinct, String kind, int page, boolean useProxy);

@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.htmlresolver.impl;
+﻿package team.even.jobcrawler.model.htmlresolver.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;

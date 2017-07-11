@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.pageloader.impl;
+ï»¿package team.even.jobcrawler.model.pageloader.impl;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -45,14 +45,14 @@ public class JsonLoader implements IPageLoader
 	@Override
 	public String downLoad(String distinct, String kind, int page, boolean useProxy)
 	{
-		String fileName = null; //Ò³ÃæÏÂÔØºó±£´æµÄÎÄ¼şÃû
-		if(distinct != null && kind != null && page > 0) //²ÎÊıÕıÈ·
+		String fileName = null; //é¡µé¢ä¸‹è½½åä¿å­˜çš„æ–‡ä»¶å
+		if(distinct != null && kind != null && page > 0) //å‚æ•°æ­£ç¡®
 		{
 			String dist = null;
 			String k = null;
 			try
 			{
-				//½«µØÇøÃû³ÆdistinctÒÔ¼°Ö°ÒµÀàĞÍkindÓÉUTF-8±àÂë×ªÂë³ÉURLcode±àÂë£¬ÓÃÓÚ×÷ÎªurlµÄ²ÎÊı
+				//å°†åœ°åŒºåç§°distinctä»¥åŠèŒä¸šç±»å‹kindç”±UTF-8ç¼–ç è½¬ç æˆURLcodeç¼–ç ï¼Œç”¨äºä½œä¸ºurlçš„å‚æ•°
 				dist = URLEncoder.encode(distinct, "UTF-8");
 				k = URLEncoder.encode(kind, "UTF-8");
 			} catch (UnsupportedEncodingException e1)
@@ -60,39 +60,39 @@ public class JsonLoader implements IPageLoader
 				e1.printStackTrace();
 			}
 			String reqUrl = "https://www.lagou.com/jobs/positionAjax.json?px=default&city="
-					+ dist  //Ç¶Èë×ªÂëºóµÄµØÇø²ÎÊı
+					+ dist  //åµŒå…¥è½¬ç åçš„åœ°åŒºå‚æ•°
 					+"&needAddtionalResult=false";
-			logger.info("×¼±¸·¢ËÍÇëÇó£¬Ä¿±êjsonµÄurlµØÖ·£º" + reqUrl);
-			//½«page±äÁ¿ÓÉintÀàĞÍ×ª»»³ÉStringÀàĞÍ£¬ÒÔÇ¶ÈëÇëÇó²ÎÊıÖĞ
+			logger.info("å‡†å¤‡å‘é€è¯·æ±‚ï¼Œç›®æ ‡jsonçš„urlåœ°å€ï¼š" + reqUrl);
+			//å°†pageå˜é‡ç”±intç±»å‹è½¬æ¢æˆStringç±»å‹ï¼Œä»¥åµŒå…¥è¯·æ±‚å‚æ•°ä¸­
 			String strPage = String.valueOf(page);
 			CloseableHttpClient httpClient = HttpClients.createDefault();
 			try
 			{
 				HttpPost post = new HttpPost(reqUrl);
 				RequestConfig config = null;
-				if(useProxy == true) //Ê¹ÓÃ´úÀí·şÎñÆ÷
+				if(useProxy == true) //ä½¿ç”¨ä»£ç†æœåŠ¡å™¨
 				{
 					Map<String, String> proxyMap = ProxyManager.getRandomProxyMap();
-					HttpHost proxy = new HttpHost(proxyMap.get("ip"),   //´úÀí·şÎñÆ÷ipµØÖ·
-							Integer.parseInt(proxyMap.get("port")), //´úÀí·şÎñÆ÷port
-							"http"); //´úÀí·şÎñÆ÷Ğ­Òé
+					HttpHost proxy = new HttpHost(proxyMap.get("ip"),   //ä»£ç†æœåŠ¡å™¨ipåœ°å€
+							Integer.parseInt(proxyMap.get("port")), //ä»£ç†æœåŠ¡å™¨port
+							"http"); //ä»£ç†æœåŠ¡å™¨åè®®
 					config = RequestConfig.custom()
 							.setProxy(proxy)
-							.setConnectTimeout(10000) //ÉèÖÃÁ¬½Ó³¬Ê±
-							.setSocketTimeout(10000) //ÉèÖÃÊı¾İ»ñÈ¡³¬Ê±
+							.setConnectTimeout(10000) //è®¾ç½®è¿æ¥è¶…æ—¶
+							.setSocketTimeout(10000) //è®¾ç½®æ•°æ®è·å–è¶…æ—¶
 							.setConnectionRequestTimeout(10000)
 							.build();
 				}
-				else //²»Ê¹ÓÃ´úÀí·şÎñÆ÷
+				else //ä¸ä½¿ç”¨ä»£ç†æœåŠ¡å™¨
 				{
 					config = RequestConfig.custom()
-							.setConnectTimeout(10000) //ÉèÖÃÁ¬½Ó³¬Ê±
-							.setSocketTimeout(10000) //ÉèÖÃÊı¾İ»ñÈ¡³¬Ê±
+							.setConnectTimeout(10000) //è®¾ç½®è¿æ¥è¶…æ—¶
+							.setSocketTimeout(10000) //è®¾ç½®æ•°æ®è·å–è¶…æ—¶
 							.setConnectionRequestTimeout(10000)
 							.build();
 				}
 				post.setConfig(config);
-				//ÉèÖÃÇëÇó±¨Í·£¬Ä£Äâä¯ÀÀÆ÷·ÃÎÊ·şÎñÆ÷
+				//è®¾ç½®è¯·æ±‚æŠ¥å¤´ï¼Œæ¨¡æ‹Ÿæµè§ˆå™¨è®¿é—®æœåŠ¡å™¨
 				post.setHeader("User-agent", (new UserAgentLib()).getRandomUserAgent());
 				post.setHeader("Referer", "https://www.lagou.com/jobs/list_" + k + "?city="+ dist +"&cl=false&fromSearch=true&labelWords=&suginput=");
 				post.setHeader("Host", "www.lagou.com");
@@ -116,21 +116,21 @@ public class JsonLoader implements IPageLoader
 						+ "TG-TRACK-CODE=index_navigation; "
 						+ "SEARCH_ID=575985ffe2174de0a1adb86d1646f49b");
 				
-				//ÉèÖÃÇëÇó²ÎÊı
+				//è®¾ç½®è¯·æ±‚å‚æ•°
 				List<NameValuePair> params = new ArrayList<NameValuePair>();  
 				params.add(new BasicNameValuePair("first", "false"));  
-				params.add(new BasicNameValuePair("pn", strPage)); //ÇëÇóÒ³ÃæÒ³Âë
-				params.add(new BasicNameValuePair("kd", kind));  //½«×ªÂëºóµÄÖ°ÒµÀàĞÍ²ÎÊıÉèÖÃÎªÇëÇó²ÎÊı	
+				params.add(new BasicNameValuePair("pn", strPage)); //è¯·æ±‚é¡µé¢é¡µç 
+				params.add(new BasicNameValuePair("kd", kind));  //å°†è½¬ç åçš„èŒä¸šç±»å‹å‚æ•°è®¾ç½®ä¸ºè¯·æ±‚å‚æ•°	
 				
-				//²åÈëpost±íµ¥²ÎÊı£¬×¢ÒâÒ»¶¨ÒªÓÃConsts.UTF_8£¨µÚ¶ş¸ö²ÎÊı£©×ªÂë£¬²»ÒªÓÃURLEncoder×ªÂë£¬·ñÔò¿ÉÄÜ³öÏÖÖĞÎÄ²ÎÊı·¢ËÍºó±äÂÒÂëµÄÇé¿ö
+				//æ’å…¥postè¡¨å•å‚æ•°ï¼Œæ³¨æ„ä¸€å®šè¦ç”¨Consts.UTF_8ï¼ˆç¬¬äºŒä¸ªå‚æ•°ï¼‰è½¬ç ï¼Œä¸è¦ç”¨URLEncoderè½¬ç ï¼Œå¦åˆ™å¯èƒ½å‡ºç°ä¸­æ–‡å‚æ•°å‘é€åå˜ä¹±ç çš„æƒ…å†µ
 				post.setEntity(new UrlEncodedFormEntity(params,Consts.UTF_8));
 				
 				CloseableHttpResponse response = null;
 				try
 				{
-					logger.info("Ïò·şÎñÆ÷·¢ËÍÇëÇó£¬ÏÂÔØjsonÊı¾İ...");
+					logger.info("å‘æœåŠ¡å™¨å‘é€è¯·æ±‚ï¼Œä¸‹è½½jsonæ•°æ®...");
 					response = httpClient.execute(post);
-					logger.info("jsonÒ³ÃæÏìÓ¦×´Ì¬Âë£º" + response.getStatusLine().getStatusCode());
+					logger.info("jsoné¡µé¢å“åº”çŠ¶æ€ç ï¼š" + response.getStatusLine().getStatusCode());
 					if(response.getStatusLine().getStatusCode() == 200)
 					{
 						HttpEntity entity = response.getEntity();
@@ -144,23 +144,23 @@ public class JsonLoader implements IPageLoader
 							content.append(line);
 						}
 						in.close();
-						//Í¨¹ı½«ÇëÇó²ÎÊıÖĞµÄÒ³ÂëÓëÏìÓ¦µÄjsonÊı¾İ°üÖĞµÄÒ³ÂëÏàÆ¥Åä£¬ÅĞ¶Ï´ËjsonÊı¾İ°üÊÇ·ñÓĞĞ§¡£
-						//Èç¹ûÒ³ÂëÏàÆ¥Åä£¬ÔòjsonÊı¾İ°üÊÇÓĞĞ§µÄ£¬¿ÉÒÔÏÂÔØµÄ£¬·ñÔò£¬Ó¦µ±¶ªÆú¡£
+						//é€šè¿‡å°†è¯·æ±‚å‚æ•°ä¸­çš„é¡µç ä¸å“åº”çš„jsonæ•°æ®åŒ…ä¸­çš„é¡µç ç›¸åŒ¹é…ï¼Œåˆ¤æ–­æ­¤jsonæ•°æ®åŒ…æ˜¯å¦æœ‰æ•ˆã€‚
+						//å¦‚æœé¡µç ç›¸åŒ¹é…ï¼Œåˆ™jsonæ•°æ®åŒ…æ˜¯æœ‰æ•ˆçš„ï¼Œå¯ä»¥ä¸‹è½½çš„ï¼Œå¦åˆ™ï¼Œåº”å½“ä¸¢å¼ƒã€‚
 						Pattern pattern = Pattern.compile("\"pageNo\":" + page);
 						Matcher matcher = pattern.matcher(content.toString());
-						if(matcher.find()) //Ò³ÂëÏàÆ¥Åä
+						if(matcher.find()) //é¡µç ç›¸åŒ¹é…
 						{
-							logger.info("jsonÊı¾İÓĞĞ§£¬ÕıÔÚ±£´æ...");
-							//»ñÈ¡jsonÎÄ¼ş¼ĞÏÂµÄÎÄ¼şÊıÁ¿
+							logger.info("jsonæ•°æ®æœ‰æ•ˆï¼Œæ­£åœ¨ä¿å­˜...");
+							//è·å–jsonæ–‡ä»¶å¤¹ä¸‹çš„æ–‡ä»¶æ•°é‡
 							int num = new FileCounter().getFileNum(FilePath.JSONPATH);
-							Timestamp ts = new Timestamp(System.currentTimeMillis()); //Ê±¼ä´Á
+							Timestamp ts = new Timestamp(System.currentTimeMillis()); //æ—¶é—´æˆ³
 							DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
-							String fileNumber = df.format(ts) + (int)(Math.random() * 900 + 100); //Í¨¹ıÊ±¼ä´ÁÃüÃûÎÄ¼ş
+							String fileNumber = df.format(ts) + (int)(Math.random() * 900 + 100); //é€šè¿‡æ—¶é—´æˆ³å‘½åæ–‡ä»¶
 							fileName = FilePath.JSONPATH
 									+ "/json" 
 									+ fileNumber
 									+ ".json";
-							//Èç¹û´æ·ÅjsonÎÄ¼şµÄÄ¿Â¼²»´æÔÚ£¬Ôò´´½¨´ËÄ¿Â¼
+							//å¦‚æœå­˜æ”¾jsonæ–‡ä»¶çš„ç›®å½•ä¸å­˜åœ¨ï¼Œåˆ™åˆ›å»ºæ­¤ç›®å½•
 							File file = new File(FilePath.JSONPATH);
 							if(!file.exists())
 							{
@@ -170,7 +170,7 @@ public class JsonLoader implements IPageLoader
 										new FileOutputStream(fileName),"UTF-8");
 							out.write(content.toString());
 							out.close();
-							logger.info("jsonÊı¾İ±£´æÍê±Ï£¬±£´æÂ·¾¶£º" + fileName);
+							logger.info("jsonæ•°æ®ä¿å­˜å®Œæ¯•ï¼Œä¿å­˜è·¯å¾„ï¼š" + fileName);
 						}
 					}
 				} catch (IOException e)

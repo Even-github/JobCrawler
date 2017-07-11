@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.db.mybatis.mapper;
+﻿package team.even.jobcrawler.model.db.mybatis.mapper;
 
 import org.apache.ibatis.annotations.Param;
 

@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.db.factory;
+﻿package team.even.jobcrawler.model.db.factory;
 
 import java.sql.Connection;
 

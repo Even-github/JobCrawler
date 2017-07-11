@@ -1,4 +1,4 @@
-package team.even.jobcrawler.controller;
+ï»¿package team.even.jobcrawler.controller;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -41,7 +41,7 @@ public class MainController
 	public String index(HttpServletRequest request)
 	{
 		String remoteAddr = request.getRemoteAddr();
-		logger.info("ÍøÓÑ" + remoteAddr + "·ÃÎÊÁËÊ×Ò³¡£");
+		logger.info("ç½‘å‹" + remoteAddr + "è®¿é—®äº†é¦–é¡µã€‚");
 		return "index";
 	}
 
@@ -78,7 +78,7 @@ public class MainController
 			HttpServletRequest request) throws Exception
 	{
 		String remoteAddr = request.getRemoteAddr();
-		logger.info("ÍøÓÑ" + remoteAddr + "Æô¶¯ÁËÅÀ³æ¡£Ö°ÒµÀàĞÍ£º" + kind + ",µØÇø:" + distinct);
+		logger.info("ç½‘å‹" + remoteAddr + "å¯åŠ¨äº†çˆ¬è™«ã€‚èŒä¸šç±»å‹ï¼š" + kind + ",åœ°åŒº:" + distinct);
 		List<JobTypes> list = JobTypesDAOFactory.getJobTypesDAOInstance()
 				.findByKindandWorkPlace(kind, distinct);
 		if(list.isEmpty())
@@ -116,10 +116,10 @@ public class MainController
 	public @ResponseBody String stopCrawler(HttpServletRequest request)
 	{
 		String remoteAddr = request.getRemoteAddr();
-		logger.info("ÍøÓÑ" + remoteAddr + "Í£Ö¹ÁËÅÀ³æ¡£");
+		logger.info("ç½‘å‹" + remoteAddr + "åœæ­¢äº†çˆ¬è™«ã€‚");
 		Service service = Service.getInstance();
 		service.close();
-		String operation = "ÕıÔÚÍ£Ö¹ÔËĞĞÅÀ³æ³ÌĞò,ÇëÉÔµÈ...\n";
+		String operation = "æ­£åœ¨åœæ­¢è¿è¡Œçˆ¬è™«ç¨‹åº,è¯·ç¨ç­‰...\n";
 		return operation;
 	}
 	
@@ -135,7 +135,7 @@ public class MainController
 			HttpServletRequest request) throws Exception
 	{
 		String remoteAddr = request.getRemoteAddr();
-		logger.info("ÍøÓÑ" + remoteAddr + "²é¿´ÁË" + workPlace + "µØÇø" + kind + "Ö°ÒµµÄÊı¾İ¡£");
+		logger.info("ç½‘å‹" + remoteAddr + "æŸ¥çœ‹äº†" + workPlace + "åœ°åŒº" + kind + "èŒä¸šçš„æ•°æ®ã€‚");
 		List<JobData> list = JobDataDAOFactory.getJobDataDAOInstance()
 				.findByKindandWorkPlace(kind, workPlace);
 		return list;
@@ -147,7 +147,7 @@ public class MainController
 			@RequestParam(value="inputPassword")String inputPassword) throws Exception
 	{
 		Service service = Service.getInstance();
-		if(service.checkPassword(inputPassword) == true) //¿ÚÁîÕıÈ·
+		if(service.checkPassword(inputPassword) == true) //å£ä»¤æ­£ç¡®
 		{
 			boolean flag = true;
 			boolean flag1 = JobDataDAOFactory
@@ -165,7 +165,7 @@ public class MainController
 				return String.valueOf(false);
 			}
 		}
-		else //¿ÚÁî´íÎó
+		else //å£ä»¤é”™è¯¯
 		{
 			return "passwordError";
 		}
@@ -185,7 +185,7 @@ public class MainController
 			HttpServletRequest request) throws Exception
 	{
 		String remoteAddr = request.getRemoteAddr();
-		logger.info("ÍøÓÑ" + remoteAddr + "²é¿´ÁË" + district + "µØÇø" + kind + "Ö°ÒµµÄ±¨¸æ¡£");
+		logger.info("ç½‘å‹" + remoteAddr + "æŸ¥çœ‹äº†" + district + "åœ°åŒº" + kind + "èŒä¸šçš„æŠ¥å‘Šã€‚");
 		Map<String, String> dataMap = new HashMap<String, String>();
 		DataAnalyzer analyzer = new DataAnalyzer();
 		dataMap = analyzer.analyzeSalary(kind, district);
@@ -241,7 +241,7 @@ public class MainController
 		String oldPassword = request.getParameter("oldPassword");
 		String newPassword = request.getParameter("newPassword");
 		Service service = Service.getInstance();
-		if(service.checkPassword(oldPassword) == true) //ÃÜÂëÕıÈ·
+		if(service.checkPassword(oldPassword) == true) //å¯†ç æ­£ç¡®
 		{
 			if(service.updatePassword(newPassword) == true)
 			{
@@ -252,7 +252,7 @@ public class MainController
 				return "error!";
 			}
 		}
-		else //ÃÜÂë´íÎó
+		else //å¯†ç é”™è¯¯
 		{
 			return "failure";
 		}

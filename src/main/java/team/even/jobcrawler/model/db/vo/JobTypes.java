@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.db.vo;
+﻿package team.even.jobcrawler.model.db.vo;
 
 public class JobTypes
 {

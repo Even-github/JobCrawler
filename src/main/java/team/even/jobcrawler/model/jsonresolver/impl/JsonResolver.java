@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.jsonresolver.impl;
+ï»¿package team.even.jobcrawler.model.jsonresolver.impl;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -46,7 +46,7 @@ public class JsonResolver implements IJsonResolver
 			{
 				e.printStackTrace();
 			}
-			//Ë«ÖØÆ¥Åä»ñÈ¡ÕĞÆ¸ĞÅÏ¢µÄ±àºÅ£¬²¢½«±àºÅÇ¶ÈëurlÄ£°åÉú³ÉÁ´½Ó
+			//åŒé‡åŒ¹é…è·å–æ‹›è˜ä¿¡æ¯çš„ç¼–å·ï¼Œå¹¶å°†ç¼–å·åµŒå…¥urlæ¨¡æ¿ç”Ÿæˆé“¾æ¥
 			Pattern p1 = Pattern.compile("\"positionId\":\\d*");
 			Matcher m1 = p1.matcher(content.toString());
 			Pattern p2 = Pattern.compile("\\d+");
@@ -57,7 +57,7 @@ public class JsonResolver implements IJsonResolver
 				{
 					String result = m2.group();
 					String url = "https://www.lagou.com/jobs/"
-							+ result  //½«Æ¥ÅäµÄÊı¾İÇ¶Èëµ½urlÄ£°åÖĞ
+							+ result  //å°†åŒ¹é…çš„æ•°æ®åµŒå…¥åˆ°urlæ¨¡æ¿ä¸­
 							+ ".html";
 					urlList.add(url);
 				}

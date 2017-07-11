@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.db.factory;
+﻿package team.even.jobcrawler.model.db.factory;
 
 import team.even.jobcrawler.model.db.dao.IPasswordDAO;
 import team.even.jobcrawler.model.db.dao.impl.PasswordDAOimpl;

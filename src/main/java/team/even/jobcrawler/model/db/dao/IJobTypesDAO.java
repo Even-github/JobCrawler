@@ -1,43 +1,43 @@
-package team.even.jobcrawler.model.db.dao;
+ï»¿package team.even.jobcrawler.model.db.dao;
 
 import java.util.List;
 
 import team.even.jobcrawler.model.db.vo.JobTypes;
 
 /**
- * ±¾½Ó¿Ú¶¨ÒåÊı¾İ¿â±íjobtypesµÄ²Ù×÷·½·¨£¬°üÀ¨²åÈë¡¢É¾³ı¡¢²éÑ¯
- * @author ÔøÔ£ÎÄ
+ * æœ¬æ¥å£å®šä¹‰æ•°æ®åº“è¡¨jobtypesçš„æ“ä½œæ–¹æ³•ï¼ŒåŒ…æ‹¬æ’å…¥ã€åˆ é™¤ã€æŸ¥è¯¢
+ * @author æ›¾è£•æ–‡
  *
  */
 public interface IJobTypesDAO
 {
 	/**
-	 * ÏòÊı¾İ¿â±íjobtypes²åÈëÒ»ÌõÊı¾İ
-	 * @param jobTypes ±»²åÈëµÄÊı¾İ
-	 * @return ²åÈëÊÇ·ñ³É¹¦
+	 * å‘æ•°æ®åº“è¡¨jobtypesæ’å…¥ä¸€æ¡æ•°æ®
+	 * @param jobTypes è¢«æ’å…¥çš„æ•°æ®
+	 * @return æ’å…¥æ˜¯å¦æˆåŠŸ
 	 * @throws Exception 
 	 */
 	boolean doCreate(JobTypes jobTypes) throws Exception;
 	
 	/**
-	 * É¾³ıÊı¾İ¿â±íjobtypesÖĞµÄÖ¸¶¨¼ÇÂ¼
-	 * @param kind ±»É¾³ı¼ÇÂ¼µÄkindÊôĞÔ
-	 * @param workPlace ±»É¾³ı¼ÇÂ¼µÄworkPlace
-	 * @return É¾³ıÊÇ·ñ³É¹¦
+	 * åˆ é™¤æ•°æ®åº“è¡¨jobtypesä¸­çš„æŒ‡å®šè®°å½•
+	 * @param kind è¢«åˆ é™¤è®°å½•çš„kindå±æ€§
+	 * @param workPlace è¢«åˆ é™¤è®°å½•çš„workPlace
+	 * @return åˆ é™¤æ˜¯å¦æˆåŠŸ
 	 * @throws Exception 
 	 */
 	boolean doDelete(String kind, String workPlace) throws Exception;
 	
 	/**
-	 * ²éÕÒÊı¾İ¿â±íjobtypesÖĞµÄËùÓĞ¼ÇÂ¼
-	 * @return ËùÓĞ¼ÇÂ¼
+	 * æŸ¥æ‰¾æ•°æ®åº“è¡¨jobtypesä¸­çš„æ‰€æœ‰è®°å½•
+	 * @return æ‰€æœ‰è®°å½•
 	 * @throws Exception 
 	 */
 	List<JobTypes> findAll() throws Exception;
 	
 	/**
-	 * Í¨¹ıÊôĞÔkindºÍworkPlace²éÕÒ¼ÇÂ¼
-	 * @return ²éÕÒµ½µÄ¼ÇÂ¼
+	 * é€šè¿‡å±æ€§kindå’ŒworkPlaceæŸ¥æ‰¾è®°å½•
+	 * @return æŸ¥æ‰¾åˆ°çš„è®°å½•
 	 * @throws Exception 
 	 */
 	List<JobTypes> findByKindandWorkPlace(String kind, String workPlace) throws Exception;

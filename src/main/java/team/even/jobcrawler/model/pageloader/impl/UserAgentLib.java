@@ -1,11 +1,11 @@
-package team.even.jobcrawler.model.pageloader.impl;
+ï»¿package team.even.jobcrawler.model.pageloader.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * User-AgentĞÅÏ¢¿â£¬ÓÃÓÚËæ»úÇĞ»»httpÇëÇó±¨Í·ÖĞµÄ"User-Agent"ĞÅÏ¢£¬ÒÔ½µµÍ±»ÍøÕ¾¼à²âµ½ÅÀ³æĞĞÎªµÄ·çÏÕ
- * @author ÔøÔ£ÎÄ
+ * User-Agentä¿¡æ¯åº“ï¼Œç”¨äºéšæœºåˆ‡æ¢httpè¯·æ±‚æŠ¥å¤´ä¸­çš„"User-Agent"ä¿¡æ¯ï¼Œä»¥é™ä½è¢«ç½‘ç«™ç›‘æµ‹åˆ°çˆ¬è™«è¡Œä¸ºçš„é£é™©
+ * @author æ›¾è£•æ–‡
  *
  */
 public class UserAgentLib

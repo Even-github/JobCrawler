@@ -1,27 +1,27 @@
-package team.even.jobcrawler.model.db.dao;
+ï»¿package team.even.jobcrawler.model.db.dao;
 
 import java.util.List;
 
 import team.even.jobcrawler.model.db.vo.JobKind;
 
 /**
- * ±¾½Ó¿Ú¶¨Òåjobkind±íµÄ»ù±¾²Ù×÷£¬°üÀ¨²åÈëºÍ²éÑ¯
- * @author ÔøÔ£ÎÄ
+ * æœ¬æ¥å£å®šä¹‰jobkindè¡¨çš„åŸºæœ¬æ“ä½œï¼ŒåŒ…æ‹¬æ’å…¥å’ŒæŸ¥è¯¢
+ * @author æ›¾è£•æ–‡
  *
  */
 public interface IJobKindDAO
 {
 	/**
-	 * Ïòjobkind±í²åÈëÒ»ÌõÊı¾İ
-	 * @param jobKind ±»²åÈëµÄÊı¾İ
-	 * @return ÊÇ·ñ²åÈë³É¹¦
+	 * å‘jobkindè¡¨æ’å…¥ä¸€æ¡æ•°æ®
+	 * @param jobKind è¢«æ’å…¥çš„æ•°æ®
+	 * @return æ˜¯å¦æ’å…¥æˆåŠŸ
 	 * @throws Exception 
 	 */
 	boolean doCreate(JobKind jobKind) throws Exception;
 	
 	/**
-	 * ²éÕÒjobkind±íÖĞµÄËùÓĞÊı¾İ
-	 * @return ·µ»ØËùÓĞÊı¾İ
+	 * æŸ¥æ‰¾jobkindè¡¨ä¸­çš„æ‰€æœ‰æ•°æ®
+	 * @return è¿”å›æ‰€æœ‰æ•°æ®
 	 * @throws Exception 
 	 */
 	List<JobKind> findAll() throws Exception;

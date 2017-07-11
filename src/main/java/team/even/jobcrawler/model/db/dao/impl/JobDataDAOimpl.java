@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.db.dao.impl;
+ï»¿package team.even.jobcrawler.model.db.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,8 +17,8 @@ import team.even.jobcrawler.model.db.mybatis.sqlsessionfactory.SqlSessionFactory
 import team.even.jobcrawler.model.db.vo.JobData;
 
 /**
- * ½Ó¿ÚIJobDataDAOµÄÕæÊµÊµÏÖÀà
- * @author ÔøÔ£ÎÄ
+ * æ¥å£IJobDataDAOçš„çœŸå®å®ç°ç±»
+ * @author æ›¾è£•æ–‡
  *
  */
 public class JobDataDAOimpl implements IJobDataDAO
@@ -26,7 +26,7 @@ public class JobDataDAOimpl implements IJobDataDAO
 	@Override
 	public boolean doCreate(JobData jobData) throws Exception
 	{
-		boolean flag = false; //ÅĞ¶Ï²åÈëĞÅÏ¢ÊÇ·ñ³É¹¦
+		boolean flag = false; //åˆ¤æ–­æ’å…¥ä¿¡æ¯æ˜¯å¦æˆåŠŸ
 		SqlSession sqlSession = SqlSessionFactoryUtil.newSqlSession(true);
 		try
 		{
@@ -46,7 +46,7 @@ public class JobDataDAOimpl implements IJobDataDAO
 	@Override
 	public boolean doDelete(String column, String value) throws Exception
 	{
-		boolean flag = false; //ÅĞ¶ÏÉ¾³ı²Ù×÷ÊÇ·ñ³É¹¦
+		boolean flag = false; //åˆ¤æ–­åˆ é™¤æ“ä½œæ˜¯å¦æˆåŠŸ
 		SqlSession sqlSession = SqlSessionFactoryUtil.newSqlSession(true);
 		try
 		{
@@ -117,7 +117,7 @@ public class JobDataDAOimpl implements IJobDataDAO
 	@Override
 	public boolean doDeleteByKindandWorkPlace(String kind, String workPlace) throws Exception
 	{
-		boolean flag = false; //ÅĞ¶ÏÉ¾³ı²Ù×÷ÊÇ·ñ³É¹¦
+		boolean flag = false; //åˆ¤æ–­åˆ é™¤æ“ä½œæ˜¯å¦æˆåŠŸ
 		SqlSession sqlSession = SqlSessionFactoryUtil.newSqlSession(true);
 		try
 		{

@@ -1,4 +1,4 @@
-package team.even.jobcrawler.model.db.mybatis.sqlsessionfactory;
+﻿package team.even.jobcrawler.model.db.mybatis.sqlsessionfactory;
 
 import java.io.IOException;
 import java.io.InputStream;
